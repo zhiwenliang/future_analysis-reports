@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>FA · SWING · 20260611 · r1</title>
+<title>FA · SWING · 20260611 · r2</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
@@ -623,13 +623,13 @@
 
 <header class="cmdbar">
   <div class="cb-prog">FA · SWING · TERMINAL</div>
-  <div class="cb-rev">REV <b>r1</b> · 20260611</div>
-  <div class="cb-clock">10:02:52 (UTC+8)</div>
-  <div class="cb-fresh fresh"><span class="pulse"></span><span class="lbl">FRESH</span><b>0m</b><span class="lbl">·DATA</span><b>10:02:52</b></div>
+  <div class="cb-rev">REV <b>r2</b> · 20260611</div>
+  <div class="cb-clock">12:13:46 (UTC+8)</div>
+  <div class="cb-fresh warn"><span class="pulse"></span><span class="lbl">FRESH</span><b>21h</b><span class="lbl">·DATA</span><b>14:16:36</b></div>
   <div class="cb-dirs">
-    <span class="grp is-buy"><b>1</b><span class="codes">TA</span></span>
-    <span class="grp is-sell"><b>2</b><span class="codes">SP/SR</span></span>
-    <span class="grp"><b>6</b><span class="codes">AO/CF/M/MA/RB/V</span></span>
+    <span class="grp is-buy"><b>3</b><span class="codes">AO/MA/TA</span></span>
+    <span class="grp is-sell"><b>2</b><span class="codes">RB/SP</span></span>
+    <span class="grp"><b>4</b><span class="codes">CF/M/SR/V</span></span>
   </div>
   <div class="cb-alerts">1 TRIG · 0 FLIP</div>
   <div class="cb-mode">盘中实时</div>
@@ -639,9 +639,9 @@
 <nav class="filterbar">
   <div class="fg">
     <span class="fg-lbl">DIR</span>
-    <button class="chip" data-filter="dir" data-val="buy">LONG<span class="ct">1</span></button>
+    <button class="chip" data-filter="dir" data-val="buy">LONG<span class="ct">3</span></button>
     <button class="chip" data-filter="dir" data-val="sell">SHORT<span class="ct">2</span></button>
-    <button class="chip" data-filter="dir" data-val="watch">WATCH<span class="ct">6</span></button>
+    <button class="chip" data-filter="dir" data-val="watch">WATCH<span class="ct">4</span></button>
   </div>
   <div class="fg">
     <span class="fg-lbl">DIM</span>
@@ -653,7 +653,7 @@
     <button class="chip" data-filter="dim" data-val="risk">RISK</button>
   </div>
   <div class="fg-right">
-    <span>数据基础薄弱，结论置信度低；九品种盘中仅按条件触发，PVC 禁止追空</span>
+    <span>化工链盘中领涨:甲醇午前+3.1%、PTA conviction 升至 5.4/9 仍被震荡路由压制;V 现金成本击穿禁空,盘中破位仅 RB/SP 转 sell</span>
     <kbd>X</kbd>全展 <kbd>C</kbd>全收
   </div>
 </nav>
@@ -681,26 +681,35 @@
   </div>
 </nav>
 
+<section style="margin:10px 16px 0;padding:9px 14px;border:1px solid var(--rule);border-left:3px solid var(--amber);background:rgba(255,180,0,.06);font-size:11.5px;line-height:1.65;color:var(--text-dim)">
+  <b style="color:var(--amber)">⚠ 口径与置信度提示</b> —
+  <b>分析生成时刻</b> 2026-06-11 12:13 (UTC+8)；<b>数据截止时刻</b> 2026-06-11 11:30（午前收盘实时快照，<b>未结算 / 实时口径</b>），结算基线为 6-10 TDX 已结算日线（settle 与官方 Δ=0）。
+  九品种中 8 个 conviction |score_scaled| &lt; 3（confidence = weak）——<b>数据基础薄弱，结论置信度低</b>，盘后口径下全员 strategy_route = watch，禁止明确开仓方向；唯一例外 TA conviction 5.4/9（strong）但路由仍因震荡市中段 + Top20 席位净空压制为 watch。
+  矩阵中 AO/MA/TA buy 与 RB/SP sell 均为<b>盘中突破 override</b>（今日 high/low 突破昨结 ±0.5·ATR 且与 conviction 方向一致的条件式信号，非已入场；午后失守即回落 watch）。
+  V 触发 <b>critical cash_cost_floor_breach</b>（结算 4,690 &lt; 现金成本低档 5,000），<b>禁空</b>——盘中虽破位下行，按告警 veto 不升级 sell。
+  M / V（DCE）月差结构暂缺（官方源仅主力单腿），合约结构维以主力单腿信号计，无跨月价差佐证。
+</section>
+
 <section class="topstrip">
-  <div class="tp-tag"><span class="k">TOP R:R</span><span class="star">★ #1 / 3</span></div>
+  <div class="tp-tag"><span class="k">TOP R:R</span><span class="star">★ #1 / 5</span></div>
   <div class="tp-meta">
     <div class="line1">
-      <span class="code">SP</span>
-      <span>sp2609 · SHFE</span>
-      <span class="dir-tag tag-sell">SHORT</span>
-      <span class="strat">盘中破位空</span>
+      <span class="code">AO</span>
+      <span>ao2609 · SHFE</span>
+      <span class="dir-tag tag-buy">LONG</span>
+      <span class="strat">盘中突破多</span>
     </div>
     <div class="line2">
-      <span><span class="k">ENTRY</span><b>4,856–4,904</b></span>
-      <span><span class="k">STOP</span><b>4996</b></span>
-      <span><span class="k">TP</span><b>4646</b> / <b>4412</b></span>
+      <span><span class="k">ENTRY</span><b>2,877–2,927</b></span>
+      <span><span class="k">STOP</span><b>2778</b></span>
+      <span><span class="k">TP</span><b>3149</b> / <b>3396</b></span>
       <span><span class="k">R:R</span><b class="rr">1:2.0 / 1:4.0</b></span>
-      <span><span class="k">RISK</span><b>1,160 ¥/手</b></span>
-      <span><span class="k">RSI</span><b>37.2</b></span>
-      <span><span class="k">ATR</span><b>58</b></span>
+      <span><span class="k">RISK</span><b>2,480 ¥/手</b></span>
+      <span><span class="k">RSI</span><b>59.2</b></span>
+      <span><span class="k">ATR</span><b>61</b></span>
     </div>
   </div>
-  <div class="tp-status"><span class="k">STATUS</span><span>TRIG</span></div>
+  <div class="tp-status"><span class="k">STATUS</span><span>SHIFT</span></div>
 </section>
 
 
@@ -751,286 +760,7 @@
   </thead>
   <tbody>
     
-    <tr class="row dir-buy" data-code="ta" data-dir="buy" data-status="shift" data-crit="0" data-near="0" id="v-ta" tabindex="0">
-      <td data-d="snap tech pos term strat risk">
-        <div class="sym-cell">
-          <span class="sym">TA</span>
-          <span class="nm">PTA</span>
-          <span class="ct">ta2609</span>
-        </div>
-      </td>
-      <td data-d="snap strat" style="line-height:1.2"><b>6302</b><span class="live-overlay">盘中 10:02 <b>6402.0</b> <span class="num-up">+100</span> <span class="num-up">+1.59%</span></span></td>
-      <td data-d="snap tech"><span class="spark-mini"><svg viewBox="0 0 100 30" preserveAspectRatio="none"><polyline points="0.00,7.22 3.45,0.67 6.90,2.90 10.34,2.90 13.79,0.00 17.24,11.46 20.69,16.82 24.14,11.32 27.59,12.21 31.03,15.86 34.48,18.68 37.93,14.74 41.38,11.02 44.83,14.14 48.28,15.48 51.72,15.26 55.17,24.34 58.62,30.00 62.07,29.70 65.52,27.77 68.97,22.93 72.41,25.68 75.86,21.81 79.31,20.69 82.76,16.90 86.21,22.56 89.66,18.61 93.10,12.06 96.55,20.40 100.00,18.16"/></svg></span></td>
-      <td data-d="snap tech">49.8</td>
-      <td data-d="snap tech">201</td>
-      <td data-d="snap pos">1.15M <span class='num-up'>+27k</span></td>
-      <td data-d="snap strat" class="strat-cell">
-        <span class="dir-tag tag-buy">L</span><span class="strat-text">盘中突破多</span>
-        <span class="strat-sub">[盘中突破] · SHIFT · 入 6,322–6,482 · SL 6,000 · TP1 7,206 (1:2.0)</span>
-        <span class="strat-sub hold-tag">· HOLD ~6D</span>
-      </td>
-      <td data-d="snap strat" class="rr-cell">1:2.0 / <span class='max'>1:4.0</span></td>
-      <td data-d="snap strat" class="risk-cell">2010</td>
-      <td data-d="snap strat risk"><span class="st st-shift"><span class="bk">SHIFT</span></span></td>
-      <td data-d="tech">6296</td><td data-d="tech">6250</td>
-      <td data-d="tech">6544</td><td data-d="tech">5957</td>
-      <td data-d="tech">6550</td><td data-d="tech">5876</td>
-      <td data-d="tech">63%</td>
-      <td data-d="pos">1.35M</td>
-      <td data-d="pos" class="num-dn"><b>0</b></td>
-      <td data-d="pos">—</td><td data-d="pos">—</td>
-      <td data-d="pos" style="text-align:left;font-size:10.5px;color:var(--text-dim)">—</td>
-      <td data-d="term">ta2609</td><td data-d="term"><b>6302</b></td>
-      <td data-d="term">—</td><td data-d="term">—</td>
-      <td data-d="term" class="">—</td>
-      <td data-d="term"></td>
-      <td data-d="term" style="text-align:left;color:var(--text-dim);font-size:10.5px">—</td>
-      <td data-d="strat"><b>6,322–6,482</b></td>
-      <td data-d="strat" class="num-dn">6000</td>
-      <td data-d="strat"><b class="num-up">7206</b> / <b class="num-up">8012</b></td>
-      <td data-d="risk" style="text-align:left"></td>
-      <td data-d="risk">11%</td><td data-d="risk">96d</td><td data-d="risk">7247</td>
-    </tr>
-    <tr class="row-detail" data-for="ta"><td colspan="40">
-      <div class="detail-wrap">
-        <div class="detail-section">
-          <h5><span class="hk">D</span>六维分析 <span class="meta">六维 · 四问 · ticket</span></h5>
-          <div class="six-dim">
-            <div class="dim"><span class="lbl">基本面 <span class="dim-agg">+0</span></span><span class="dim-sub">S+0 M+0 L+0 · cov 100%</span><span class="dim-rationale">spot cost_pct 0.42 / mid cost_pct 0.42 / long cost_pct 0.47</span><span class="lead">结算价低于 现金成本-高/完全成本-中</span><span class="det">成本 现金成本-中 差额 +30；现货 基差 +32；px_cfr_china 100.0美元/吨；pxn_spread 200.0美元/吨</span></div>
-            <div class="dim"><span class="lbl">宏观</span><span class="lead">eastmoney_7x24: 国内商品期货收盘，主力合约跌多涨少。跌幅方面，沪银跌近9%，沪锡跌超6%，钯跌近6%，铂跌超5%，烧碱跌超4%...</span><span class="det">pmi_manufacturing 50.00index；ppi_yoy 3.90percent；fx_boc_mid_usd 681.50100cny_per_unit；新闻 6 条</span></div>
-            <div class="dim"><span class="lbl">合约结构</span><span class="lead">月差结构暂缺</span><span class="det">ta2609 以主力合约单腿信号为主。</span></div>
-            <div class="dim"><span class="lbl">成交持仓</span><span class="dim-sub">S— M— L— · cov 0% [degraded]</span><span class="dim-rationale">position_rank 数据缺</span><span class="lead">Top20 多空均衡 —</span><span class="det">多变 —；空变 —；量价 价涨/增仓；动量 trend_strengthening</span></div>
-            <div class="dim"><span class="lbl">技术面 <span class="dim-agg">+1</span></span><span class="dim-sub">S+1 M+0.23 L— · cov 100%</span><span class="dim-rationale">ret_21d -2.5% vol 8.6% sig -0.29 / ret_63d +3.8% vol 21.3% sig +0.18 / ret_252d +21.9% vol 27.6% sig +0.79</span><span class="lead">震荡，RSI 49.8，ADX 12.5</span><span class="det">收盘 vs MA5 +5，vs MA20 +51；20日位置 63%，20日收益 +0.2%。</span></div>
-            <div class="dim"><span class="lbl">风险管理</span><span class="lead">未触发硬性风控告警</span><span class="det">到期 96 天；主力校验 OK ta2609；涨跌停 11%，保证金 23.0%</span></div>
-          </div>
-          <div class="ans-grid">
-            <div class="ans"><span class="lbl">主要矛盾</span>eastmoney_7x24: 国内商品期货收盘，主力合约跌多涨少。跌幅方面，沪银跌近9%，沪锡跌超6%，钯跌近6%，铂跌超5%，烧碱跌超4%...；conviction 0.9/9 偏多，仓位信念 weak。</div>
-            <div class="ans"><span class="lbl">是否已反映</span>震荡，距MA20 +0.8%，20日位置 63%；当前策略状态 SHIFT，入场 6,322-6,482，止损 6,000。</div>
-            <div class="ans"><span class="lbl">结构/资金/流动性</span>月差结构暂缺；Top20 多空均衡 —，价涨/增仓；成交量 1,354,883，持仓 1,149,294。</div>
-            <div class="ans"><span class="lbl">错误最大亏损</span>若按计划触发，单手风险约 2,010 元，止损 6,000 失守即退出。</div>
-          </div>
-        </div>
-        <div class="detail-section">
-          <h5><span class="hk">T</span>30d 走势 + Trade Ticket <span class="meta">candle · MA20 amber dashed</span></h5>
-          <div class="chart-wrap">
-            <div class="head">
-              <span>TA ta2609 · 30D OHLC + MA20</span>
-              <span class="legend"><span><span class="sw" style="background:var(--buy)"></span>K</span><span><span class="sw" style="background:var(--amber);height:2px"></span>MA20</span></span>
-              <span class="last">6302</span>
-            </div>
-            <div id="chart-ta" class="ct"
-                 data-ohlc="[{&quot;time&quot;: &quot;2026-04-27&quot;, &quot;open&quot;: 6428.0, &quot;high&quot;: 6658.0, &quot;low&quot;: 6428.0, &quot;close&quot;: 6596.0}, {&quot;time&quot;: &quot;2026-04-28&quot;, &quot;open&quot;: 6600.0, &quot;high&quot;: 6796.0, &quot;low&quot;: 6576.0, &quot;close&quot;: 6772.0}, {&quot;time&quot;: &quot;2026-04-29&quot;, &quot;open&quot;: 6772.0, &quot;high&quot;: 6838.0, &quot;low&quot;: 6672.0, &quot;close&quot;: 6712.0}, {&quot;time&quot;: &quot;2026-04-30&quot;, &quot;open&quot;: 6780.0, &quot;high&quot;: 6796.0, &quot;low&quot;: 6690.0, &quot;close&quot;: 6712.0}, {&quot;time&quot;: &quot;2026-05-06&quot;, &quot;open&quot;: 6698.0, &quot;high&quot;: 6844.0, &quot;low&quot;: 6680.0, &quot;close&quot;: 6790.0}, {&quot;time&quot;: &quot;2026-05-07&quot;, &quot;open&quot;: 6678.0, &quot;high&quot;: 6706.0, &quot;low&quot;: 6470.0, &quot;close&quot;: 6482.0}, {&quot;time&quot;: &quot;2026-05-08&quot;, &quot;open&quot;: 6400.0, &quot;high&quot;: 6462.0, &quot;low&quot;: 6324.0, &quot;close&quot;: 6338.0}, {&quot;time&quot;: &quot;2026-05-11&quot;, &quot;open&quot;: 6362.0, &quot;high&quot;: 6568.0, &quot;low&quot;: 6308.0, &quot;close&quot;: 6486.0}, {&quot;time&quot;: &quot;2026-05-12&quot;, &quot;open&quot;: 6484.0, &quot;high&quot;: 6500.0, &quot;low&quot;: 6396.0, &quot;close&quot;: 6462.0}, {&quot;time&quot;: &quot;2026-05-13&quot;, &quot;open&quot;: 6460.0, &quot;high&quot;: 6488.0, &quot;low&quot;: 6336.0, &quot;close&quot;: 6364.0}, {&quot;time&quot;: &quot;2026-05-14&quot;, &quot;open&quot;: 6394.0, &quot;high&quot;: 6418.0, &quot;low&quot;: 6252.0, &quot;close&quot;: 6288.0}, {&quot;time&quot;: &quot;2026-05-15&quot;, &quot;open&quot;: 6260.0, &quot;high&quot;: 6444.0, &quot;low&quot;: 6260.0, &quot;close&quot;: 6394.0}, {&quot;time&quot;: &quot;2026-05-18&quot;, &quot;open&quot;: 6416.0, &quot;high&quot;: 6550.0, &quot;low&quot;: 6352.0, &quot;close&quot;: 6494.0}, {&quot;time&quot;: &quot;2026-05-19&quot;, &quot;open&quot;: 6428.0, &quot;high&quot;: 6428.0, &quot;low&quot;: 6314.0, &quot;close&quot;: 6410.0}, {&quot;time&quot;: &quot;2026-05-20&quot;, &quot;open&quot;: 6414.0, &quot;high&quot;: 6442.0, &quot;low&quot;: 6354.0, &quot;close&quot;: 6374.0}, {&quot;time&quot;: &quot;2026-05-21&quot;, &quot;open&quot;: 6340.0, &quot;high&quot;: 6448.0, &quot;low&quot;: 6294.0, &quot;close&quot;: 6380.0}, {&quot;time&quot;: &quot;2026-05-22&quot;, &quot;open&quot;: 6398.0, &quot;high&quot;: 6402.0, &quot;low&quot;: 6060.0, &quot;close&quot;: 6136.0}, {&quot;time&quot;: &quot;2026-05-25&quot;, &quot;open&quot;: 6096.0, &quot;high&quot;: 6160.0, &quot;low&quot;: 5876.0, &quot;close&quot;: 5984.0}, {&quot;time&quot;: &quot;2026-05-26&quot;, &quot;open&quot;: 5970.0, &quot;high&quot;: 6036.0, &quot;low&quot;: 5938.0, &quot;close&quot;: 5992.0}, {&quot;time&quot;: &quot;2026-05-27&quot;, &quot;open&quot;: 6018.0, &quot;high&quot;: 6066.0, &quot;low&quot;: 5974.0, &quot;close&quot;: 6044.0}, {&quot;time&quot;: &quot;2026-05-28&quot;, &quot;open&quot;: 5966.0, &quot;high&quot;: 6232.0, &quot;low&quot;: 5954.0, &quot;close&quot;: 6174.0}, {&quot;time&quot;: &quot;2026-05-29&quot;, &quot;open&quot;: 6164.0, &quot;high&quot;: 6192.0, &quot;low&quot;: 6070.0, &quot;close&quot;: 6100.0}, {&quot;time&quot;: &quot;2026-06-01&quot;, &quot;open&quot;: 6090.0, &quot;high&quot;: 6226.0, &quot;low&quot;: 6060.0, &quot;close&quot;: 6204.0}, {&quot;time&quot;: &quot;2026-06-02&quot;, &quot;open&quot;: 6198.0, &quot;high&quot;: 6296.0, &quot;low&quot;: 6144.0, &quot;close&quot;: 6234.0}, {&quot;time&quot;: &quot;2026-06-03&quot;, &quot;open&quot;: 6248.0, &quot;high&quot;: 6352.0, &quot;low&quot;: 6220.0, &quot;close&quot;: 6336.0}, {&quot;time&quot;: &quot;2026-06-04&quot;, &quot;open&quot;: 6350.0, &quot;high&quot;: 6350.0, &quot;low&quot;: 6166.0, &quot;close&quot;: 6184.0}, {&quot;time&quot;: &quot;2026-06-05&quot;, &quot;open&quot;: 6130.0, &quot;high&quot;: 6340.0, &quot;low&quot;: 6130.0, &quot;close&quot;: 6290.0}, {&quot;time&quot;: &quot;2026-06-08&quot;, &quot;open&quot;: 6288.0, &quot;high&quot;: 6470.0, &quot;low&quot;: 6250.0, &quot;close&quot;: 6466.0}, {&quot;time&quot;: &quot;2026-06-09&quot;, &quot;open&quot;: 6400.0, &quot;high&quot;: 6434.0, &quot;low&quot;: 6210.0, &quot;close&quot;: 6242.0}, {&quot;time&quot;: &quot;2026-06-10&quot;, &quot;open&quot;: 6240.0, &quot;high&quot;: 6458.0, &quot;low&quot;: 6228.0, &quot;close&quot;: 6302.0}]"
-                 data-ma20="[{&quot;time&quot;: &quot;2026-05-27&quot;, &quot;value&quot;: 6410.5}, {&quot;time&quot;: &quot;2026-05-28&quot;, &quot;value&quot;: 6389.4}, {&quot;time&quot;: &quot;2026-05-29&quot;, &quot;value&quot;: 6355.8}, {&quot;time&quot;: &quot;2026-06-01&quot;, &quot;value&quot;: 6330.4}, {&quot;time&quot;: &quot;2026-06-02&quot;, &quot;value&quot;: 6306.5}, {&quot;time&quot;: &quot;2026-06-03&quot;, &quot;value&quot;: 6283.8}, {&quot;time&quot;: &quot;2026-06-04&quot;, &quot;value&quot;: 6268.9}, {&quot;time&quot;: &quot;2026-06-05&quot;, &quot;value&quot;: 6266.5}, {&quot;time&quot;: &quot;2026-06-08&quot;, &quot;value&quot;: 6265.5}, {&quot;time&quot;: &quot;2026-06-09&quot;, &quot;value&quot;: 6254.5}, {&quot;time&quot;: &quot;2026-06-10&quot;, &quot;value&quot;: 6251.4}]"></div>
-          </div>
-          <div class="gauge-row">
-            <div class="g"><div class="k">20DH / 20DL</div><div class="v">6550 / 5876</div></div>
-            <div class="g"><div class="k">BUP / BLO</div><div class="v">6544 / 5957</div></div>
-            <div class="g"><div class="k">RNG POS</div><div class="v">63%</div></div>
-          </div>
-          <div class="top3-line"><span class="k">TOP3</span>—</div>
-          <div class="ticket-mini">
-            <span class="k">ENTRY</span><span class="v"><b>6,322–6,482</b><span class="note"></span></span>
-            <span class="k">STOP</span><span class="v"><b>6000</b><span class="note"></span></span>
-            <span class="k">TP1 · TP2</span><span class="v"><b>7206</b> <span class="note"></span> &nbsp;|&nbsp; <b>8012</b> <span class="note"></span></span>
-            <span class="k">HOLD</span><span class="v">TP1 ~6 日 (29%) · TP2 ~6 日 (29%) · 经验区间 <b>~6 日</b> · 样本 133 根</span>
-            <span class="k">R:R</span><span class="v"><span class="rr-pair"><span class="lab">TP1</span><b>1:2.0</b></span> <span class="rr-pair"><span class="lab">TP2</span><b>1:4.0</b></span></span>
-            <span class="k">RISK · LOT</span><span class="v"><b>≈ 2010</b> 元 / 手</span>
-            <span class="k">MARGIN · LOT</span><span class="v"><b>≈ 7247</b> 元</span>
-            <span class="k">EXIT</span><span class="v"></span>
-            <span class="k">SPEC</span><span class="v"><b>乘数 5</b> · 每跳 2 = <b>10</b> 元 · 涨跌停板 <b>11%</b></span>
-          </div>
-          
-        </div>
-      </div>
-    </td></tr>
-    
-    <tr class="row dir-sell" data-code="sp" data-dir="sell" data-status="trig" data-crit="0" data-near="0" id="v-sp" tabindex="0">
-      <td data-d="snap tech pos term strat risk">
-        <div class="sym-cell">
-          <span class="sym">SP</span>
-          <span class="nm">纸浆</span>
-          <span class="ct">sp2609</span>
-        </div>
-      </td>
-      <td data-d="snap strat" style="line-height:1.2"><b>4868</b><span class="live-overlay">盘中 10:02 <b>4880.0</b> <span class="num-up">+12</span> <span class="num-up">+0.25%</span></span></td>
-      <td data-d="snap tech"><span class="spark-mini"><svg viewBox="0 0 100 30" preserveAspectRatio="none"><polyline points="0.00,7.12 3.45,10.68 6.90,8.81 10.34,7.97 13.79,5.25 17.24,8.64 20.69,8.47 24.14,2.71 27.59,2.37 31.03,0.00 34.48,4.75 37.93,8.47 41.38,9.66 44.83,8.98 48.28,14.41 51.72,19.83 55.17,21.53 58.62,16.10 62.07,15.59 65.52,16.78 68.97,17.12 72.41,20.68 75.86,23.73 79.31,25.93 82.76,25.93 86.21,30.00 89.66,27.12 93.10,27.29 96.55,24.41 100.00,25.25"/></svg></span></td>
-      <td data-d="snap tech">37.2</td>
-      <td data-d="snap tech">58</td>
-      <td data-d="snap pos">403k <span class='num-dn'>10k</span></td>
-      <td data-d="snap strat" class="strat-cell">
-        <span class="dir-tag tag-sell">S</span><span class="strat-text">盘中破位空</span>
-        <span class="strat-sub">[盘中破位] · TRIG · 入 4,856–4,904 · SL 4,996 · TP1 4,646 (1:2.0)</span>
-        <span class="strat-sub hold-tag">· HOLD ~7D</span>
-      </td>
-      <td data-d="snap strat" class="rr-cell">1:2.0 / <span class='max'>1:4.0</span></td>
-      <td data-d="snap strat" class="risk-cell">1160</td>
-      <td data-d="snap strat risk"><span class="st st-trig"><span class="bk">TRIG</span></span></td>
-      <td data-d="tech">4849</td><td data-d="tech">4939</td>
-      <td data-d="tech">5106</td><td data-d="tech">4772</td>
-      <td data-d="tech">5186</td><td data-d="tech">4788</td>
-      <td data-d="tech">20%</td>
-      <td data-d="pos">235k</td>
-      <td data-d="pos" class="num-dn"><b>0</b></td>
-      <td data-d="pos">—</td><td data-d="pos">—</td>
-      <td data-d="pos" style="text-align:left;font-size:10.5px;color:var(--text-dim)">—</td>
-      <td data-d="term">sp2609</td><td data-d="term"><b>4868</b></td>
-      <td data-d="term">—</td><td data-d="term">—</td>
-      <td data-d="term" class="">—</td>
-      <td data-d="term"></td>
-      <td data-d="term" style="text-align:left;color:var(--text-dim);font-size:10.5px">—</td>
-      <td data-d="strat"><b>4,856–4,904</b></td>
-      <td data-d="strat" class="num-dn">4996</td>
-      <td data-d="strat"><b class="num-up">4646</b> / <b class="num-up">4412</b></td>
-      <td data-d="risk" style="text-align:left"></td>
-      <td data-d="risk">4%</td><td data-d="risk">97d</td><td data-d="risk">7302</td>
-    </tr>
-    <tr class="row-detail" data-for="sp"><td colspan="40">
-      <div class="detail-wrap">
-        <div class="detail-section">
-          <h5><span class="hk">D</span>六维分析 <span class="meta">六维 · 四问 · ticket</span></h5>
-          <div class="six-dim">
-            <div class="dim"><span class="lbl">基本面 <span class="dim-agg">+0</span></span><span class="dim-sub">S+0 M+0 L+0 · cov 100%</span><span class="dim-rationale">spot cost_pct 0.22 / mid cost_pct 0.21 / long cost_pct 0.28</span><span class="lead">结算价低于 现金成本-中/现金成本-高</span><span class="det">成本 完全成本-低 差额 +74；现货 基差 +28</span></div>
-            <div class="dim"><span class="lbl">宏观</span><span class="lead">eastmoney_search:纸浆: 能化 | 原油：美伊反反复复 盘面止跌回升</span><span class="det">pmi_manufacturing 50.00index；ppi_yoy 3.90percent；fx_boc_mid_usd 681.50100cny_per_unit；新闻 4 条</span></div>
-            <div class="dim"><span class="lbl">合约结构</span><span class="lead">月差结构暂缺</span><span class="det">sp2609 以主力合约单腿信号为主。</span></div>
-            <div class="dim"><span class="lbl">成交持仓</span><span class="dim-sub">S— M— L— · cov 0% [degraded]</span><span class="dim-rationale">position_rank 数据缺</span><span class="lead">Top20 多空均衡 —</span><span class="det">多变 —；空变 —；量价 价跌/减仓；动量 building</span></div>
-            <div class="dim"><span class="lbl">技术面 <span class="dim-agg">-2</span></span><span class="dim-sub">S+0 M-1 L— · cov 100%</span><span class="dim-rationale">ret_21d -5.3% vol 3.1% sig -1.00 / ret_63d -9.2% vol 5.9% sig -1.00 / ret_252d -18.7% vol 14.0% sig -1.00</span><span class="lead">强下行，RSI 37.2，ADX 35.5</span><span class="det">收盘 vs MA5 +18，vs MA20 -71；20日位置 20%，20日收益 -4.7%。</span></div>
-            <div class="dim"><span class="lbl">风险管理</span><span class="lead">未触发硬性风控告警</span><span class="det">到期 97 天；主力校验 OK sp2609；涨跌停 4%，保证金 15.0%</span></div>
-          </div>
-          <div class="ans-grid">
-            <div class="ans"><span class="lbl">主要矛盾</span>eastmoney_search:纸浆: 能化 | 原油：美伊反反复复 盘面止跌回升；conviction -1.7/9 偏空，仓位信念 weak。</div>
-            <div class="ans"><span class="lbl">是否已反映</span>强下行，距MA20 -1.4%，20日位置 20%；当前策略状态 TRIG，入场 4,856-4,904，止损 4,996。</div>
-            <div class="ans"><span class="lbl">结构/资金/流动性</span>月差结构暂缺；Top20 多空均衡 —，价跌/减仓；成交量 235,139，持仓 403,312。</div>
-            <div class="ans"><span class="lbl">错误最大亏损</span>若按计划触发，单手风险约 1,160 元，止损 4,996 失守即退出。</div>
-          </div>
-        </div>
-        <div class="detail-section">
-          <h5><span class="hk">T</span>30d 走势 + Trade Ticket <span class="meta">candle · MA20 amber dashed</span></h5>
-          <div class="chart-wrap">
-            <div class="head">
-              <span>SP sp2609 · 30D OHLC + MA20</span>
-              <span class="legend"><span><span class="sw" style="background:var(--buy)"></span>K</span><span><span class="sw" style="background:var(--amber);height:2px"></span>MA20</span></span>
-              <span class="last">4868</span>
-            </div>
-            <div id="chart-sp" class="ct"
-                 data-ohlc="[{&quot;time&quot;: &quot;2026-04-27&quot;, &quot;open&quot;: 5058.0, &quot;high&quot;: 5092.0, &quot;low&quot;: 5046.0, &quot;close&quot;: 5082.0}, {&quot;time&quot;: &quot;2026-04-28&quot;, &quot;open&quot;: 5074.0, &quot;high&quot;: 5084.0, &quot;low&quot;: 5016.0, &quot;close&quot;: 5040.0}, {&quot;time&quot;: &quot;2026-04-29&quot;, &quot;open&quot;: 5048.0, &quot;high&quot;: 5070.0, &quot;low&quot;: 5010.0, &quot;close&quot;: 5062.0}, {&quot;time&quot;: &quot;2026-04-30&quot;, &quot;open&quot;: 5050.0, &quot;high&quot;: 5086.0, &quot;low&quot;: 5030.0, &quot;close&quot;: 5072.0}, {&quot;time&quot;: &quot;2026-05-06&quot;, &quot;open&quot;: 5062.0, &quot;high&quot;: 5110.0, &quot;low&quot;: 5060.0, &quot;close&quot;: 5104.0}, {&quot;time&quot;: &quot;2026-05-07&quot;, &quot;open&quot;: 5096.0, &quot;high&quot;: 5102.0, &quot;low&quot;: 5044.0, &quot;close&quot;: 5064.0}, {&quot;time&quot;: &quot;2026-05-08&quot;, &quot;open&quot;: 5062.0, &quot;high&quot;: 5136.0, &quot;low&quot;: 5052.0, &quot;close&quot;: 5066.0}, {&quot;time&quot;: &quot;2026-05-11&quot;, &quot;open&quot;: 5066.0, &quot;high&quot;: 5146.0, &quot;low&quot;: 5062.0, &quot;close&quot;: 5134.0}, {&quot;time&quot;: &quot;2026-05-12&quot;, &quot;open&quot;: 5140.0, &quot;high&quot;: 5160.0, &quot;low&quot;: 5110.0, &quot;close&quot;: 5138.0}, {&quot;time&quot;: &quot;2026-05-13&quot;, &quot;open&quot;: 5138.0, &quot;high&quot;: 5172.0, &quot;low&quot;: 5114.0, &quot;close&quot;: 5166.0}, {&quot;time&quot;: &quot;2026-05-14&quot;, &quot;open&quot;: 5168.0, &quot;high&quot;: 5186.0, &quot;low&quot;: 5094.0, &quot;close&quot;: 5110.0}, {&quot;time&quot;: &quot;2026-05-15&quot;, &quot;open&quot;: 5114.0, &quot;high&quot;: 5124.0, &quot;low&quot;: 5058.0, &quot;close&quot;: 5066.0}, {&quot;time&quot;: &quot;2026-05-18&quot;, &quot;open&quot;: 5064.0, &quot;high&quot;: 5072.0, &quot;low&quot;: 5022.0, &quot;close&quot;: 5052.0}, {&quot;time&quot;: &quot;2026-05-19&quot;, &quot;open&quot;: 5052.0, &quot;high&quot;: 5076.0, &quot;low&quot;: 5032.0, &quot;close&quot;: 5060.0}, {&quot;time&quot;: &quot;2026-05-20&quot;, &quot;open&quot;: 5064.0, &quot;high&quot;: 5080.0, &quot;low&quot;: 4988.0, &quot;close&quot;: 4996.0}, {&quot;time&quot;: &quot;2026-05-21&quot;, &quot;open&quot;: 4998.0, &quot;high&quot;: 5006.0, &quot;low&quot;: 4930.0, &quot;close&quot;: 4932.0}, {&quot;time&quot;: &quot;2026-05-22&quot;, &quot;open&quot;: 4926.0, &quot;high&quot;: 4942.0, &quot;low&quot;: 4900.0, &quot;close&quot;: 4912.0}, {&quot;time&quot;: &quot;2026-05-25&quot;, &quot;open&quot;: 4916.0, &quot;high&quot;: 4990.0, &quot;low&quot;: 4902.0, &quot;close&quot;: 4976.0}, {&quot;time&quot;: &quot;2026-05-26&quot;, &quot;open&quot;: 4970.0, &quot;high&quot;: 4988.0, &quot;low&quot;: 4954.0, &quot;close&quot;: 4982.0}, {&quot;time&quot;: &quot;2026-05-27&quot;, &quot;open&quot;: 4988.0, &quot;high&quot;: 4994.0, &quot;low&quot;: 4954.0, &quot;close&quot;: 4968.0}, {&quot;time&quot;: &quot;2026-05-28&quot;, &quot;open&quot;: 4968.0, &quot;high&quot;: 4982.0, &quot;low&quot;: 4938.0, &quot;close&quot;: 4964.0}, {&quot;time&quot;: &quot;2026-05-29&quot;, &quot;open&quot;: 4960.0, &quot;high&quot;: 4964.0, &quot;low&quot;: 4918.0, &quot;close&quot;: 4922.0}, {&quot;time&quot;: &quot;2026-06-01&quot;, &quot;open&quot;: 4922.0, &quot;high&quot;: 4924.0, &quot;low&quot;: 4870.0, &quot;close&quot;: 4886.0}, {&quot;time&quot;: &quot;2026-06-02&quot;, &quot;open&quot;: 4872.0, &quot;high&quot;: 4878.0, &quot;low&quot;: 4842.0, &quot;close&quot;: 4860.0}, {&quot;time&quot;: &quot;2026-06-03&quot;, &quot;open&quot;: 4860.0, &quot;high&quot;: 4892.0, &quot;low&quot;: 4848.0, &quot;close&quot;: 4860.0}, {&quot;time&quot;: &quot;2026-06-04&quot;, &quot;open&quot;: 4868.0, &quot;high&quot;: 4878.0, &quot;low&quot;: 4810.0, &quot;close&quot;: 4812.0}, {&quot;time&quot;: &quot;2026-06-05&quot;, &quot;open&quot;: 4804.0, &quot;high&quot;: 4862.0, &quot;low&quot;: 4788.0, &quot;close&quot;: 4846.0}, {&quot;time&quot;: &quot;2026-06-08&quot;, &quot;open&quot;: 4860.0, &quot;high&quot;: 4886.0, &quot;low&quot;: 4818.0, &quot;close&quot;: 4844.0}, {&quot;time&quot;: &quot;2026-06-09&quot;, &quot;open&quot;: 4844.0, &quot;high&quot;: 4878.0, &quot;low&quot;: 4820.0, &quot;close&quot;: 4878.0}, {&quot;time&quot;: &quot;2026-06-10&quot;, &quot;open&quot;: 4878.0, &quot;high&quot;: 4898.0, &quot;low&quot;: 4856.0, &quot;close&quot;: 4868.0}]"
-                 data-ma20="[{&quot;time&quot;: &quot;2026-05-27&quot;, &quot;value&quot;: 5049.1}, {&quot;time&quot;: &quot;2026-05-28&quot;, &quot;value&quot;: 5043.2}, {&quot;time&quot;: &quot;2026-05-29&quot;, &quot;value&quot;: 5037.3}, {&quot;time&quot;: &quot;2026-06-01&quot;, &quot;value&quot;: 5028.5}, {&quot;time&quot;: &quot;2026-06-02&quot;, &quot;value&quot;: 5017.9}, {&quot;time&quot;: &quot;2026-06-03&quot;, &quot;value&quot;: 5005.7}, {&quot;time&quot;: &quot;2026-06-04&quot;, &quot;value&quot;: 4993.1}, {&quot;time&quot;: &quot;2026-06-05&quot;, &quot;value&quot;: 4982.1}, {&quot;time&quot;: &quot;2026-06-08&quot;, &quot;value&quot;: 4967.6}, {&quot;time&quot;: &quot;2026-06-09&quot;, &quot;value&quot;: 4954.6}, {&quot;time&quot;: &quot;2026-06-10&quot;, &quot;value&quot;: 4939.7}]"></div>
-          </div>
-          <div class="gauge-row">
-            <div class="g"><div class="k">20DH / 20DL</div><div class="v">5186 / 4788</div></div>
-            <div class="g"><div class="k">BUP / BLO</div><div class="v">5106 / 4772</div></div>
-            <div class="g"><div class="k">RNG POS</div><div class="v">20%</div></div>
-          </div>
-          <div class="top3-line"><span class="k">TOP3</span>—</div>
-          <div class="ticket-mini">
-            <span class="k">ENTRY</span><span class="v"><b>4,856–4,904</b><span class="note"></span></span>
-            <span class="k">STOP</span><span class="v"><b>4996</b><span class="note"></span></span>
-            <span class="k">TP1 · TP2</span><span class="v"><b>4646</b> <span class="note"></span> &nbsp;|&nbsp; <b>4412</b> <span class="note"></span></span>
-            <span class="k">HOLD</span><span class="v">TP1 ~7 日 (17%) · TP2 ~7 日 (17%) · 经验区间 <b>~7 日</b> · 样本 132 根</span>
-            <span class="k">R:R</span><span class="v"><span class="rr-pair"><span class="lab">TP1</span><b>1:2.0</b></span> <span class="rr-pair"><span class="lab">TP2</span><b>1:4.0</b></span></span>
-            <span class="k">RISK · LOT</span><span class="v"><b>≈ 1160</b> 元 / 手</span>
-            <span class="k">MARGIN · LOT</span><span class="v"><b>≈ 7302</b> 元</span>
-            <span class="k">EXIT</span><span class="v"></span>
-            <span class="k">SPEC</span><span class="v"><b>乘数 10</b> · 每跳 2 = <b>20</b> 元 · 涨跌停板 <b>4%</b></span>
-          </div>
-          
-        </div>
-      </div>
-    </td></tr>
-    
-    <tr class="row dir-sell" data-code="sr" data-dir="sell" data-status="shift" data-crit="0" data-near="0" id="v-sr" tabindex="0">
-      <td data-d="snap tech pos term strat risk">
-        <div class="sym-cell">
-          <span class="sym">SR</span>
-          <span class="nm">白糖</span>
-          <span class="ct">sr2609</span>
-        </div>
-      </td>
-      <td data-d="snap strat" style="line-height:1.2"><b>5314</b><span class="live-overlay">盘中 10:02 <b>5287.0</b> <span class="num-dn">-27</span> <span class="num-dn">-0.51%</span></span></td>
-      <td data-d="snap tech"><span class="spark-mini"><svg viewBox="0 0 100 30" preserveAspectRatio="none"><polyline points="0.00,12.53 3.45,14.69 6.90,15.15 10.34,15.15 13.79,12.22 17.24,8.81 20.69,9.59 24.14,4.18 27.59,0.00 31.03,3.87 34.48,1.08 37.93,10.36 41.38,11.60 44.83,11.44 48.28,17.32 51.72,21.80 55.17,21.03 58.62,24.43 62.07,17.78 65.52,18.87 68.97,19.48 72.41,14.38 75.86,8.97 79.31,10.98 82.76,10.21 86.21,20.10 89.66,25.21 93.10,26.91 96.55,30.00 100.00,29.38"/></svg></span></td>
-      <td data-d="snap tech">37.2</td>
-      <td data-d="snap tech">45</td>
-      <td data-d="snap pos">718k <span class='num-up'>+12k</span></td>
-      <td data-d="snap strat" class="strat-cell">
-        <span class="dir-tag tag-sell">S</span><span class="strat-text">盘中破位空</span>
-        <span class="strat-sub">[盘中破位] · SHIFT · 入 5,269–5,305 · SL 5,379 · TP1 5,103 (1:2.0)</span>
-        <span class="strat-sub hold-tag">· HOLD ~6D</span>
-      </td>
-      <td data-d="snap strat" class="rr-cell">1:2.0 / <span class='max'>1:4.0</span></td>
-      <td data-d="snap strat" class="risk-cell">920</td>
-      <td data-d="snap strat risk"><span class="st st-shift"><span class="bk">SHIFT</span></span></td>
-      <td data-d="tech">5333</td><td data-d="tech">5389</td>
-      <td data-d="tech">5486</td><td data-d="tech">5293</td>
-      <td data-d="tech">5538</td><td data-d="tech">5301</td>
-      <td data-d="tech">5%</td>
-      <td data-d="pos">258k</td>
-      <td data-d="pos" class="num-dn"><b>0</b></td>
-      <td data-d="pos">—</td><td data-d="pos">—</td>
-      <td data-d="pos" style="text-align:left;font-size:10.5px;color:var(--text-dim)">—</td>
-      <td data-d="term">sr2609</td><td data-d="term"><b>5314</b></td>
-      <td data-d="term">—</td><td data-d="term">—</td>
-      <td data-d="term" class="">—</td>
-      <td data-d="term"></td>
-      <td data-d="term" style="text-align:left;color:var(--text-dim);font-size:10.5px">—</td>
-      <td data-d="strat"><b>5,269–5,305</b></td>
-      <td data-d="strat" class="num-dn">5379</td>
-      <td data-d="strat"><b class="num-up">5103</b> / <b class="num-up">4919</b></td>
-      <td data-d="risk" style="text-align:left"></td>
-      <td data-d="risk">5%</td><td data-d="risk">96d</td><td data-d="risk">6376</td>
-    </tr>
-    <tr class="row-detail" data-for="sr"><td colspan="40">
-      <div class="detail-wrap">
-        <div class="detail-section">
-          <h5><span class="hk">D</span>六维分析 <span class="meta">六维 · 四问 · ticket</span></h5>
-          <div class="six-dim">
-            <div class="dim"><span class="lbl">基本面 <span class="dim-agg">+0</span></span><span class="dim-sub">S+0 M+0 L+0 · cov 100%</span><span class="dim-rationale">spot cost_pct 0.24 / mid cost_pct 0.24 / long cost_pct 0.27</span><span class="lead">结算价低于 现金成本-中/现金成本-高</span><span class="det">成本 完全成本-低 差额 +112；现货 基差 +482</span></div>
-            <div class="dim"><span class="lbl">宏观</span><span class="lead">pmi_manufacturing 50.00index</span><span class="det">pmi_manufacturing 50.00index；ppi_yoy 3.90percent；fx_boc_mid_usd 681.50100cny_per_unit；CFTC净持仓 -118,732 分位 21%(n=156)</span></div>
-            <div class="dim"><span class="lbl">合约结构</span><span class="lead">月差结构暂缺</span><span class="det">sr2609 以主力合约单腿信号为主。</span></div>
-            <div class="dim"><span class="lbl">成交持仓</span><span class="dim-sub">S— M— L— · cov 0% [degraded]</span><span class="dim-rationale">position_rank 数据缺</span><span class="lead">Top20 多空均衡 —</span><span class="det">多变 —；空变 —；量价 价涨/增仓；动量 unwinding</span></div>
-            <div class="dim"><span class="lbl">技术面 <span class="dim-agg">+0</span></span><span class="dim-sub">S+1 M-0.56 L— · cov 100%</span><span class="dim-rationale">ret_21d -3.5% vol 2.3% sig -1.00 / ret_63d -2.5% vol 4.5% sig -0.55 / ret_252d -1.3% vol 9.5% sig -0.14</span><span class="lead">震荡，RSI 37.2，ADX 17.2</span><span class="det">收盘 vs MA5 -20，vs MA20 -76；20日位置 5%，20日收益 -3.3%。</span></div>
-            <div class="dim"><span class="lbl">风险管理</span><span class="lead">未触发硬性风控告警</span><span class="det">到期 96 天；主力校验 OK sr2609；涨跌停 5%，保证金 12.0%</span></div>
-          </div>
-          <div class="ans-grid">
-            <div class="ans"><span class="lbl">主要矛盾</span>conviction weak（-0.4/9，未达开仓门），弃权观望；conviction -0.4/9 偏空，仓位信念 weak。</div>
-            <div class="ans"><span class="lbl">是否已反映</span>震荡，距MA20 -1.4%，20日位置 5%；当前策略状态 SHIFT，入场 5,269-5,305，止损 5,379。</div>
-            <div class="ans"><span class="lbl">结构/资金/流动性</span>月差结构暂缺；Top20 多空均衡 —，价涨/增仓；成交量 258,999，持仓 718,958。</div>
-            <div class="ans"><span class="lbl">错误最大亏损</span>若按计划触发，单手风险约 920 元，止损 5,379 失守即退出。</div>
-          </div>
-        </div>
-        <div class="detail-section">
-          <h5><span class="hk">T</span>30d 走势 + Trade Ticket <span class="meta">candle · MA20 amber dashed</span></h5>
-          <div class="chart-wrap">
-            <div class="head">
-              <span>SR sr2609 · 30D OHLC + MA20</span>
-              <span class="legend"><span><span class="sw" style="background:var(--buy)"></span>K</span><span><span class="sw" style="background:var(--amber);height:2px"></span>MA20</span></span>
-              <span class="last">5314</span>
-            </div>
-            <div id="chart-sr" class="ct"
-                 data-ohlc="[{&quot;time&quot;: &quot;2026-04-27&quot;, &quot;open&quot;: 5398.0, &quot;high&quot;: 5437.0, &quot;low&quot;: 5362.0, &quot;close&quot;: 5423.0}, {&quot;time&quot;: &quot;2026-04-28&quot;, &quot;open&quot;: 5420.0, &quot;high&quot;: 5425.0, &quot;low&quot;: 5384.0, &quot;close&quot;: 5409.0}, {&quot;time&quot;: &quot;2026-04-29&quot;, &quot;open&quot;: 5420.0, &quot;high&quot;: 5421.0, &quot;low&quot;: 5385.0, &quot;close&quot;: 5406.0}, {&quot;time&quot;: &quot;2026-04-30&quot;, &quot;open&quot;: 5417.0, &quot;high&quot;: 5432.0, &quot;low&quot;: 5396.0, &quot;close&quot;: 5406.0}, {&quot;time&quot;: &quot;2026-05-06&quot;, &quot;open&quot;: 5441.0, &quot;high&quot;: 5472.0, &quot;low&quot;: 5414.0, &quot;close&quot;: 5425.0}, {&quot;time&quot;: &quot;2026-05-07&quot;, &quot;open&quot;: 5389.0, &quot;high&quot;: 5450.0, &quot;low&quot;: 5373.0, &quot;close&quot;: 5447.0}, {&quot;time&quot;: &quot;2026-05-08&quot;, &quot;open&quot;: 5430.0, &quot;high&quot;: 5483.0, &quot;low&quot;: 5426.0, &quot;close&quot;: 5442.0}, {&quot;time&quot;: &quot;2026-05-11&quot;, &quot;open&quot;: 5446.0, &quot;high&quot;: 5483.0, &quot;low&quot;: 5442.0, &quot;close&quot;: 5477.0}, {&quot;time&quot;: &quot;2026-05-12&quot;, &quot;open&quot;: 5484.0, &quot;high&quot;: 5514.0, &quot;low&quot;: 5465.0, &quot;close&quot;: 5504.0}, {&quot;time&quot;: &quot;2026-05-13&quot;, &quot;open&quot;: 5507.0, &quot;high&quot;: 5519.0, &quot;low&quot;: 5451.0, &quot;close&quot;: 5479.0}, {&quot;time&quot;: &quot;2026-05-14&quot;, &quot;open&quot;: 5490.0, &quot;high&quot;: 5538.0, &quot;low&quot;: 5470.0, &quot;close&quot;: 5497.0}, {&quot;time&quot;: &quot;2026-05-15&quot;, &quot;open&quot;: 5469.0, &quot;high&quot;: 5490.0, &quot;low&quot;: 5427.0, &quot;close&quot;: 5437.0}, {&quot;time&quot;: &quot;2026-05-18&quot;, &quot;open&quot;: 5431.0, &quot;high&quot;: 5453.0, &quot;low&quot;: 5424.0, &quot;close&quot;: 5429.0}, {&quot;time&quot;: &quot;2026-05-19&quot;, &quot;open&quot;: 5419.0, &quot;high&quot;: 5441.0, &quot;low&quot;: 5406.0, &quot;close&quot;: 5430.0}, {&quot;time&quot;: &quot;2026-05-20&quot;, &quot;open&quot;: 5437.0, &quot;high&quot;: 5439.0, &quot;low&quot;: 5381.0, &quot;close&quot;: 5392.0}, {&quot;time&quot;: &quot;2026-05-21&quot;, &quot;open&quot;: 5390.0, &quot;high&quot;: 5404.0, &quot;low&quot;: 5359.0, &quot;close&quot;: 5363.0}, {&quot;time&quot;: &quot;2026-05-22&quot;, &quot;open&quot;: 5370.0, &quot;high&quot;: 5388.0, &quot;low&quot;: 5357.0, &quot;close&quot;: 5368.0}, {&quot;time&quot;: &quot;2026-05-25&quot;, &quot;open&quot;: 5357.0, &quot;high&quot;: 5378.0, &quot;low&quot;: 5339.0, &quot;close&quot;: 5346.0}, {&quot;time&quot;: &quot;2026-05-26&quot;, &quot;open&quot;: 5350.0, &quot;high&quot;: 5394.0, &quot;low&quot;: 5339.0, &quot;close&quot;: 5389.0}, {&quot;time&quot;: &quot;2026-05-27&quot;, &quot;open&quot;: 5387.0, &quot;high&quot;: 5408.0, &quot;low&quot;: 5375.0, &quot;close&quot;: 5382.0}, {&quot;time&quot;: &quot;2026-05-28&quot;, &quot;open&quot;: 5370.0, &quot;high&quot;: 5385.0, &quot;low&quot;: 5351.0, &quot;close&quot;: 5378.0}, {&quot;time&quot;: &quot;2026-05-29&quot;, &quot;open&quot;: 5369.0, &quot;high&quot;: 5420.0, &quot;low&quot;: 5362.0, &quot;close&quot;: 5411.0}, {&quot;time&quot;: &quot;2026-06-01&quot;, &quot;open&quot;: 5419.0, &quot;high&quot;: 5454.0, &quot;low&quot;: 5410.0, &quot;close&quot;: 5446.0}, {&quot;time&quot;: &quot;2026-06-02&quot;, &quot;open&quot;: 5450.0, &quot;high&quot;: 5451.0, &quot;low&quot;: 5416.0, &quot;close&quot;: 5433.0}, {&quot;time&quot;: &quot;2026-06-03&quot;, &quot;open&quot;: 5433.0, &quot;high&quot;: 5455.0, &quot;low&quot;: 5427.0, &quot;close&quot;: 5438.0}, {&quot;time&quot;: &quot;2026-06-04&quot;, &quot;open&quot;: 5439.0, &quot;high&quot;: 5446.0, &quot;low&quot;: 5368.0, &quot;close&quot;: 5374.0}, {&quot;time&quot;: &quot;2026-06-05&quot;, &quot;open&quot;: 5375.0, &quot;high&quot;: 5390.0, &quot;low&quot;: 5316.0, &quot;close&quot;: 5341.0}, {&quot;time&quot;: &quot;2026-06-08&quot;, &quot;open&quot;: 5340.0, &quot;high&quot;: 5341.0, &quot;low&quot;: 5312.0, &quot;close&quot;: 5330.0}, {&quot;time&quot;: &quot;2026-06-09&quot;, &quot;open&quot;: 5330.0, &quot;high&quot;: 5348.0, &quot;low&quot;: 5307.0, &quot;close&quot;: 5310.0}, {&quot;time&quot;: &quot;2026-06-10&quot;, &quot;open&quot;: 5309.0, &quot;high&quot;: 5323.0, &quot;low&quot;: 5301.0, &quot;close&quot;: 5314.0}]"
-                 data-ma20="[{&quot;time&quot;: &quot;2026-05-27&quot;, &quot;value&quot;: 5422.6}, {&quot;time&quot;: &quot;2026-05-28&quot;, &quot;value&quot;: 5420.3}, {&quot;time&quot;: &quot;2026-05-29&quot;, &quot;value&quot;: 5420.4}, {&quot;time&quot;: &quot;2026-06-01&quot;, &quot;value&quot;: 5422.4}, {&quot;time&quot;: &quot;2026-06-02&quot;, &quot;value&quot;: 5423.8}, {&quot;time&quot;: &quot;2026-06-03&quot;, &quot;value&quot;: 5424.4}, {&quot;time&quot;: &quot;2026-06-04&quot;, &quot;value&quot;: 5420.8}, {&quot;time&quot;: &quot;2026-06-05&quot;, &quot;value&quot;: 5415.7}, {&quot;time&quot;: &quot;2026-06-08&quot;, &quot;value&quot;: 5408.4}, {&quot;time&quot;: &quot;2026-06-09&quot;, &quot;value&quot;: 5398.6}, {&quot;time&quot;: &quot;2026-06-10&quot;, &quot;value&quot;: 5390.4}]"></div>
-          </div>
-          <div class="gauge-row">
-            <div class="g"><div class="k">20DH / 20DL</div><div class="v">5538 / 5301</div></div>
-            <div class="g"><div class="k">BUP / BLO</div><div class="v">5486 / 5293</div></div>
-            <div class="g"><div class="k">RNG POS</div><div class="v">5%</div></div>
-          </div>
-          <div class="top3-line"><span class="k">TOP3</span>—</div>
-          <div class="ticket-mini">
-            <span class="k">ENTRY</span><span class="v"><b>5,269–5,305</b><span class="note"></span></span>
-            <span class="k">STOP</span><span class="v"><b>5379</b><span class="note"></span></span>
-            <span class="k">TP1 · TP2</span><span class="v"><b>5103</b> <span class="note"></span> &nbsp;|&nbsp; <b>4919</b> <span class="note"></span></span>
-            <span class="k">HOLD</span><span class="v">TP1 ~6 日 (33%) · TP2 ~6 日 (33%) · 经验区间 <b>~6 日</b> · 样本 133 根</span>
-            <span class="k">R:R</span><span class="v"><span class="rr-pair"><span class="lab">TP1</span><b>1:2.0</b></span> <span class="rr-pair"><span class="lab">TP2</span><b>1:4.0</b></span></span>
-            <span class="k">RISK · LOT</span><span class="v"><b>≈ 920</b> 元 / 手</span>
-            <span class="k">MARGIN · LOT</span><span class="v"><b>≈ 6376</b> 元</span>
-            <span class="k">EXIT</span><span class="v"></span>
-            <span class="k">SPEC</span><span class="v"><b>乘数 10</b> · 每跳 1 = <b>10</b> 元 · 涨跌停板 <b>5%</b></span>
-          </div>
-          
-        </div>
-      </div>
-    </td></tr>
-    
-    <tr class="row dir-watch" data-code="ao" data-dir="watch" data-status="watch" data-crit="0" data-near="0" id="v-ao" tabindex="0">
+    <tr class="row dir-buy" data-code="ao" data-dir="buy" data-status="shift" data-crit="0" data-near="0" id="v-ao" tabindex="0">
       <td data-d="snap tech pos term strat risk">
         <div class="sym-cell">
           <span class="sym">AO</span>
@@ -1038,35 +768,35 @@
           <span class="ct">ao2609</span>
         </div>
       </td>
-      <td data-d="snap strat" style="line-height:1.2"><b>2894</b><span class="live-overlay">盘中 10:02 <b>2887.0</b> <span class="num-dn">-7</span> <span class="num-dn">-0.24%</span></span></td>
+      <td data-d="snap strat" style="line-height:1.2"><b>2894</b><span class="live-overlay">盘中 11:54 <b>2902.0</b> <span class="num-up">+8</span> <span class="num-up">+0.28%</span></span></td>
       <td data-d="snap tech"><span class="spark-mini"><svg viewBox="0 0 100 30" preserveAspectRatio="none"><polyline points="0.00,0.00 3.45,3.79 6.90,5.84 10.34,8.53 13.79,3.79 17.24,4.74 20.69,11.37 24.14,11.53 27.59,18.00 31.03,15.79 34.48,17.21 37.93,27.16 41.38,24.16 44.83,27.63 48.28,29.37 51.72,30.00 55.17,28.74 58.62,24.16 62.07,7.26 65.52,7.11 68.97,4.89 72.41,0.32 75.86,1.11 79.31,7.58 82.76,13.58 86.21,21.95 89.66,21.00 93.10,18.79 96.55,9.63 100.00,0.79"/></svg></span></td>
       <td data-d="snap tech">59.2</td>
       <td data-d="snap tech">61</td>
       <td data-d="snap pos">286k <span class='num-dn'>16k</span></td>
       <td data-d="snap strat" class="strat-cell">
-        <span class="dir-tag tag-watch">W</span><span class="strat-text">观望</span>
-        <span class="strat-sub">conviction 0.1/9 weak · ADX 18.2 无趋势</span>
-        
+        <span class="dir-tag tag-buy">L</span><span class="strat-text">盘中突破多</span>
+        <span class="strat-sub">[盘中突破] · SHIFT · 入 2,877–2,927 · SL 2,778 · TP1 3,149 (1:2.0)</span>
+        <span class="strat-sub hold-tag">· HOLD ~7D</span>
       </td>
-      <td data-d="snap strat" class="rr-cell">—</td>
-      <td data-d="snap strat" class="risk-cell">—</td>
-      <td data-d="snap strat risk"><span class="st st-watch"><span class="bk">WATCH</span></span></td>
+      <td data-d="snap strat" class="rr-cell">1:2.0 / <span class='max'>1:4.0</span></td>
+      <td data-d="snap strat" class="risk-cell">2480</td>
+      <td data-d="snap strat risk"><span class="st st-shift"><span class="bk">SHIFT</span></span></td>
       <td data-d="tech">2807</td><td data-d="tech">2797</td>
       <td data-d="tech">2927</td><td data-d="tech">2666</td>
       <td data-d="tech">2921</td><td data-d="tech">2685</td>
       <td data-d="tech">89%</td>
       <td data-d="pos">550k</td>
-      <td data-d="pos" class="num-dn"><b>0</b></td>
-      <td data-d="pos">—</td><td data-d="pos">—</td>
-      <td data-d="pos" style="text-align:left;font-size:10.5px;color:var(--text-dim)">—</td>
-      <td data-d="term">ao2609</td><td data-d="term"><b>2894</b></td>
-      <td data-d="term">—</td><td data-d="term">—</td>
-      <td data-d="term" class="">—</td>
+      <td data-d="pos" class="num-dn"><b>-24172</b></td>
+      <td data-d="pos">-7573</td><td data-d="pos">-10989</td>
+      <td data-d="pos" style="text-align:left;font-size:10.5px;color:var(--text-dim)"><span class='num-up'>银河期货 22,553</span> / <span class='num-dn'>中信期货 40,203</span></td>
+      <td data-d="term">ao2609</td><td data-d="term"><b>2868</b></td>
+      <td data-d="term">ao2610</td><td data-d="term">2888</td>
+      <td data-d="term" class="num-dn">-20</td>
       <td data-d="term"></td>
-      <td data-d="term" style="text-align:left;color:var(--text-dim);font-size:10.5px">—</td>
-      <td data-d="strat">—</td>
-      <td data-d="strat" class="num-dn">—</td>
-      <td data-d="strat">—</td>
+      <td data-d="term" style="text-align:left;color:var(--text-dim);font-size:10.5px">contango</td>
+      <td data-d="strat"><b>2,877–2,927</b></td>
+      <td data-d="strat" class="num-dn">2778</td>
+      <td data-d="strat"><b class="num-up">3149</b> / <b class="num-up">3396</b></td>
       <td data-d="risk" style="text-align:left"></td>
       <td data-d="risk">4%</td><td data-d="risk">97d</td><td data-d="risk">10997</td>
     </tr>
@@ -1075,18 +805,18 @@
         <div class="detail-section">
           <h5><span class="hk">D</span>六维分析 <span class="meta">六维 · 四问 · ticket</span></h5>
           <div class="six-dim">
-            <div class="dim"><span class="lbl">基本面 <span class="dim-agg">+0</span></span><span class="dim-sub">S+0 M+0 L+0 · cov 100%</span><span class="dim-rationale">spot cost_pct 0.62 / mid cost_pct 0.56 / long cost_pct 0.59</span><span class="lead">结算价低于 现金成本-高/完全成本-高</span><span class="det">成本 完全成本-中 差额 +18；现货 基差 -35；alumina_installed_capacity_china 11,322.0万吨；alumina_inventory_total_china 673.6万吨</span></div>
-            <div class="dim"><span class="lbl">宏观</span><span class="lead">eastmoney_7x24: 周末氧化铝对液碱采购价上调，周末周初山东多数品牌报价适度上移，幅度10元/吨集中，但实际成交依据客户及订单涨幅...</span><span class="det">pmi_manufacturing 50.00index；ppi_yoy 3.90percent；fx_boc_mid_usd 681.50100cny_per_unit；新闻 12 条</span></div>
-            <div class="dim"><span class="lbl">合约结构</span><span class="lead">月差结构暂缺</span><span class="det">ao2609 以主力合约单腿信号为主。</span></div>
-            <div class="dim"><span class="lbl">成交持仓</span><span class="dim-sub">S— M— L— · cov 0% [degraded]</span><span class="dim-rationale">position_rank 数据缺</span><span class="lead">Top20 多空均衡 —</span><span class="det">多变 —；空变 —；量价 价涨/减仓；动量 unwinding</span></div>
+            <div class="dim"><span class="lbl">基本面 <span class="dim-agg">+0</span></span><span class="dim-sub">S+0 M+0 L+0 · cov 100%</span><span class="dim-rationale">spot cost_pct 0.62 / mid cost_pct 0.56 / long cost_pct 0.59</span><span class="lead">结算价低于 现金成本-高/完全成本-高</span><span class="det">成本 完全成本-中 差额 +18；现货 基差 -35；仓单 416,047(-3,605)；alumina_installed_capacity_china 11,322.0万吨；alumina_inventory_total_china 673.6万吨</span></div>
+            <div class="dim"><span class="lbl">宏观</span><span class="lead">eastmoney_search:氧化铝: 有色 | 预计短线沪镍偏弱调整</span><span class="det">pmi_manufacturing 50.00index；ppi_yoy 3.90percent；fx_boc_mid_usd 681.50100cny_per_unit；新闻 12 条</span></div>
+            <div class="dim"><span class="lbl">合约结构</span><span class="lead">contango，ao2609-ao2610 -20</span><span class="det">carry flat_to_mild_back，实际 +836.8bp，理论 1,665.0bp。</span></div>
+            <div class="dim"><span class="lbl">成交持仓 <span class="dim-agg">-1</span></span><span class="dim-sub">S+1 M-1 L+0 · cov 100%</span><span class="dim-rationale">今 net -24k mid pct 1.00 n=20 long pct 0.80 n=60</span><span class="lead">Top20 净空 24,172</span><span class="det">多变 -7,573；空变 -10,989；量价 价涨/减仓；动量 building</span></div>
             <div class="dim"><span class="lbl">技术面 <span class="dim-agg">+0</span></span><span class="dim-sub">S+0 M-0.06 L— · cov 100%</span><span class="dim-rationale">ret_21d +3.9% vol 6.3% sig +0.62 / ret_63d -2.1% vol 11.5% sig -0.19 / ret_252d -15.2% vol 24.2% sig -0.63</span><span class="lead">震荡，RSI 59.2，ADX 18.2</span><span class="det">收盘 vs MA5 +86，vs MA20 +97；20日位置 89%，20日收益 +3.7%。</span></div>
             <div class="dim"><span class="lbl">风险管理</span><span class="lead">未触发硬性风控告警</span><span class="det">到期 97 天；主力校验 OK ao2609；涨跌停 4%，保证金 19.0%</span></div>
           </div>
           <div class="ans-grid">
-            <div class="ans"><span class="lbl">主要矛盾</span>eastmoney_7x24: 周末氧化铝对液碱采购价上调，周末周初山东多数品牌报价适度上移，幅度10元/吨集中，但实际成交依据客户及订单涨幅...；conviction -0.1/9 偏空，仓位信念 weak。</div>
-            <div class="ans"><span class="lbl">是否已反映</span>震荡，距MA20 +3.5%，20日位置 89%；当前策略状态 WATCH，无入场计划。</div>
-            <div class="ans"><span class="lbl">结构/资金/流动性</span>月差结构暂缺；Top20 多空均衡 —，价涨/减仓；成交量 550,091，持仓 286,157。</div>
-            <div class="ans"><span class="lbl">错误最大亏损</span>无入场计划，最大亏损以不交易的机会成本为主；若强行交易，需先定义止损和R:R。</div>
+            <div class="ans"><span class="lbl">主要矛盾</span>eastmoney_search:氧化铝: 有色 | 预计短线沪镍偏弱调整；conviction 2.1/9 偏多，仓位信念 weak。</div>
+            <div class="ans"><span class="lbl">是否已反映</span>震荡，距MA20 +3.5%，20日位置 89%；当前策略状态 SHIFT，入场 2,877-2,927，止损 2,778。</div>
+            <div class="ans"><span class="lbl">结构/资金/流动性</span>contango，ao2609-ao2610 -20；Top20 净空 24,172，价涨/减仓；成交量 550,091，持仓 286,157。</div>
+            <div class="ans"><span class="lbl">错误最大亏损</span>若按计划触发，单手风险约 2,480 元，止损 2,778 失守即退出。</div>
           </div>
         </div>
         <div class="detail-section">
@@ -1106,17 +836,389 @@
             <div class="g"><div class="k">BUP / BLO</div><div class="v">2927 / 2666</div></div>
             <div class="g"><div class="k">RNG POS</div><div class="v">89%</div></div>
           </div>
-          <div class="top3-line"><span class="k">TOP3</span>—</div>
+          <div class="top3-line"><span class="k">TOP3</span>L1 银河期货 22,553 (+1,201) · S1 中信期货 40,203 (-1,509)</div>
           <div class="ticket-mini">
-            <span class="k">ENTRY</span><span class="v"><b>—</b><span class="note"></span></span>
-            <span class="k">STOP</span><span class="v"><b>—</b><span class="note"></span></span>
-            <span class="k">TP1 · TP2</span><span class="v"><b>—</b> <span class="note"></span> &nbsp;|&nbsp; <b>—</b> <span class="note"></span></span>
-            
-            <span class="k">R:R</span><span class="v"><span class="rr-pair"><span class="lab">TP1</span><b>—</b></span> <span class="rr-pair"><span class="lab">TP2</span><b>—</b></span></span>
-            <span class="k">RISK · LOT</span><span class="v"><b>≈ —</b> 元 / 手</span>
+            <span class="k">ENTRY</span><span class="v"><b>2,877–2,927</b><span class="note"></span></span>
+            <span class="k">STOP</span><span class="v"><b>2778</b><span class="note"></span></span>
+            <span class="k">TP1 · TP2</span><span class="v"><b>3149</b> <span class="note"></span> &nbsp;|&nbsp; <b>3396</b> <span class="note"></span></span>
+            <span class="k">HOLD</span><span class="v">TP1 ~7 日 (21%) · TP2 ~7 日 (21%) · 经验区间 <b>~7 日</b> · 样本 132 根</span>
+            <span class="k">R:R</span><span class="v"><span class="rr-pair"><span class="lab">TP1</span><b>1:2.0</b></span> <span class="rr-pair"><span class="lab">TP2</span><b>1:4.0</b></span></span>
+            <span class="k">RISK · LOT</span><span class="v"><b>≈ 2480</b> 元 / 手</span>
             <span class="k">MARGIN · LOT</span><span class="v"><b>≈ 10997</b> 元</span>
             <span class="k">EXIT</span><span class="v"></span>
             <span class="k">SPEC</span><span class="v"><b>乘数 20</b> · 每跳 1 = <b>20</b> 元 · 涨跌停板 <b>4%</b></span>
+          </div>
+          
+        </div>
+      </div>
+    </td></tr>
+    
+    <tr class="row dir-buy" data-code="ma" data-dir="buy" data-status="shift" data-crit="0" data-near="0" id="v-ma" tabindex="0">
+      <td data-d="snap tech pos term strat risk">
+        <div class="sym-cell">
+          <span class="sym">MA</span>
+          <span class="nm">甲醇</span>
+          <span class="ct">ma2609</span>
+        </div>
+      </td>
+      <td data-d="snap strat" style="line-height:1.2"><b>2972</b><span class="live-overlay">盘中 11:54 <b>3048.0</b> <span class="num-up">+76</span> <span class="num-up">+2.56%</span></span></td>
+      <td data-d="snap tech"><span class="spark-mini"><svg viewBox="0 0 100 30" preserveAspectRatio="none"><polyline points="0.00,12.89 3.45,3.40 6.90,4.92 10.34,4.69 13.79,0.47 17.24,20.98 20.69,22.73 24.14,19.57 27.59,15.70 31.03,16.76 34.48,22.15 37.93,16.64 41.38,8.20 44.83,10.08 48.28,9.49 51.72,10.08 55.17,14.30 58.62,24.02 62.07,24.84 65.52,28.71 68.97,26.25 72.41,30.00 75.86,21.68 79.31,18.63 82.76,14.41 86.21,20.16 89.66,16.76 93.10,0.00 96.55,10.08 100.00,9.02"/></svg></span></td>
+      <td data-d="snap tech">55.1</td>
+      <td data-d="snap tech">92</td>
+      <td data-d="snap pos">788k <span class='num-up'>+17k</span></td>
+      <td data-d="snap strat" class="strat-cell">
+        <span class="dir-tag tag-buy">L</span><span class="strat-text">盘中突破多</span>
+        <span class="strat-sub">[盘中突破] · SHIFT · 入 3,011–3,085 · SL 2,864 · TP1 3,417 (1:2.0)</span>
+        <span class="strat-sub hold-tag">· HOLD ~6D</span>
+      </td>
+      <td data-d="snap strat" class="rr-cell">1:2.0 / <span class='max'>1:4.0</span></td>
+      <td data-d="snap strat" class="risk-cell">1840</td>
+      <td data-d="snap strat risk"><span class="st st-shift"><span class="bk">SHIFT</span></span></td>
+      <td data-d="tech">2953</td><td data-d="tech">2908</td>
+      <td data-d="tech">3035</td><td data-d="tech">2781</td>
+      <td data-d="tech">3049</td><td data-d="tech">2756</td>
+      <td data-d="tech">74%</td>
+      <td data-d="pos">872k</td>
+      <td data-d="pos" class="num-up"><b>89819</b></td>
+      <td data-d="pos">9799</td><td data-d="pos">13865</td>
+      <td data-d="pos" style="text-align:left;font-size:10.5px;color:var(--text-dim)"><span class='num-up'>国泰君安（代客） 119,079</span> / <span class='num-dn'>中信期货（代客） 80,877</span></td>
+      <td data-d="term">ma2609</td><td data-d="term"><b>2956</b></td>
+      <td data-d="term">ma2610</td><td data-d="term">2865</td>
+      <td data-d="term" class="num-up">91</td>
+      <td data-d="term"></td>
+      <td data-d="term" style="text-align:left;color:var(--text-dim);font-size:10.5px">backwardation</td>
+      <td data-d="strat"><b>3,011–3,085</b></td>
+      <td data-d="strat" class="num-dn">2864</td>
+      <td data-d="strat"><b class="num-up">3417</b> / <b class="num-up">3786</b></td>
+      <td data-d="risk" style="text-align:left"></td>
+      <td data-d="risk">11%</td><td data-d="risk">96d</td><td data-d="risk">6538</td>
+    </tr>
+    <tr class="row-detail" data-for="ma"><td colspan="40">
+      <div class="detail-wrap">
+        <div class="detail-section">
+          <h5><span class="hk">D</span>六维分析 <span class="meta">六维 · 四问 · ticket</span></h5>
+          <div class="six-dim">
+            <div class="dim"><span class="lbl">基本面 <span class="dim-agg">-2</span></span><span class="dim-sub">S-1 M-1 L-1 · cov 100%</span><span class="dim-rationale">spot cost_pct 1.00 / mid cost_pct 1.00 / long cost_pct 1.00</span><span class="lead">结算价未击穿成本带</span><span class="det">成本 完全成本-高 差额 +156；现货 基差 +385；仓单 2,920(+0)</span></div>
+            <div class="dim"><span class="lbl">宏观</span><span class="lead">eastmoney_7x24: 截至2026年6月10日，中国甲醇港口库存总量在56.61万吨，较上一期数据减少6.74万吨。其中，华东地区去...</span><span class="det">pmi_manufacturing 50.00index；ppi_yoy 3.90percent；fx_boc_mid_usd 681.50100cny_per_unit；新闻 12 条</span></div>
+            <div class="dim"><span class="lbl">合约结构</span><span class="lead">backwardation，ma2609-ma2610 +91</span><span class="det">carry squeeze_risk，实际 -3,694.2bp，理论 1,598.5bp。</span></div>
+            <div class="dim"><span class="lbl">成交持仓 <span class="dim-agg">-2</span></span><span class="dim-sub">S-1 M-1 L-1 · cov 100%</span><span class="dim-rationale">今 net +90k mid pct 0.95 n=20 long pct 0.98 n=60</span><span class="lead">Top20 净多 89,819</span><span class="det">多变 +9,799；空变 +13,865；量价 价涨/增仓；动量 trend_strengthening</span></div>
+            <div class="dim"><span class="lbl">技术面 <span class="dim-agg">+1</span></span><span class="dim-sub">S+1 M+0.55 L— · cov 100%</span><span class="dim-rationale">ret_21d +2.0% vol 8.2% sig +0.24 / ret_63d +12.7% vol 23.9% sig +0.53 / ret_252d +26.9% vol 30.1% sig +0.89</span><span class="lead">震荡，RSI 55.1，ADX 12.4</span><span class="det">收盘 vs MA5 +19，vs MA20 +64；20日位置 74%，20日收益 +3.9%。</span></div>
+            <div class="dim"><span class="lbl">风险管理</span><span class="lead">未触发硬性风控告警</span><span class="det">到期 96 天；主力校验 OK ma2609；涨跌停 11%，保证金 22.0%</span></div>
+          </div>
+          <div class="ans-grid">
+            <div class="ans"><span class="lbl">主要矛盾</span>eastmoney_7x24: 截至2026年6月10日，中国甲醇港口库存总量在56.61万吨，较上一期数据减少6.74万吨。其中，华东地区去...；conviction 1.5/9 偏多，仓位信念 weak。</div>
+            <div class="ans"><span class="lbl">是否已反映</span>震荡，距MA20 +2.2%，20日位置 74%；当前策略状态 SHIFT，入场 3,011-3,085，止损 2,864。</div>
+            <div class="ans"><span class="lbl">结构/资金/流动性</span>backwardation，ma2609-ma2610 +91；Top20 净多 89,819，价涨/增仓；成交量 872,107，持仓 788,063。</div>
+            <div class="ans"><span class="lbl">错误最大亏损</span>若按计划触发，单手风险约 1,840 元，止损 2,864 失守即退出。</div>
+          </div>
+        </div>
+        <div class="detail-section">
+          <h5><span class="hk">T</span>30d 走势 + Trade Ticket <span class="meta">candle · MA20 amber dashed</span></h5>
+          <div class="chart-wrap">
+            <div class="head">
+              <span>MA ma2609 · 30D OHLC + MA20</span>
+              <span class="legend"><span><span class="sw" style="background:var(--buy)"></span>K</span><span><span class="sw" style="background:var(--amber);height:2px"></span>MA20</span></span>
+              <span class="last">2972</span>
+            </div>
+            <div id="chart-ma" class="ct"
+                 data-ohlc="[{&quot;time&quot;: &quot;2026-04-27&quot;, &quot;open&quot;: 2891.0, &quot;high&quot;: 2949.0, &quot;low&quot;: 2883.0, &quot;close&quot;: 2939.0}, {&quot;time&quot;: &quot;2026-04-28&quot;, &quot;open&quot;: 2938.0, &quot;high&quot;: 3036.0, &quot;low&quot;: 2920.0, &quot;close&quot;: 3020.0}, {&quot;time&quot;: &quot;2026-04-29&quot;, &quot;open&quot;: 3028.0, &quot;high&quot;: 3029.0, &quot;low&quot;: 2982.0, &quot;close&quot;: 3007.0}, {&quot;time&quot;: &quot;2026-04-30&quot;, &quot;open&quot;: 3037.0, &quot;high&quot;: 3049.0, &quot;low&quot;: 2992.0, &quot;close&quot;: 3009.0}, {&quot;time&quot;: &quot;2026-05-06&quot;, &quot;open&quot;: 2986.0, &quot;high&quot;: 3063.0, &quot;low&quot;: 2986.0, &quot;close&quot;: 3045.0}, {&quot;time&quot;: &quot;2026-05-07&quot;, &quot;open&quot;: 2995.0, &quot;high&quot;: 2995.0, &quot;low&quot;: 2864.0, &quot;close&quot;: 2870.0}, {&quot;time&quot;: &quot;2026-05-08&quot;, &quot;open&quot;: 2830.0, &quot;high&quot;: 2920.0, &quot;low&quot;: 2827.0, &quot;close&quot;: 2855.0}, {&quot;time&quot;: &quot;2026-05-11&quot;, &quot;open&quot;: 2854.0, &quot;high&quot;: 2931.0, &quot;low&quot;: 2842.0, &quot;close&quot;: 2882.0}, {&quot;time&quot;: &quot;2026-05-12&quot;, &quot;open&quot;: 2875.0, &quot;high&quot;: 2918.0, &quot;low&quot;: 2867.0, &quot;close&quot;: 2915.0}, {&quot;time&quot;: &quot;2026-05-13&quot;, &quot;open&quot;: 2916.0, &quot;high&quot;: 2921.0, &quot;low&quot;: 2874.0, &quot;close&quot;: 2906.0}, {&quot;time&quot;: &quot;2026-05-14&quot;, &quot;open&quot;: 2918.0, &quot;high&quot;: 2927.0, &quot;low&quot;: 2849.0, &quot;close&quot;: 2860.0}, {&quot;time&quot;: &quot;2026-05-15&quot;, &quot;open&quot;: 2850.0, &quot;high&quot;: 2935.0, &quot;low&quot;: 2850.0, &quot;close&quot;: 2907.0}, {&quot;time&quot;: &quot;2026-05-18&quot;, &quot;open&quot;: 2920.0, &quot;high&quot;: 2996.0, &quot;low&quot;: 2894.0, &quot;close&quot;: 2979.0}, {&quot;time&quot;: &quot;2026-05-19&quot;, &quot;open&quot;: 2949.0, &quot;high&quot;: 2974.0, &quot;low&quot;: 2918.0, &quot;close&quot;: 2963.0}, {&quot;time&quot;: &quot;2026-05-20&quot;, &quot;open&quot;: 2966.0, &quot;high&quot;: 2997.0, &quot;low&quot;: 2960.0, &quot;close&quot;: 2968.0}, {&quot;time&quot;: &quot;2026-05-21&quot;, &quot;open&quot;: 2960.0, &quot;high&quot;: 2978.0, &quot;low&quot;: 2935.0, &quot;close&quot;: 2963.0}, {&quot;time&quot;: &quot;2026-05-22&quot;, &quot;open&quot;: 2975.0, &quot;high&quot;: 2992.0, &quot;low&quot;: 2886.0, &quot;close&quot;: 2927.0}, {&quot;time&quot;: &quot;2026-05-25&quot;, &quot;open&quot;: 2910.0, &quot;high&quot;: 2965.0, &quot;low&quot;: 2814.0, &quot;close&quot;: 2844.0}, {&quot;time&quot;: &quot;2026-05-26&quot;, &quot;open&quot;: 2839.0, &quot;high&quot;: 2867.0, &quot;low&quot;: 2822.0, &quot;close&quot;: 2837.0}, {&quot;time&quot;: &quot;2026-05-27&quot;, &quot;open&quot;: 2845.0, &quot;high&quot;: 2869.0, &quot;low&quot;: 2792.0, &quot;close&quot;: 2804.0}, {&quot;time&quot;: &quot;2026-05-28&quot;, &quot;open&quot;: 2765.0, &quot;high&quot;: 2856.0, &quot;low&quot;: 2756.0, &quot;close&quot;: 2825.0}, {&quot;time&quot;: &quot;2026-05-29&quot;, &quot;open&quot;: 2814.0, &quot;high&quot;: 2830.0, &quot;low&quot;: 2770.0, &quot;close&quot;: 2793.0}, {&quot;time&quot;: &quot;2026-06-01&quot;, &quot;open&quot;: 2792.0, &quot;high&quot;: 2872.0, &quot;low&quot;: 2765.0, &quot;close&quot;: 2864.0}, {&quot;time&quot;: &quot;2026-06-02&quot;, &quot;open&quot;: 2858.0, &quot;high&quot;: 2955.0, &quot;low&quot;: 2858.0, &quot;close&quot;: 2890.0}, {&quot;time&quot;: &quot;2026-06-03&quot;, &quot;open&quot;: 2897.0, &quot;high&quot;: 2933.0, &quot;low&quot;: 2881.0, &quot;close&quot;: 2926.0}, {&quot;time&quot;: &quot;2026-06-04&quot;, &quot;open&quot;: 2938.0, &quot;high&quot;: 2938.0, &quot;low&quot;: 2868.0, &quot;close&quot;: 2877.0}, {&quot;time&quot;: &quot;2026-06-05&quot;, &quot;open&quot;: 2855.0, &quot;high&quot;: 2921.0, &quot;low&quot;: 2855.0, &quot;close&quot;: 2906.0}, {&quot;time&quot;: &quot;2026-06-08&quot;, &quot;open&quot;: 2898.0, &quot;high&quot;: 3049.0, &quot;low&quot;: 2888.0, &quot;close&quot;: 3049.0}, {&quot;time&quot;: &quot;2026-06-09&quot;, &quot;open&quot;: 3002.0, &quot;high&quot;: 3008.0, &quot;low&quot;: 2923.0, &quot;close&quot;: 2963.0}, {&quot;time&quot;: &quot;2026-06-10&quot;, &quot;open&quot;: 2957.0, &quot;high&quot;: 2998.0, &quot;low&quot;: 2917.0, &quot;close&quot;: 2972.0}]"
+                 data-ma20="[{&quot;time&quot;: &quot;2026-05-27&quot;, &quot;value&quot;: 2925.0}, {&quot;time&quot;: &quot;2026-05-28&quot;, &quot;value&quot;: 2919.3}, {&quot;time&quot;: &quot;2026-05-29&quot;, &quot;value&quot;: 2907.9}, {&quot;time&quot;: &quot;2026-06-01&quot;, &quot;value&quot;: 2900.8}, {&quot;time&quot;: &quot;2026-06-02&quot;, &quot;value&quot;: 2894.8}, {&quot;time&quot;: &quot;2026-06-03&quot;, &quot;value&quot;: 2888.9}, {&quot;time&quot;: &quot;2026-06-04&quot;, &quot;value&quot;: 2889.2}, {&quot;time&quot;: &quot;2026-06-05&quot;, &quot;value&quot;: 2891.8}, {&quot;time&quot;: &quot;2026-06-08&quot;, &quot;value&quot;: 2900.2}, {&quot;time&quot;: &quot;2026-06-09&quot;, &quot;value&quot;: 2902.6}, {&quot;time&quot;: &quot;2026-06-10&quot;, &quot;value&quot;: 2905.8}]"></div>
+          </div>
+          <div class="gauge-row">
+            <div class="g"><div class="k">20DH / 20DL</div><div class="v">3049 / 2756</div></div>
+            <div class="g"><div class="k">BUP / BLO</div><div class="v">3035 / 2781</div></div>
+            <div class="g"><div class="k">RNG POS</div><div class="v">74%</div></div>
+          </div>
+          <div class="top3-line"><span class="k">TOP3</span>L1 国泰君安（代客） 119,079 (+3,234) · S1 中信期货（代客） 80,877 (+2,796)</div>
+          <div class="ticket-mini">
+            <span class="k">ENTRY</span><span class="v"><b>3,011–3,085</b><span class="note"></span></span>
+            <span class="k">STOP</span><span class="v"><b>2864</b><span class="note"></span></span>
+            <span class="k">TP1 · TP2</span><span class="v"><b>3417</b> <span class="note"></span> &nbsp;|&nbsp; <b>3786</b> <span class="note"></span></span>
+            <span class="k">HOLD</span><span class="v">TP1 ~6 日 (35%) · TP2 ~6 日 (35%) · 经验区间 <b>~6 日</b> · 样本 133 根</span>
+            <span class="k">R:R</span><span class="v"><span class="rr-pair"><span class="lab">TP1</span><b>1:2.0</b></span> <span class="rr-pair"><span class="lab">TP2</span><b>1:4.0</b></span></span>
+            <span class="k">RISK · LOT</span><span class="v"><b>≈ 1840</b> 元 / 手</span>
+            <span class="k">MARGIN · LOT</span><span class="v"><b>≈ 6538</b> 元</span>
+            <span class="k">EXIT</span><span class="v"></span>
+            <span class="k">SPEC</span><span class="v"><b>乘数 10</b> · 每跳 1 = <b>10</b> 元 · 涨跌停板 <b>11%</b></span>
+          </div>
+          
+        </div>
+      </div>
+    </td></tr>
+    
+    <tr class="row dir-buy" data-code="ta" data-dir="buy" data-status="shift" data-crit="0" data-near="0" id="v-ta" tabindex="0">
+      <td data-d="snap tech pos term strat risk">
+        <div class="sym-cell">
+          <span class="sym">TA</span>
+          <span class="nm">PTA</span>
+          <span class="ct">ta2609</span>
+        </div>
+      </td>
+      <td data-d="snap strat" style="line-height:1.2"><b>6302</b><span class="live-overlay">盘中 11:54 <b>6384.0</b> <span class="num-up">+82</span> <span class="num-up">+1.30%</span></span></td>
+      <td data-d="snap tech"><span class="spark-mini"><svg viewBox="0 0 100 30" preserveAspectRatio="none"><polyline points="0.00,7.22 3.45,0.67 6.90,2.90 10.34,2.90 13.79,0.00 17.24,11.46 20.69,16.82 24.14,11.32 27.59,12.21 31.03,15.86 34.48,18.68 37.93,14.74 41.38,11.02 44.83,14.14 48.28,15.48 51.72,15.26 55.17,24.34 58.62,30.00 62.07,29.70 65.52,27.77 68.97,22.93 72.41,25.68 75.86,21.81 79.31,20.69 82.76,16.90 86.21,22.56 89.66,18.61 93.10,12.06 96.55,20.40 100.00,18.16"/></svg></span></td>
+      <td data-d="snap tech">49.8</td>
+      <td data-d="snap tech">201</td>
+      <td data-d="snap pos">1.15M <span class='num-up'>+27k</span></td>
+      <td data-d="snap strat" class="strat-cell">
+        <span class="dir-tag tag-buy">L</span><span class="strat-text">盘中突破多</span>
+        <span class="strat-sub">[盘中突破] · SHIFT · 入 6,304–6,464 · SL 5,982 · TP1 7,188 (1:2.0)</span>
+        <span class="strat-sub hold-tag">· HOLD ~6D</span>
+      </td>
+      <td data-d="snap strat" class="rr-cell">1:2.0 / <span class='max'>1:4.0</span></td>
+      <td data-d="snap strat" class="risk-cell">2010</td>
+      <td data-d="snap strat risk"><span class="st st-shift"><span class="bk">SHIFT</span></span></td>
+      <td data-d="tech">6296</td><td data-d="tech">6250</td>
+      <td data-d="tech">6544</td><td data-d="tech">5957</td>
+      <td data-d="tech">6550</td><td data-d="tech">5876</td>
+      <td data-d="tech">63%</td>
+      <td data-d="pos">1.35M</td>
+      <td data-d="pos" class="num-up"><b>84571</b></td>
+      <td data-d="pos">28035</td><td data-d="pos">34203</td>
+      <td data-d="pos" style="text-align:left;font-size:10.5px;color:var(--text-dim)"><span class='num-up'>东证期货（代客） 129,246</span> / <span class='num-dn'>国泰君安（代客） 203,484</span></td>
+      <td data-d="term">ta2609</td><td data-d="term"><b>6330</b></td>
+      <td data-d="term">ta2610</td><td data-d="term">6236</td>
+      <td data-d="term" class="num-up">94</td>
+      <td data-d="term"></td>
+      <td data-d="term" style="text-align:left;color:var(--text-dim);font-size:10.5px">backwardation</td>
+      <td data-d="strat"><b>6,304–6,464</b></td>
+      <td data-d="strat" class="num-dn">5982</td>
+      <td data-d="strat"><b class="num-up">7188</b> / <b class="num-up">7994</b></td>
+      <td data-d="risk" style="text-align:left"></td>
+      <td data-d="risk">11%</td><td data-d="risk">96d</td><td data-d="risk">7247</td>
+    </tr>
+    <tr class="row-detail" data-for="ta"><td colspan="40">
+      <div class="detail-wrap">
+        <div class="detail-section">
+          <h5><span class="hk">D</span>六维分析 <span class="meta">六维 · 四问 · ticket</span></h5>
+          <div class="six-dim">
+            <div class="dim"><span class="lbl">基本面 <span class="dim-agg">+0</span></span><span class="dim-sub">S+0 M+0 L+0 · cov 100%</span><span class="dim-rationale">spot cost_pct 0.42 / mid cost_pct 0.42 / long cost_pct 0.47</span><span class="lead">结算价低于 现金成本-高/完全成本-中</span><span class="det">成本 现金成本-中 差额 +30；现货 基差 +301；仓单 135,069(-1,320)；px_cfr_china 100.0美元/吨；pxn_spread 200.0美元/吨</span></div>
+            <div class="dim"><span class="lbl">宏观</span><span class="lead">eastmoney_search:PTA: 能化 | 近期国内外新胶开割推进 胶水产量持续释放</span><span class="det">pmi_manufacturing 50.00index；ppi_yoy 3.90percent；fx_boc_mid_usd 681.50100cny_per_unit；新闻 12 条</span></div>
+            <div class="dim"><span class="lbl">合约结构</span><span class="lead">backwardation，ta2609-ta2610 +94</span><span class="det">carry squeeze_risk，实际 -1,782.0bp，理论 1,046.2bp。</span></div>
+            <div class="dim"><span class="lbl">成交持仓 <span class="dim-agg">-1</span></span><span class="dim-sub">S-1 M+0 L-1 · cov 100%</span><span class="dim-rationale">今 net +85k mid pct 0.79 n=20 long pct 0.92 n=60</span><span class="lead">Top20 净多 84,571</span><span class="det">多变 +28,035；空变 +34,203；量价 价涨/增仓；动量 trend_exhausting</span></div>
+            <div class="dim"><span class="lbl">技术面 <span class="dim-agg">+1</span></span><span class="dim-sub">S+1 M+0.23 L— · cov 100%</span><span class="dim-rationale">ret_21d -2.5% vol 8.6% sig -0.29 / ret_63d +3.8% vol 21.3% sig +0.18 / ret_252d +21.9% vol 27.6% sig +0.79</span><span class="lead">震荡，RSI 49.8，ADX 12.5</span><span class="det">收盘 vs MA5 +5，vs MA20 +51；20日位置 63%，20日收益 +0.2%。</span></div>
+            <div class="dim"><span class="lbl">风险管理</span><span class="lead">未触发硬性风控告警</span><span class="det">到期 96 天；主力校验 OK ta2609；涨跌停 11%，保证金 23.0%</span></div>
+          </div>
+          <div class="ans-grid">
+            <div class="ans"><span class="lbl">主要矛盾</span>eastmoney_search:PTA: 能化 | 近期国内外新胶开割推进 胶水产量持续释放；conviction 5.4/9 偏多，仓位信念 strong。</div>
+            <div class="ans"><span class="lbl">是否已反映</span>震荡，距MA20 +0.8%，20日位置 63%；当前策略状态 SHIFT，入场 6,304-6,464，止损 5,982。</div>
+            <div class="ans"><span class="lbl">结构/资金/流动性</span>backwardation，ta2609-ta2610 +94；Top20 净多 84,571，价涨/增仓；成交量 1,354,883，持仓 1,149,294。</div>
+            <div class="ans"><span class="lbl">错误最大亏损</span>若按计划触发，单手风险约 2,010 元，止损 5,982 失守即退出。按每百万权益 1% 风险，建议约 3 手（信念 61%）。</div>
+          </div>
+        </div>
+        <div class="detail-section">
+          <h5><span class="hk">T</span>30d 走势 + Trade Ticket <span class="meta">candle · MA20 amber dashed</span></h5>
+          <div class="chart-wrap">
+            <div class="head">
+              <span>TA ta2609 · 30D OHLC + MA20</span>
+              <span class="legend"><span><span class="sw" style="background:var(--buy)"></span>K</span><span><span class="sw" style="background:var(--amber);height:2px"></span>MA20</span></span>
+              <span class="last">6302</span>
+            </div>
+            <div id="chart-ta" class="ct"
+                 data-ohlc="[{&quot;time&quot;: &quot;2026-04-27&quot;, &quot;open&quot;: 6428.0, &quot;high&quot;: 6658.0, &quot;low&quot;: 6428.0, &quot;close&quot;: 6596.0}, {&quot;time&quot;: &quot;2026-04-28&quot;, &quot;open&quot;: 6600.0, &quot;high&quot;: 6796.0, &quot;low&quot;: 6576.0, &quot;close&quot;: 6772.0}, {&quot;time&quot;: &quot;2026-04-29&quot;, &quot;open&quot;: 6772.0, &quot;high&quot;: 6838.0, &quot;low&quot;: 6672.0, &quot;close&quot;: 6712.0}, {&quot;time&quot;: &quot;2026-04-30&quot;, &quot;open&quot;: 6780.0, &quot;high&quot;: 6796.0, &quot;low&quot;: 6690.0, &quot;close&quot;: 6712.0}, {&quot;time&quot;: &quot;2026-05-06&quot;, &quot;open&quot;: 6698.0, &quot;high&quot;: 6844.0, &quot;low&quot;: 6680.0, &quot;close&quot;: 6790.0}, {&quot;time&quot;: &quot;2026-05-07&quot;, &quot;open&quot;: 6678.0, &quot;high&quot;: 6706.0, &quot;low&quot;: 6470.0, &quot;close&quot;: 6482.0}, {&quot;time&quot;: &quot;2026-05-08&quot;, &quot;open&quot;: 6400.0, &quot;high&quot;: 6462.0, &quot;low&quot;: 6324.0, &quot;close&quot;: 6338.0}, {&quot;time&quot;: &quot;2026-05-11&quot;, &quot;open&quot;: 6362.0, &quot;high&quot;: 6568.0, &quot;low&quot;: 6308.0, &quot;close&quot;: 6486.0}, {&quot;time&quot;: &quot;2026-05-12&quot;, &quot;open&quot;: 6484.0, &quot;high&quot;: 6500.0, &quot;low&quot;: 6396.0, &quot;close&quot;: 6462.0}, {&quot;time&quot;: &quot;2026-05-13&quot;, &quot;open&quot;: 6460.0, &quot;high&quot;: 6488.0, &quot;low&quot;: 6336.0, &quot;close&quot;: 6364.0}, {&quot;time&quot;: &quot;2026-05-14&quot;, &quot;open&quot;: 6394.0, &quot;high&quot;: 6418.0, &quot;low&quot;: 6252.0, &quot;close&quot;: 6288.0}, {&quot;time&quot;: &quot;2026-05-15&quot;, &quot;open&quot;: 6260.0, &quot;high&quot;: 6444.0, &quot;low&quot;: 6260.0, &quot;close&quot;: 6394.0}, {&quot;time&quot;: &quot;2026-05-18&quot;, &quot;open&quot;: 6416.0, &quot;high&quot;: 6550.0, &quot;low&quot;: 6352.0, &quot;close&quot;: 6494.0}, {&quot;time&quot;: &quot;2026-05-19&quot;, &quot;open&quot;: 6428.0, &quot;high&quot;: 6428.0, &quot;low&quot;: 6314.0, &quot;close&quot;: 6410.0}, {&quot;time&quot;: &quot;2026-05-20&quot;, &quot;open&quot;: 6414.0, &quot;high&quot;: 6442.0, &quot;low&quot;: 6354.0, &quot;close&quot;: 6374.0}, {&quot;time&quot;: &quot;2026-05-21&quot;, &quot;open&quot;: 6340.0, &quot;high&quot;: 6448.0, &quot;low&quot;: 6294.0, &quot;close&quot;: 6380.0}, {&quot;time&quot;: &quot;2026-05-22&quot;, &quot;open&quot;: 6398.0, &quot;high&quot;: 6402.0, &quot;low&quot;: 6060.0, &quot;close&quot;: 6136.0}, {&quot;time&quot;: &quot;2026-05-25&quot;, &quot;open&quot;: 6096.0, &quot;high&quot;: 6160.0, &quot;low&quot;: 5876.0, &quot;close&quot;: 5984.0}, {&quot;time&quot;: &quot;2026-05-26&quot;, &quot;open&quot;: 5970.0, &quot;high&quot;: 6036.0, &quot;low&quot;: 5938.0, &quot;close&quot;: 5992.0}, {&quot;time&quot;: &quot;2026-05-27&quot;, &quot;open&quot;: 6018.0, &quot;high&quot;: 6066.0, &quot;low&quot;: 5974.0, &quot;close&quot;: 6044.0}, {&quot;time&quot;: &quot;2026-05-28&quot;, &quot;open&quot;: 5966.0, &quot;high&quot;: 6232.0, &quot;low&quot;: 5954.0, &quot;close&quot;: 6174.0}, {&quot;time&quot;: &quot;2026-05-29&quot;, &quot;open&quot;: 6164.0, &quot;high&quot;: 6192.0, &quot;low&quot;: 6070.0, &quot;close&quot;: 6100.0}, {&quot;time&quot;: &quot;2026-06-01&quot;, &quot;open&quot;: 6090.0, &quot;high&quot;: 6226.0, &quot;low&quot;: 6060.0, &quot;close&quot;: 6204.0}, {&quot;time&quot;: &quot;2026-06-02&quot;, &quot;open&quot;: 6198.0, &quot;high&quot;: 6296.0, &quot;low&quot;: 6144.0, &quot;close&quot;: 6234.0}, {&quot;time&quot;: &quot;2026-06-03&quot;, &quot;open&quot;: 6248.0, &quot;high&quot;: 6352.0, &quot;low&quot;: 6220.0, &quot;close&quot;: 6336.0}, {&quot;time&quot;: &quot;2026-06-04&quot;, &quot;open&quot;: 6350.0, &quot;high&quot;: 6350.0, &quot;low&quot;: 6166.0, &quot;close&quot;: 6184.0}, {&quot;time&quot;: &quot;2026-06-05&quot;, &quot;open&quot;: 6130.0, &quot;high&quot;: 6340.0, &quot;low&quot;: 6130.0, &quot;close&quot;: 6290.0}, {&quot;time&quot;: &quot;2026-06-08&quot;, &quot;open&quot;: 6288.0, &quot;high&quot;: 6470.0, &quot;low&quot;: 6250.0, &quot;close&quot;: 6466.0}, {&quot;time&quot;: &quot;2026-06-09&quot;, &quot;open&quot;: 6400.0, &quot;high&quot;: 6434.0, &quot;low&quot;: 6210.0, &quot;close&quot;: 6242.0}, {&quot;time&quot;: &quot;2026-06-10&quot;, &quot;open&quot;: 6240.0, &quot;high&quot;: 6458.0, &quot;low&quot;: 6228.0, &quot;close&quot;: 6302.0}]"
+                 data-ma20="[{&quot;time&quot;: &quot;2026-05-27&quot;, &quot;value&quot;: 6410.5}, {&quot;time&quot;: &quot;2026-05-28&quot;, &quot;value&quot;: 6389.4}, {&quot;time&quot;: &quot;2026-05-29&quot;, &quot;value&quot;: 6355.8}, {&quot;time&quot;: &quot;2026-06-01&quot;, &quot;value&quot;: 6330.4}, {&quot;time&quot;: &quot;2026-06-02&quot;, &quot;value&quot;: 6306.5}, {&quot;time&quot;: &quot;2026-06-03&quot;, &quot;value&quot;: 6283.8}, {&quot;time&quot;: &quot;2026-06-04&quot;, &quot;value&quot;: 6268.9}, {&quot;time&quot;: &quot;2026-06-05&quot;, &quot;value&quot;: 6266.5}, {&quot;time&quot;: &quot;2026-06-08&quot;, &quot;value&quot;: 6265.5}, {&quot;time&quot;: &quot;2026-06-09&quot;, &quot;value&quot;: 6254.5}, {&quot;time&quot;: &quot;2026-06-10&quot;, &quot;value&quot;: 6251.4}]"></div>
+          </div>
+          <div class="gauge-row">
+            <div class="g"><div class="k">20DH / 20DL</div><div class="v">6550 / 5876</div></div>
+            <div class="g"><div class="k">BUP / BLO</div><div class="v">6544 / 5957</div></div>
+            <div class="g"><div class="k">RNG POS</div><div class="v">63%</div></div>
+          </div>
+          <div class="top3-line"><span class="k">TOP3</span>L1 东证期货（代客） 129,246 (-14,609) · S1 国泰君安（代客） 203,484 (+10,867)</div>
+          <div class="ticket-mini">
+            <span class="k">ENTRY</span><span class="v"><b>6,304–6,464</b><span class="note"></span></span>
+            <span class="k">STOP</span><span class="v"><b>5982</b><span class="note"></span></span>
+            <span class="k">TP1 · TP2</span><span class="v"><b>7188</b> <span class="note"></span> &nbsp;|&nbsp; <b>7994</b> <span class="note"></span></span>
+            <span class="k">HOLD</span><span class="v">TP1 ~6 日 (29%) · TP2 ~6 日 (29%) · 经验区间 <b>~6 日</b> · 样本 133 根</span>
+            <span class="k">R:R</span><span class="v"><span class="rr-pair"><span class="lab">TP1</span><b>1:2.0</b></span> <span class="rr-pair"><span class="lab">TP2</span><b>1:4.0</b></span></span>
+            <span class="k">RISK · LOT</span><span class="v"><b>≈ 2010</b> 元 / 手</span>
+            <span class="k">MARGIN · LOT</span><span class="v"><b>≈ 7247</b> 元</span>
+            <span class="k">EXIT</span><span class="v"></span>
+            <span class="k">SPEC</span><span class="v"><b>乘数 5</b> · 每跳 2 = <b>10</b> 元 · 涨跌停板 <b>11%</b></span>
+          </div>
+          
+        </div>
+      </div>
+    </td></tr>
+    
+    <tr class="row dir-sell" data-code="rb" data-dir="sell" data-status="shift" data-crit="0" data-near="0" id="v-rb" tabindex="0">
+      <td data-d="snap tech pos term strat risk">
+        <div class="sym-cell">
+          <span class="sym">RB</span>
+          <span class="nm">螺纹钢</span>
+          <span class="ct">rb2610</span>
+        </div>
+      </td>
+      <td data-d="snap strat" style="line-height:1.2"><b>3180</b><span class="live-overlay">盘中 11:54 <b>3157.0</b> <span class="num-dn">-23</span> <span class="num-dn">-0.72%</span></span></td>
+      <td data-d="snap tech"><span class="spark-mini"><svg viewBox="0 0 100 30" preserveAspectRatio="none"><polyline points="0.00,20.28 3.45,23.24 6.90,19.23 10.34,15.21 13.79,4.65 17.24,2.75 20.69,4.86 24.14,0.00 27.59,6.55 31.03,6.13 34.48,6.55 37.93,11.41 41.38,16.90 44.83,17.32 48.28,20.49 51.72,23.45 55.17,24.93 58.62,14.37 62.07,29.58 65.52,30.00 68.97,29.79 72.41,27.04 75.86,23.03 79.31,22.39 82.76,24.72 86.21,27.25 89.66,25.56 93.10,27.25 96.55,27.46 100.00,22.39"/></svg></span></td>
+      <td data-d="snap tech">50.4</td>
+      <td data-d="snap tech">29</td>
+      <td data-d="snap pos">1.67M <span class='num-dn'>52k</span></td>
+      <td data-d="snap strat" class="strat-cell">
+        <span class="dir-tag tag-sell">S</span><span class="strat-text">盘中破位空</span>
+        <span class="strat-sub">[盘中破位] · SHIFT · 入 3,145–3,169 · SL 3,217 · TP1 3,038 (1:2.0)</span>
+        <span class="strat-sub hold-tag">· HOLD ~6D</span>
+      </td>
+      <td data-d="snap strat" class="rr-cell">1:2.0 / <span class='max'>1:4.0</span></td>
+      <td data-d="snap strat" class="risk-cell">600</td>
+      <td data-d="snap strat risk"><span class="st st-shift"><span class="bk">SHIFT</span></span></td>
+      <td data-d="tech">3163</td><td data-d="tech">3179</td>
+      <td data-d="tech">3237</td><td data-d="tech">3120</td>
+      <td data-d="tech">3272</td><td data-d="tech">3138</td>
+      <td data-d="tech">31%</td>
+      <td data-d="pos">844k</td>
+      <td data-d="pos" class="num-up"><b>33516</b></td>
+      <td data-d="pos">-42786</td><td data-d="pos">-23453</td>
+      <td data-d="pos" style="text-align:left;font-size:10.5px;color:var(--text-dim)"><span class='num-up'>中信期货 251,272</span> / <span class='num-dn'>国泰君安 180,280</span></td>
+      <td data-d="term">rb2610</td><td data-d="term"><b>3166</b></td>
+      <td data-d="term">rb2611</td><td data-d="term">3177</td>
+      <td data-d="term" class="num-dn">-11</td>
+      <td data-d="term"></td>
+      <td data-d="term" style="text-align:left;color:var(--text-dim);font-size:10.5px">contango</td>
+      <td data-d="strat"><b>3,145–3,169</b></td>
+      <td data-d="strat" class="num-dn">3217</td>
+      <td data-d="strat"><b class="num-up">3038</b> / <b class="num-up">2919</b></td>
+      <td data-d="risk" style="text-align:left"></td>
+      <td data-d="risk">7%</td><td data-d="risk">127d</td><td data-d="risk">4770</td>
+    </tr>
+    <tr class="row-detail" data-for="rb"><td colspan="40">
+      <div class="detail-wrap">
+        <div class="detail-section">
+          <h5><span class="hk">D</span>六维分析 <span class="meta">六维 · 四问 · ticket</span></h5>
+          <div class="six-dim">
+            <div class="dim"><span class="lbl">基本面 <span class="dim-agg">+0</span></span><span class="dim-sub">S+0 M+0 L+0 · cov 100%</span><span class="dim-rationale">spot cost_pct 0.21 / mid cost_pct 0.20 / long cost_pct 0.21</span><span class="lead">结算价低于 现金成本-中/现金成本-高</span><span class="det">成本 现金成本-中 差额 -34；现货 基差 +0；仓单 35,153(+0)；blast_furnace_capacity_utilization 90.0%；coke_spot_price 1,750.0元/吨</span></div>
+            <div class="dim"><span class="lbl">宏观</span><span class="lead">eastmoney_7x24: 河钢6月硅铁招标询盘6000元/吨，5月定价6000元/吨，6月河钢75B硅铁招标数量2600吨，上轮招标数量...</span><span class="det">pmi_manufacturing 50.00index；ppi_yoy 3.90percent；fx_boc_mid_usd 681.50100cny_per_unit；新闻 12 条</span></div>
+            <div class="dim"><span class="lbl">合约结构</span><span class="lead">contango，rb2610-rb2611 -11</span><span class="det">carry flat_to_mild_back，实际 +416.9bp，理论 1,306.5bp。</span></div>
+            <div class="dim"><span class="lbl">成交持仓 <span class="dim-agg">-1</span></span><span class="dim-sub">S-1 M+0 L+0 · cov 100%</span><span class="dim-rationale">今 net +34k mid pct 0.63 n=20 long pct 0.54 n=60</span><span class="lead">Top20 净多 33,516</span><span class="det">多变 -42,786；空变 -23,453；量价 价涨/减仓；动量 trend_exhausting</span></div>
+            <div class="dim"><span class="lbl">技术面 <span class="dim-agg">+0</span></span><span class="dim-sub">S+0 M-0.17 L— · cov 100%</span><span class="dim-rationale">ret_21d -2.3% vol 3.2% sig -0.71 / ret_63d +1.0% vol 4.7% sig +0.22 / ret_252d -0.4% vol 12.6% sig -0.03</span><span class="lead">弱上行，RSI 50.4，ADX 21.1</span><span class="det">收盘 vs MA5 +17，vs MA20 +1；20日位置 31%，20日收益 -2.3%。</span></div>
+            <div class="dim"><span class="lbl">风险管理</span><span class="lead">未触发硬性风控告警</span><span class="det">到期 127 天；主力校验 OK rb2610；涨跌停 7%，保证金 15.0%</span></div>
+          </div>
+          <div class="ans-grid">
+            <div class="ans"><span class="lbl">主要矛盾</span>eastmoney_7x24: 河钢6月硅铁招标询盘6000元/吨，5月定价6000元/吨，6月河钢75B硅铁招标数量2600吨，上轮招标数量...；conviction -0.3/9 偏空，仓位信念 weak。</div>
+            <div class="ans"><span class="lbl">是否已反映</span>弱上行，距MA20 +0.0%，20日位置 31%；当前策略状态 SHIFT，入场 3,145-3,169，止损 3,217。</div>
+            <div class="ans"><span class="lbl">结构/资金/流动性</span>contango，rb2610-rb2611 -11；Top20 净多 33,516，价涨/减仓；成交量 844,602，持仓 1,672,989。</div>
+            <div class="ans"><span class="lbl">错误最大亏损</span>若按计划触发，单手风险约 600 元，止损 3,217 失守即退出。</div>
+          </div>
+        </div>
+        <div class="detail-section">
+          <h5><span class="hk">T</span>30d 走势 + Trade Ticket <span class="meta">candle · MA20 amber dashed</span></h5>
+          <div class="chart-wrap">
+            <div class="head">
+              <span>RB rb2610 · 30D OHLC + MA20</span>
+              <span class="legend"><span><span class="sw" style="background:var(--buy)"></span>K</span><span><span class="sw" style="background:var(--amber);height:2px"></span>MA20</span></span>
+              <span class="last">3180</span>
+            </div>
+            <div id="chart-rb" class="ct"
+                 data-ohlc="[{&quot;time&quot;: &quot;2026-04-27&quot;, &quot;open&quot;: 3191.0, &quot;high&quot;: 3214.0, &quot;low&quot;: 3185.0, &quot;close&quot;: 3190.0}, {&quot;time&quot;: &quot;2026-04-28&quot;, &quot;open&quot;: 3191.0, &quot;high&quot;: 3195.0, &quot;low&quot;: 3162.0, &quot;close&quot;: 3176.0}, {&quot;time&quot;: &quot;2026-04-29&quot;, &quot;open&quot;: 3176.0, &quot;high&quot;: 3198.0, &quot;low&quot;: 3166.0, &quot;close&quot;: 3195.0}, {&quot;time&quot;: &quot;2026-04-30&quot;, &quot;open&quot;: 3195.0, &quot;high&quot;: 3220.0, &quot;low&quot;: 3191.0, &quot;close&quot;: 3214.0}, {&quot;time&quot;: &quot;2026-05-06&quot;, &quot;open&quot;: 3227.0, &quot;high&quot;: 3268.0, &quot;low&quot;: 3219.0, &quot;close&quot;: 3264.0}, {&quot;time&quot;: &quot;2026-05-07&quot;, &quot;open&quot;: 3260.0, &quot;high&quot;: 3278.0, &quot;low&quot;: 3253.0, &quot;close&quot;: 3273.0}, {&quot;time&quot;: &quot;2026-05-08&quot;, &quot;open&quot;: 3272.0, &quot;high&quot;: 3285.0, &quot;low&quot;: 3261.0, &quot;close&quot;: 3263.0}, {&quot;time&quot;: &quot;2026-05-11&quot;, &quot;open&quot;: 3262.0, &quot;high&quot;: 3298.0, &quot;low&quot;: 3260.0, &quot;close&quot;: 3286.0}, {&quot;time&quot;: &quot;2026-05-12&quot;, &quot;open&quot;: 3285.0, &quot;high&quot;: 3292.0, &quot;low&quot;: 3246.0, &quot;close&quot;: 3255.0}, {&quot;time&quot;: &quot;2026-05-13&quot;, &quot;open&quot;: 3251.0, &quot;high&quot;: 3267.0, &quot;low&quot;: 3236.0, &quot;close&quot;: 3257.0}, {&quot;time&quot;: &quot;2026-05-14&quot;, &quot;open&quot;: 3249.0, &quot;high&quot;: 3260.0, &quot;low&quot;: 3233.0, &quot;close&quot;: 3255.0}, {&quot;time&quot;: &quot;2026-05-15&quot;, &quot;open&quot;: 3255.0, &quot;high&quot;: 3272.0, &quot;low&quot;: 3226.0, &quot;close&quot;: 3232.0}, {&quot;time&quot;: &quot;2026-05-18&quot;, &quot;open&quot;: 3232.0, &quot;high&quot;: 3237.0, &quot;low&quot;: 3204.0, &quot;close&quot;: 3206.0}, {&quot;time&quot;: &quot;2026-05-19&quot;, &quot;open&quot;: 3210.0, &quot;high&quot;: 3213.0, &quot;low&quot;: 3187.0, &quot;close&quot;: 3204.0}, {&quot;time&quot;: &quot;2026-05-20&quot;, &quot;open&quot;: 3205.0, &quot;high&quot;: 3206.0, &quot;low&quot;: 3177.0, &quot;close&quot;: 3189.0}, {&quot;time&quot;: &quot;2026-05-21&quot;, &quot;open&quot;: 3191.0, &quot;high&quot;: 3198.0, &quot;low&quot;: 3172.0, &quot;close&quot;: 3175.0}, {&quot;time&quot;: &quot;2026-05-22&quot;, &quot;open&quot;: 3175.0, &quot;high&quot;: 3179.0, &quot;low&quot;: 3163.0, &quot;close&quot;: 3168.0}, {&quot;time&quot;: &quot;2026-05-25&quot;, &quot;open&quot;: 3168.0, &quot;high&quot;: 3238.0, &quot;low&quot;: 3165.0, &quot;close&quot;: 3218.0}, {&quot;time&quot;: &quot;2026-05-26&quot;, &quot;open&quot;: 3218.0, &quot;high&quot;: 3218.0, &quot;low&quot;: 3138.0, &quot;close&quot;: 3146.0}, {&quot;time&quot;: &quot;2026-05-27&quot;, &quot;open&quot;: 3146.0, &quot;high&quot;: 3152.0, &quot;low&quot;: 3136.0, &quot;close&quot;: 3144.0}, {&quot;time&quot;: &quot;2026-05-28&quot;, &quot;open&quot;: 3145.0, &quot;high&quot;: 3162.0, &quot;low&quot;: 3144.0, &quot;close&quot;: 3145.0}, {&quot;time&quot;: &quot;2026-05-29&quot;, &quot;open&quot;: 3150.0, &quot;high&quot;: 3170.0, &quot;low&quot;: 3146.0, &quot;close&quot;: 3158.0}, {&quot;time&quot;: &quot;2026-06-01&quot;, &quot;open&quot;: 3156.0, &quot;high&quot;: 3189.0, &quot;low&quot;: 3156.0, &quot;close&quot;: 3177.0}, {&quot;time&quot;: &quot;2026-06-02&quot;, &quot;open&quot;: 3180.0, &quot;high&quot;: 3184.0, &quot;low&quot;: 3169.0, &quot;close&quot;: 3180.0}, {&quot;time&quot;: &quot;2026-06-03&quot;, &quot;open&quot;: 3180.0, &quot;high&quot;: 3187.0, &quot;low&quot;: 3165.0, &quot;close&quot;: 3169.0}, {&quot;time&quot;: &quot;2026-06-04&quot;, &quot;open&quot;: 3166.0, &quot;high&quot;: 3180.0, &quot;low&quot;: 3154.0, &quot;close&quot;: 3157.0}, {&quot;time&quot;: &quot;2026-06-05&quot;, &quot;open&quot;: 3157.0, &quot;high&quot;: 3175.0, &quot;low&quot;: 3149.0, &quot;close&quot;: 3165.0}, {&quot;time&quot;: &quot;2026-06-08&quot;, &quot;open&quot;: 3165.0, &quot;high&quot;: 3175.0, &quot;low&quot;: 3151.0, &quot;close&quot;: 3157.0}, {&quot;time&quot;: &quot;2026-06-09&quot;, &quot;open&quot;: 3157.0, &quot;high&quot;: 3160.0, &quot;low&quot;: 3142.0, &quot;close&quot;: 3156.0}, {&quot;time&quot;: &quot;2026-06-10&quot;, &quot;open&quot;: 3156.0, &quot;high&quot;: 3194.0, &quot;low&quot;: 3147.0, &quot;close&quot;: 3180.0}]"
+                 data-ma20="[{&quot;time&quot;: &quot;2026-05-27&quot;, &quot;value&quot;: 3215.5}, {&quot;time&quot;: &quot;2026-05-28&quot;, &quot;value&quot;: 3213.2}, {&quot;time&quot;: &quot;2026-05-29&quot;, &quot;value&quot;: 3212.3}, {&quot;time&quot;: &quot;2026-06-01&quot;, &quot;value&quot;: 3211.4}, {&quot;time&quot;: &quot;2026-06-02&quot;, &quot;value&quot;: 3209.8}, {&quot;time&quot;: &quot;2026-06-03&quot;, &quot;value&quot;: 3205.0}, {&quot;time&quot;: &quot;2026-06-04&quot;, &quot;value&quot;: 3199.2}, {&quot;time&quot;: &quot;2026-06-05&quot;, &quot;value&quot;: 3194.3}, {&quot;time&quot;: &quot;2026-06-08&quot;, &quot;value&quot;: 3187.8}, {&quot;time&quot;: &quot;2026-06-09&quot;, &quot;value&quot;: 3182.9}, {&quot;time&quot;: &quot;2026-06-10&quot;, &quot;value&quot;: 3179.1}]"></div>
+          </div>
+          <div class="gauge-row">
+            <div class="g"><div class="k">20DH / 20DL</div><div class="v">3272 / 3138</div></div>
+            <div class="g"><div class="k">BUP / BLO</div><div class="v">3237 / 3120</div></div>
+            <div class="g"><div class="k">RNG POS</div><div class="v">31%</div></div>
+          </div>
+          <div class="top3-line"><span class="k">TOP3</span>L1 中信期货 251,272 (-6,653) · S1 国泰君安 180,280 (+62)</div>
+          <div class="ticket-mini">
+            <span class="k">ENTRY</span><span class="v"><b>3,145–3,169</b><span class="note"></span></span>
+            <span class="k">STOP</span><span class="v"><b>3217</b><span class="note"></span></span>
+            <span class="k">TP1 · TP2</span><span class="v"><b>3038</b> <span class="note"></span> &nbsp;|&nbsp; <b>2919</b> <span class="note"></span></span>
+            <span class="k">HOLD</span><span class="v">TP1 ~6 日 (17%) · TP2 ~6 日 (17%) · 经验区间 <b>~6 日</b> · 样本 116 根</span>
+            <span class="k">R:R</span><span class="v"><span class="rr-pair"><span class="lab">TP1</span><b>1:2.0</b></span> <span class="rr-pair"><span class="lab">TP2</span><b>1:4.0</b></span></span>
+            <span class="k">RISK · LOT</span><span class="v"><b>≈ 600</b> 元 / 手</span>
+            <span class="k">MARGIN · LOT</span><span class="v"><b>≈ 4770</b> 元</span>
+            <span class="k">EXIT</span><span class="v"></span>
+            <span class="k">SPEC</span><span class="v"><b>乘数 10</b> · 每跳 1 = <b>10</b> 元 · 涨跌停板 <b>7%</b></span>
+          </div>
+          
+        </div>
+      </div>
+    </td></tr>
+    
+    <tr class="row dir-sell" data-code="sp" data-dir="sell" data-status="trig" data-crit="0" data-near="0" id="v-sp" tabindex="0">
+      <td data-d="snap tech pos term strat risk">
+        <div class="sym-cell">
+          <span class="sym">SP</span>
+          <span class="nm">纸浆</span>
+          <span class="ct">sp2609</span>
+        </div>
+      </td>
+      <td data-d="snap strat" style="line-height:1.2"><b>4868</b><span class="live-overlay">盘中 11:54 <b>4886.0</b> <span class="num-up">+18</span> <span class="num-up">+0.37%</span></span></td>
+      <td data-d="snap tech"><span class="spark-mini"><svg viewBox="0 0 100 30" preserveAspectRatio="none"><polyline points="0.00,7.12 3.45,10.68 6.90,8.81 10.34,7.97 13.79,5.25 17.24,8.64 20.69,8.47 24.14,2.71 27.59,2.37 31.03,0.00 34.48,4.75 37.93,8.47 41.38,9.66 44.83,8.98 48.28,14.41 51.72,19.83 55.17,21.53 58.62,16.10 62.07,15.59 65.52,16.78 68.97,17.12 72.41,20.68 75.86,23.73 79.31,25.93 82.76,25.93 86.21,30.00 89.66,27.12 93.10,27.29 96.55,24.41 100.00,25.25"/></svg></span></td>
+      <td data-d="snap tech">37.2</td>
+      <td data-d="snap tech">58</td>
+      <td data-d="snap pos">403k <span class='num-dn'>10k</span></td>
+      <td data-d="snap strat" class="strat-cell">
+        <span class="dir-tag tag-sell">S</span><span class="strat-text">盘中破位空</span>
+        <span class="strat-sub">[盘中破位] · TRIG · 入 4,862–4,910 · SL 5,002 · TP1 4,652 (1:2.0)</span>
+        <span class="strat-sub hold-tag">· HOLD ~7D</span>
+      </td>
+      <td data-d="snap strat" class="rr-cell">1:2.0 / <span class='max'>1:4.0</span></td>
+      <td data-d="snap strat" class="risk-cell">1160</td>
+      <td data-d="snap strat risk"><span class="st st-trig"><span class="bk">TRIG</span></span></td>
+      <td data-d="tech">4849</td><td data-d="tech">4939</td>
+      <td data-d="tech">5106</td><td data-d="tech">4772</td>
+      <td data-d="tech">5186</td><td data-d="tech">4788</td>
+      <td data-d="tech">20%</td>
+      <td data-d="pos">235k</td>
+      <td data-d="pos" class="num-dn"><b>-46807</b></td>
+      <td data-d="pos">-5901</td><td data-d="pos">-6498</td>
+      <td data-d="pos" style="text-align:left;font-size:10.5px;color:var(--text-dim)"><span class='num-up'>国泰君安 34,059</span> / <span class='num-dn'>中信期货 44,500</span></td>
+      <td data-d="term">sp2609</td><td data-d="term"><b>4874</b></td>
+      <td data-d="term">sp2610</td><td data-d="term">4898</td>
+      <td data-d="term" class="num-dn">-24</td>
+      <td data-d="term"></td>
+      <td data-d="term" style="text-align:left;color:var(--text-dim);font-size:10.5px">contango</td>
+      <td data-d="strat"><b>4,862–4,910</b></td>
+      <td data-d="strat" class="num-dn">5002</td>
+      <td data-d="strat"><b class="num-up">4652</b> / <b class="num-up">4418</b></td>
+      <td data-d="risk" style="text-align:left"></td>
+      <td data-d="risk">4%</td><td data-d="risk">97d</td><td data-d="risk">7302</td>
+    </tr>
+    <tr class="row-detail" data-for="sp"><td colspan="40">
+      <div class="detail-wrap">
+        <div class="detail-section">
+          <h5><span class="hk">D</span>六维分析 <span class="meta">六维 · 四问 · ticket</span></h5>
+          <div class="six-dim">
+            <div class="dim"><span class="lbl">基本面 <span class="dim-agg">+0</span></span><span class="dim-sub">S+0 M+0 L+0 · cov 100%</span><span class="dim-rationale">spot cost_pct 0.22 / mid cost_pct 0.21 / long cost_pct 0.28</span><span class="lead">结算价低于 现金成本-中/现金成本-高</span><span class="det">成本 完全成本-低 差额 +74；现货 基差 +115；仓单 255,809(+0)</span></div>
+            <div class="dim"><span class="lbl">宏观</span><span class="lead">eastmoney_search:纸浆: 青岛港：国家人工智能应用中试基地建设提速</span><span class="det">pmi_manufacturing 50.00index；ppi_yoy 3.90percent；fx_boc_mid_usd 681.50100cny_per_unit；新闻 12 条</span></div>
+            <div class="dim"><span class="lbl">合约结构</span><span class="lead">contango，sp2609-sp2610 -24</span><span class="det">carry flat_to_mild_back，实际 +590.9bp，理论 1,287.9bp。</span></div>
+            <div class="dim"><span class="lbl">成交持仓 <span class="dim-agg">-1</span></span><span class="dim-sub">S+1 M-1 L+0 · cov 100%</span><span class="dim-rationale">今 net -47k mid pct 1.00 n=20 long pct 0.37 n=60</span><span class="lead">Top20 净空 46,807</span><span class="det">多变 -5,901；空变 -6,498；量价 价跌/减仓；动量 trend_starting</span></div>
+            <div class="dim"><span class="lbl">技术面 <span class="dim-agg">-2</span></span><span class="dim-sub">S+0 M-1 L— · cov 100%</span><span class="dim-rationale">ret_21d -5.3% vol 3.1% sig -1.00 / ret_63d -9.2% vol 5.9% sig -1.00 / ret_252d -18.7% vol 14.0% sig -1.00</span><span class="lead">强下行，RSI 37.2，ADX 35.5</span><span class="det">收盘 vs MA5 +18，vs MA20 -71；20日位置 20%，20日收益 -4.7%。</span></div>
+            <div class="dim"><span class="lbl">风险管理</span><span class="lead">未触发硬性风控告警</span><span class="det">到期 97 天；主力校验 OK sp2609；涨跌停 4%，保证金 15.0%</span></div>
+          </div>
+          <div class="ans-grid">
+            <div class="ans"><span class="lbl">主要矛盾</span>eastmoney_search:纸浆: 青岛港：国家人工智能应用中试基地建设提速；conviction -1.7/9 偏空，仓位信念 weak。</div>
+            <div class="ans"><span class="lbl">是否已反映</span>强下行，距MA20 -1.4%，20日位置 20%；当前策略状态 TRIG，入场 4,862-4,910，止损 5,002。</div>
+            <div class="ans"><span class="lbl">结构/资金/流动性</span>contango，sp2609-sp2610 -24；Top20 净空 46,807，价跌/减仓；成交量 235,139，持仓 403,312。</div>
+            <div class="ans"><span class="lbl">错误最大亏损</span>若按计划触发，单手风险约 1,160 元，止损 5,002 失守即退出。</div>
+          </div>
+        </div>
+        <div class="detail-section">
+          <h5><span class="hk">T</span>30d 走势 + Trade Ticket <span class="meta">candle · MA20 amber dashed</span></h5>
+          <div class="chart-wrap">
+            <div class="head">
+              <span>SP sp2609 · 30D OHLC + MA20</span>
+              <span class="legend"><span><span class="sw" style="background:var(--buy)"></span>K</span><span><span class="sw" style="background:var(--amber);height:2px"></span>MA20</span></span>
+              <span class="last">4868</span>
+            </div>
+            <div id="chart-sp" class="ct"
+                 data-ohlc="[{&quot;time&quot;: &quot;2026-04-27&quot;, &quot;open&quot;: 5058.0, &quot;high&quot;: 5092.0, &quot;low&quot;: 5046.0, &quot;close&quot;: 5082.0}, {&quot;time&quot;: &quot;2026-04-28&quot;, &quot;open&quot;: 5074.0, &quot;high&quot;: 5084.0, &quot;low&quot;: 5016.0, &quot;close&quot;: 5040.0}, {&quot;time&quot;: &quot;2026-04-29&quot;, &quot;open&quot;: 5048.0, &quot;high&quot;: 5070.0, &quot;low&quot;: 5010.0, &quot;close&quot;: 5062.0}, {&quot;time&quot;: &quot;2026-04-30&quot;, &quot;open&quot;: 5050.0, &quot;high&quot;: 5086.0, &quot;low&quot;: 5030.0, &quot;close&quot;: 5072.0}, {&quot;time&quot;: &quot;2026-05-06&quot;, &quot;open&quot;: 5062.0, &quot;high&quot;: 5110.0, &quot;low&quot;: 5060.0, &quot;close&quot;: 5104.0}, {&quot;time&quot;: &quot;2026-05-07&quot;, &quot;open&quot;: 5096.0, &quot;high&quot;: 5102.0, &quot;low&quot;: 5044.0, &quot;close&quot;: 5064.0}, {&quot;time&quot;: &quot;2026-05-08&quot;, &quot;open&quot;: 5062.0, &quot;high&quot;: 5136.0, &quot;low&quot;: 5052.0, &quot;close&quot;: 5066.0}, {&quot;time&quot;: &quot;2026-05-11&quot;, &quot;open&quot;: 5066.0, &quot;high&quot;: 5146.0, &quot;low&quot;: 5062.0, &quot;close&quot;: 5134.0}, {&quot;time&quot;: &quot;2026-05-12&quot;, &quot;open&quot;: 5140.0, &quot;high&quot;: 5160.0, &quot;low&quot;: 5110.0, &quot;close&quot;: 5138.0}, {&quot;time&quot;: &quot;2026-05-13&quot;, &quot;open&quot;: 5138.0, &quot;high&quot;: 5172.0, &quot;low&quot;: 5114.0, &quot;close&quot;: 5166.0}, {&quot;time&quot;: &quot;2026-05-14&quot;, &quot;open&quot;: 5168.0, &quot;high&quot;: 5186.0, &quot;low&quot;: 5094.0, &quot;close&quot;: 5110.0}, {&quot;time&quot;: &quot;2026-05-15&quot;, &quot;open&quot;: 5114.0, &quot;high&quot;: 5124.0, &quot;low&quot;: 5058.0, &quot;close&quot;: 5066.0}, {&quot;time&quot;: &quot;2026-05-18&quot;, &quot;open&quot;: 5064.0, &quot;high&quot;: 5072.0, &quot;low&quot;: 5022.0, &quot;close&quot;: 5052.0}, {&quot;time&quot;: &quot;2026-05-19&quot;, &quot;open&quot;: 5052.0, &quot;high&quot;: 5076.0, &quot;low&quot;: 5032.0, &quot;close&quot;: 5060.0}, {&quot;time&quot;: &quot;2026-05-20&quot;, &quot;open&quot;: 5064.0, &quot;high&quot;: 5080.0, &quot;low&quot;: 4988.0, &quot;close&quot;: 4996.0}, {&quot;time&quot;: &quot;2026-05-21&quot;, &quot;open&quot;: 4998.0, &quot;high&quot;: 5006.0, &quot;low&quot;: 4930.0, &quot;close&quot;: 4932.0}, {&quot;time&quot;: &quot;2026-05-22&quot;, &quot;open&quot;: 4926.0, &quot;high&quot;: 4942.0, &quot;low&quot;: 4900.0, &quot;close&quot;: 4912.0}, {&quot;time&quot;: &quot;2026-05-25&quot;, &quot;open&quot;: 4916.0, &quot;high&quot;: 4990.0, &quot;low&quot;: 4902.0, &quot;close&quot;: 4976.0}, {&quot;time&quot;: &quot;2026-05-26&quot;, &quot;open&quot;: 4970.0, &quot;high&quot;: 4988.0, &quot;low&quot;: 4954.0, &quot;close&quot;: 4982.0}, {&quot;time&quot;: &quot;2026-05-27&quot;, &quot;open&quot;: 4988.0, &quot;high&quot;: 4994.0, &quot;low&quot;: 4954.0, &quot;close&quot;: 4968.0}, {&quot;time&quot;: &quot;2026-05-28&quot;, &quot;open&quot;: 4968.0, &quot;high&quot;: 4982.0, &quot;low&quot;: 4938.0, &quot;close&quot;: 4964.0}, {&quot;time&quot;: &quot;2026-05-29&quot;, &quot;open&quot;: 4960.0, &quot;high&quot;: 4964.0, &quot;low&quot;: 4918.0, &quot;close&quot;: 4922.0}, {&quot;time&quot;: &quot;2026-06-01&quot;, &quot;open&quot;: 4922.0, &quot;high&quot;: 4924.0, &quot;low&quot;: 4870.0, &quot;close&quot;: 4886.0}, {&quot;time&quot;: &quot;2026-06-02&quot;, &quot;open&quot;: 4872.0, &quot;high&quot;: 4878.0, &quot;low&quot;: 4842.0, &quot;close&quot;: 4860.0}, {&quot;time&quot;: &quot;2026-06-03&quot;, &quot;open&quot;: 4860.0, &quot;high&quot;: 4892.0, &quot;low&quot;: 4848.0, &quot;close&quot;: 4860.0}, {&quot;time&quot;: &quot;2026-06-04&quot;, &quot;open&quot;: 4868.0, &quot;high&quot;: 4878.0, &quot;low&quot;: 4810.0, &quot;close&quot;: 4812.0}, {&quot;time&quot;: &quot;2026-06-05&quot;, &quot;open&quot;: 4804.0, &quot;high&quot;: 4862.0, &quot;low&quot;: 4788.0, &quot;close&quot;: 4846.0}, {&quot;time&quot;: &quot;2026-06-08&quot;, &quot;open&quot;: 4860.0, &quot;high&quot;: 4886.0, &quot;low&quot;: 4818.0, &quot;close&quot;: 4844.0}, {&quot;time&quot;: &quot;2026-06-09&quot;, &quot;open&quot;: 4844.0, &quot;high&quot;: 4878.0, &quot;low&quot;: 4820.0, &quot;close&quot;: 4878.0}, {&quot;time&quot;: &quot;2026-06-10&quot;, &quot;open&quot;: 4878.0, &quot;high&quot;: 4898.0, &quot;low&quot;: 4856.0, &quot;close&quot;: 4868.0}]"
+                 data-ma20="[{&quot;time&quot;: &quot;2026-05-27&quot;, &quot;value&quot;: 5049.1}, {&quot;time&quot;: &quot;2026-05-28&quot;, &quot;value&quot;: 5043.2}, {&quot;time&quot;: &quot;2026-05-29&quot;, &quot;value&quot;: 5037.3}, {&quot;time&quot;: &quot;2026-06-01&quot;, &quot;value&quot;: 5028.5}, {&quot;time&quot;: &quot;2026-06-02&quot;, &quot;value&quot;: 5017.9}, {&quot;time&quot;: &quot;2026-06-03&quot;, &quot;value&quot;: 5005.7}, {&quot;time&quot;: &quot;2026-06-04&quot;, &quot;value&quot;: 4993.1}, {&quot;time&quot;: &quot;2026-06-05&quot;, &quot;value&quot;: 4982.1}, {&quot;time&quot;: &quot;2026-06-08&quot;, &quot;value&quot;: 4967.6}, {&quot;time&quot;: &quot;2026-06-09&quot;, &quot;value&quot;: 4954.6}, {&quot;time&quot;: &quot;2026-06-10&quot;, &quot;value&quot;: 4939.7}]"></div>
+          </div>
+          <div class="gauge-row">
+            <div class="g"><div class="k">20DH / 20DL</div><div class="v">5186 / 4788</div></div>
+            <div class="g"><div class="k">BUP / BLO</div><div class="v">5106 / 4772</div></div>
+            <div class="g"><div class="k">RNG POS</div><div class="v">20%</div></div>
+          </div>
+          <div class="top3-line"><span class="k">TOP3</span>L1 国泰君安 34,059 (+280) · S1 中信期货 44,500 (-1,103)</div>
+          <div class="ticket-mini">
+            <span class="k">ENTRY</span><span class="v"><b>4,862–4,910</b><span class="note"></span></span>
+            <span class="k">STOP</span><span class="v"><b>5002</b><span class="note"></span></span>
+            <span class="k">TP1 · TP2</span><span class="v"><b>4652</b> <span class="note"></span> &nbsp;|&nbsp; <b>4418</b> <span class="note"></span></span>
+            <span class="k">HOLD</span><span class="v">TP1 ~7 日 (17%) · TP2 ~7 日 (17%) · 经验区间 <b>~7 日</b> · 样本 132 根</span>
+            <span class="k">R:R</span><span class="v"><span class="rr-pair"><span class="lab">TP1</span><b>1:2.0</b></span> <span class="rr-pair"><span class="lab">TP2</span><b>1:4.0</b></span></span>
+            <span class="k">RISK · LOT</span><span class="v"><b>≈ 1160</b> 元 / 手</span>
+            <span class="k">MARGIN · LOT</span><span class="v"><b>≈ 7302</b> 元</span>
+            <span class="k">EXIT</span><span class="v"></span>
+            <span class="k">SPEC</span><span class="v"><b>乘数 10</b> · 每跳 2 = <b>20</b> 元 · 涨跌停板 <b>4%</b></span>
           </div>
           
         </div>
@@ -1131,7 +1233,7 @@
           <span class="ct">cf2609</span>
         </div>
       </td>
-      <td data-d="snap strat" style="line-height:1.2"><b>15675</b><span class="live-overlay">盘中 10:02 <b>15705.0</b> <span class="num-up">+30</span> <span class="num-up">+0.19%</span></span></td>
+      <td data-d="snap strat" style="line-height:1.2"><b>15675</b><span class="live-overlay">盘中 11:54 <b>15655.0</b> <span class="num-dn">-20</span> <span class="num-dn">-0.13%</span></span></td>
       <td data-d="snap tech"><span class="spark-mini"><svg viewBox="0 0 100 30" preserveAspectRatio="none"><polyline points="0.00,8.51 3.45,8.51 6.90,9.52 10.34,4.62 13.79,0.00 17.24,2.16 20.69,11.68 24.14,10.96 27.59,9.81 31.03,6.35 34.48,8.08 37.93,18.17 41.38,18.03 44.83,16.01 48.28,17.16 51.72,21.06 55.17,23.65 58.62,22.50 62.07,17.60 65.52,19.33 68.97,16.30 72.41,17.74 75.86,10.96 79.31,10.38 82.76,10.38 86.21,16.01 89.66,23.08 93.10,25.53 96.55,27.40 100.00,30.00"/></svg></span></td>
       <td data-d="snap tech">35.6</td>
       <td data-d="snap tech">222</td>
@@ -1149,14 +1251,14 @@
       <td data-d="tech">16590</td><td data-d="tech">15590</td>
       <td data-d="tech">8%</td>
       <td data-d="pos">376k</td>
-      <td data-d="pos" class="num-dn"><b>0</b></td>
-      <td data-d="pos">—</td><td data-d="pos">—</td>
-      <td data-d="pos" style="text-align:left;font-size:10.5px;color:var(--text-dim)">—</td>
-      <td data-d="term">cf2609</td><td data-d="term"><b>15675</b></td>
-      <td data-d="term">—</td><td data-d="term">—</td>
-      <td data-d="term" class="">—</td>
+      <td data-d="pos" class="num-dn"><b>-49651</b></td>
+      <td data-d="pos">-3030</td><td data-d="pos">-7894</td>
+      <td data-d="pos" style="text-align:left;font-size:10.5px;color:var(--text-dim)"><span class='num-up'>东证期货（代客） 53,108</span> / <span class='num-dn'>中信期货（代客） 72,290</span></td>
+      <td data-d="term">cf2609</td><td data-d="term"><b>15695</b></td>
+      <td data-d="term">cf2611</td><td data-d="term">15910</td>
+      <td data-d="term" class="num-dn">-215</td>
       <td data-d="term"></td>
-      <td data-d="term" style="text-align:left;color:var(--text-dim);font-size:10.5px">—</td>
+      <td data-d="term" style="text-align:left;color:var(--text-dim);font-size:10.5px">contango</td>
       <td data-d="strat">—</td>
       <td data-d="strat" class="num-dn">—</td>
       <td data-d="strat">—</td>
@@ -1168,17 +1270,17 @@
         <div class="detail-section">
           <h5><span class="hk">D</span>六维分析 <span class="meta">六维 · 四问 · ticket</span></h5>
           <div class="six-dim">
-            <div class="dim"><span class="lbl">基本面 <span class="dim-agg">+0</span></span><span class="dim-sub">S+0 M+0 L+0 · cov 100%</span><span class="dim-rationale">spot cost_pct 0.64 / mid cost_pct 0.67 / long cost_pct 0.69</span><span class="lead">结算价低于 现金成本-高/完全成本-高</span><span class="det">成本 完全成本-中 差额 +195；现货 基差 +985；cotton_china_production 720.0万吨</span></div>
-            <div class="dim"><span class="lbl">宏观</span><span class="lead">eastmoney_search:棉花: 农产品 | 鸡蛋资金参与度回落 多空博弈加剧</span><span class="det">pmi_manufacturing 50.00index；ppi_yoy 3.90percent；fx_boc_mid_usd 681.50100cny_per_unit；CFTC净持仓 +49,899 分位 91%(n=156)；新闻 2 条</span></div>
-            <div class="dim"><span class="lbl">合约结构</span><span class="lead">月差结构暂缺</span><span class="det">cf2609 以主力合约单腿信号为主。</span></div>
-            <div class="dim"><span class="lbl">成交持仓</span><span class="dim-sub">S— M— L— · cov 0% [degraded]</span><span class="dim-rationale">position_rank 数据缺</span><span class="lead">Top20 多空均衡 —</span><span class="det">多变 —；空变 —；量价 价跌/减仓；动量 trend_strengthening</span></div>
+            <div class="dim"><span class="lbl">基本面 <span class="dim-agg">+0</span></span><span class="dim-sub">S+0 M+0 L+0 · cov 100%</span><span class="dim-rationale">spot cost_pct 0.64 / mid cost_pct 0.67 / long cost_pct 0.69</span><span class="lead">结算价低于 现金成本-高/完全成本-高</span><span class="det">成本 完全成本-中 差额 +195；现货 基差 +1,710；仓单 11,738(-77)；cotton_china_production 720.0万吨</span></div>
+            <div class="dim"><span class="lbl">宏观</span><span class="lead">eastmoney_7x24: 6月10日，全国标准级棉花（3128B级）加权平均价17373元/吨，周环比下跌451元/吨，月环比下跌572...</span><span class="det">pmi_manufacturing 50.00index；ppi_yoy 3.90percent；fx_boc_mid_usd 681.50100cny_per_unit；CFTC净持仓 +49,899 分位 91%(n=156)；新闻 12 条</span></div>
+            <div class="dim"><span class="lbl">合约结构</span><span class="lead">contango，cf2609-cf2611 -215</span><span class="det">carry super_contango，实际 +821.9bp，理论 620.3bp。</span></div>
+            <div class="dim"><span class="lbl">成交持仓 <span class="dim-agg">-1</span></span><span class="dim-sub">S+1 M-1 L-1 · cov 100%</span><span class="dim-rationale">今 net -50k mid pct 1.00 n=20 long pct 1.00 n=60</span><span class="lead">Top20 净空 49,651</span><span class="det">多变 -3,030；空变 -7,894；量价 价跌/减仓；动量 building</span></div>
             <div class="dim"><span class="lbl">技术面 <span class="dim-agg">+0</span></span><span class="dim-sub">S+0 M+0.04 L— · cov 100%</span><span class="dim-rationale">ret_21d -4.3% vol 3.7% sig -1.00 / ret_63d +2.2% vol 6.6% sig +0.33 / ret_252d +8.8% vol 11.4% sig +0.78</span><span class="lead">弱下行，RSI 35.6，ADX 20.2</span><span class="det">收盘 vs MA5 -194，vs MA20 -403；20日位置 8%，20日收益 -4.6%。</span></div>
             <div class="dim"><span class="lbl">风险管理</span><span class="lead">未触发硬性风控告警</span><span class="det">到期 96 天；主力校验 OK cf2609；涨跌停 4%，保证金 13.0%</span></div>
           </div>
           <div class="ans-grid">
-            <div class="ans"><span class="lbl">主要矛盾</span>eastmoney_search:棉花: 农产品 | 鸡蛋资金参与度回落 多空博弈加剧；conviction 0.1/9 偏多，仓位信念 weak。</div>
+            <div class="ans"><span class="lbl">主要矛盾</span>eastmoney_7x24: 6月10日，全国标准级棉花（3128B级）加权平均价17373元/吨，周环比下跌451元/吨，月环比下跌572...；conviction 0.1/9 偏多，仓位信念 weak。</div>
             <div class="ans"><span class="lbl">是否已反映</span>弱下行，距MA20 -2.5%，20日位置 8%；当前策略状态 WATCH，无入场计划。</div>
-            <div class="ans"><span class="lbl">结构/资金/流动性</span>月差结构暂缺；Top20 多空均衡 —，价跌/减仓；成交量 376,034，持仓 606,286。</div>
+            <div class="ans"><span class="lbl">结构/资金/流动性</span>contango，cf2609-cf2611 -215；Top20 净空 49,651，价跌/减仓；成交量 376,034，持仓 606,286。</div>
             <div class="ans"><span class="lbl">错误最大亏损</span>无入场计划，最大亏损以不交易的机会成本为主；若强行交易，需先定义止损和R:R。</div>
           </div>
         </div>
@@ -1199,7 +1301,7 @@
             <div class="g"><div class="k">BUP / BLO</div><div class="v">16473 / 15682</div></div>
             <div class="g"><div class="k">RNG POS</div><div class="v">8%</div></div>
           </div>
-          <div class="top3-line"><span class="k">TOP3</span>—</div>
+          <div class="top3-line"><span class="k">TOP3</span>L1 东证期货（代客） 53,108 (+2,361) · S1 中信期货（代客） 72,290 (+99)</div>
           <div class="ticket-mini">
             <span class="k">ENTRY</span><span class="v"><b>—</b><span class="note"></span></span>
             <span class="k">STOP</span><span class="v"><b>—</b><span class="note"></span></span>
@@ -1224,7 +1326,7 @@
           <span class="ct">m2609</span>
         </div>
       </td>
-      <td data-d="snap strat" style="line-height:1.2"><b>2918</b><span class="live-overlay">盘中 10:02 <b>2922.0</b> <span class="num-up">+4</span> <span class="num-up">+0.14%</span></span></td>
+      <td data-d="snap strat" style="line-height:1.2"><b>2918</b><span class="live-overlay">盘中 11:54 <b>2938.0</b> <span class="num-up">+20</span> <span class="num-up">+0.69%</span></span></td>
       <td data-d="snap tech"><span class="spark-mini"><svg viewBox="0 0 100 30" preserveAspectRatio="none"><polyline points="0.00,10.78 3.45,8.24 6.90,5.49 10.34,5.29 13.79,8.04 17.24,11.76 20.69,8.82 24.14,1.76 27.59,2.94 31.03,0.00 34.48,3.92 37.93,13.53 41.38,12.35 44.83,1.96 48.28,4.51 51.72,10.78 55.17,11.37 58.62,14.71 62.07,15.10 65.52,15.10 68.97,10.59 72.41,11.18 75.86,10.78 79.31,14.71 82.76,14.12 86.21,20.59 89.66,25.49 93.10,28.04 96.55,30.00 100.00,25.49"/></svg></span></td>
       <td data-d="snap tech">37.5</td>
       <td data-d="snap tech">32</td>
@@ -1242,9 +1344,9 @@
       <td data-d="tech">3072</td><td data-d="tech">2887</td>
       <td data-d="tech">17%</td>
       <td data-d="pos">829k</td>
-      <td data-d="pos" class="num-dn"><b>0</b></td>
-      <td data-d="pos">—</td><td data-d="pos">—</td>
-      <td data-d="pos" style="text-align:left;font-size:10.5px;color:var(--text-dim)">—</td>
+      <td data-d="pos" class="num-dn"><b>-293967</b></td>
+      <td data-d="pos">25431</td><td data-d="pos">-5159</td>
+      <td data-d="pos" style="text-align:left;font-size:10.5px;color:var(--text-dim)"><span class='num-up'>国泰君安(代客) 268,744</span> / <span class='num-dn'>中粮期货(代客) 398,800</span></td>
       <td data-d="term">m2609</td><td data-d="term"><b>2918</b></td>
       <td data-d="term">—</td><td data-d="term">—</td>
       <td data-d="term" class="">—</td>
@@ -1261,17 +1363,17 @@
         <div class="detail-section">
           <h5><span class="hk">D</span>六维分析 <span class="meta">六维 · 四问 · ticket</span></h5>
           <div class="six-dim">
-            <div class="dim"><span class="lbl">基本面 <span class="dim-agg">+0</span></span><span class="dim-sub">S+0 M+0 L+0 · cov 100%</span><span class="dim-rationale">spot cost_pct 0.27 / mid cost_pct 0.27 / long cost_pct 0.33</span><span class="lead">结算价低于 现金成本-中/现金成本-高</span><span class="det">成本 完全成本-低 差额 +102；现货 基差 -59；soymeal_spot_price 2,959.0元/吨</span></div>
-            <div class="dim"><span class="lbl">宏观</span><span class="lead">eastmoney_news: 午盘播报 6月10日 周三</span><span class="det">pmi_manufacturing 50.00index；ppi_yoy 3.90percent；fx_boc_mid_usd 681.50100cny_per_unit；CFTC净持仓 +127,232 分位 97%(n=156)；新闻 3 条</span></div>
+            <div class="dim"><span class="lbl">基本面 <span class="dim-agg">+0</span></span><span class="dim-sub">S+0 M+0 L+0 · cov 100%</span><span class="dim-rationale">spot cost_pct 0.27 / mid cost_pct 0.27 / long cost_pct 0.33</span><span class="lead">结算价低于 现金成本-中/现金成本-高</span><span class="det">成本 完全成本-低 差额 +102；现货 基差 -64；仓单 40,204(+0)；soymeal_spot_price 2,959.0元/吨</span></div>
+            <div class="dim"><span class="lbl">宏观</span><span class="lead">eastmoney_search:豆粕: 这家企业每头生猪实现利润超百元</span><span class="det">pmi_manufacturing 50.00index；ppi_yoy 3.90percent；fx_boc_mid_usd 681.50100cny_per_unit；CFTC净持仓 +127,232 分位 97%(n=156)；新闻 12 条</span></div>
             <div class="dim"><span class="lbl">合约结构</span><span class="lead">月差结构暂缺</span><span class="det">m2609 以主力合约单腿信号为主。</span></div>
-            <div class="dim"><span class="lbl">成交持仓</span><span class="dim-sub">S— M— L— · cov 0% [degraded]</span><span class="dim-rationale">position_rank 数据缺</span><span class="lead">Top20 多空均衡 —</span><span class="det">多变 —；空变 —；量价 价涨/增仓；动量 trend_strengthening</span></div>
+            <div class="dim"><span class="lbl">成交持仓 <span class="dim-agg">-1</span></span><span class="dim-sub">S+1 M-1 L-1 · cov 100%</span><span class="dim-rationale">今 net -294k mid pct 1.00 n=20 long pct 0.98 n=44</span><span class="lead">Top20 净空 293,967</span><span class="det">多变 +25,431；空变 -5,159；量价 价涨/增仓；动量 trend_strengthening</span></div>
             <div class="dim"><span class="lbl">技术面 <span class="dim-agg">+0</span></span><span class="dim-sub">S+1 M-0.46 L— · cov 100%</span><span class="dim-rationale">ret_21d -3.8% vol 3.3% sig -1.00 / ret_63d -5.4% vol 7.0% sig -0.78 / ret_252d +4.3% vol 11.0% sig +0.39</span><span class="lead">震荡，RSI 37.5，ADX 16.3</span><span class="det">收盘 vs MA5 +2，vs MA20 -55；20日位置 17%，20日收益 -3.6%。</span></div>
             <div class="dim"><span class="lbl">风险管理</span><span class="lead">未触发硬性风控告警</span><span class="det">到期 96 天；主力校验 OK m2609；涨跌停 4%，保证金 13.0%</span></div>
           </div>
           <div class="ans-grid">
-            <div class="ans"><span class="lbl">主要矛盾</span>eastmoney_news: 午盘播报 6月10日 周三；conviction -0.2/9 偏空，仓位信念 weak。</div>
+            <div class="ans"><span class="lbl">主要矛盾</span>eastmoney_search:豆粕: 这家企业每头生猪实现利润超百元；conviction -0.2/9 偏空，仓位信念 weak。</div>
             <div class="ans"><span class="lbl">是否已反映</span>震荡，距MA20 -1.9%，20日位置 17%；当前策略状态 WATCH，无入场计划。</div>
-            <div class="ans"><span class="lbl">结构/资金/流动性</span>月差结构暂缺；Top20 多空均衡 —，价涨/增仓；成交量 829,841，持仓 2,399,643。</div>
+            <div class="ans"><span class="lbl">结构/资金/流动性</span>月差结构暂缺；Top20 净空 293,967，价涨/增仓；成交量 829,841，持仓 2,399,643。</div>
             <div class="ans"><span class="lbl">错误最大亏损</span>无入场计划，最大亏损以不交易的机会成本为主；若强行交易，需先定义止损和R:R。</div>
           </div>
         </div>
@@ -1292,7 +1394,7 @@
             <div class="g"><div class="k">BUP / BLO</div><div class="v">3050 / 2896</div></div>
             <div class="g"><div class="k">RNG POS</div><div class="v">17%</div></div>
           </div>
-          <div class="top3-line"><span class="k">TOP3</span>—</div>
+          <div class="top3-line"><span class="k">TOP3</span>L1 国泰君安(代客) 268,744 (-2,157) · S1 中粮期货(代客) 398,800 (-10,434)</div>
           <div class="ticket-mini">
             <span class="k">ENTRY</span><span class="v"><b>—</b><span class="note"></span></span>
             <span class="k">STOP</span><span class="v"><b>—</b><span class="note"></span></span>
@@ -1309,62 +1411,62 @@
       </div>
     </td></tr>
     
-    <tr class="row dir-watch" data-code="ma" data-dir="watch" data-status="watch" data-crit="0" data-near="0" id="v-ma" tabindex="0">
+    <tr class="row dir-watch" data-code="sr" data-dir="watch" data-status="watch" data-crit="0" data-near="0" id="v-sr" tabindex="0">
       <td data-d="snap tech pos term strat risk">
         <div class="sym-cell">
-          <span class="sym">MA</span>
-          <span class="nm">甲醇</span>
-          <span class="ct">ma2609</span>
+          <span class="sym">SR</span>
+          <span class="nm">白糖</span>
+          <span class="ct">sr2609</span>
         </div>
       </td>
-      <td data-d="snap strat" style="line-height:1.2"><b>2972</b><span class="live-overlay">盘中 10:02 <b>3055.0</b> <span class="num-up">+83</span> <span class="num-up">+2.79%</span></span></td>
-      <td data-d="snap tech"><span class="spark-mini"><svg viewBox="0 0 100 30" preserveAspectRatio="none"><polyline points="0.00,12.89 3.45,3.40 6.90,4.92 10.34,4.69 13.79,0.47 17.24,20.98 20.69,22.73 24.14,19.57 27.59,15.70 31.03,16.76 34.48,22.15 37.93,16.64 41.38,8.20 44.83,10.08 48.28,9.49 51.72,10.08 55.17,14.30 58.62,24.02 62.07,24.84 65.52,28.71 68.97,26.25 72.41,30.00 75.86,21.68 79.31,18.63 82.76,14.41 86.21,20.16 89.66,16.76 93.10,0.00 96.55,10.08 100.00,9.02"/></svg></span></td>
-      <td data-d="snap tech">55.1</td>
-      <td data-d="snap tech">92</td>
-      <td data-d="snap pos">788k <span class='num-up'>+17k</span></td>
+      <td data-d="snap strat" style="line-height:1.2"><b>5314</b><span class="live-overlay">盘中 11:54 <b>5282.0</b> <span class="num-dn">-32</span> <span class="num-dn">-0.60%</span></span></td>
+      <td data-d="snap tech"><span class="spark-mini"><svg viewBox="0 0 100 30" preserveAspectRatio="none"><polyline points="0.00,12.53 3.45,14.69 6.90,15.15 10.34,15.15 13.79,12.22 17.24,8.81 20.69,9.59 24.14,4.18 27.59,0.00 31.03,3.87 34.48,1.08 37.93,10.36 41.38,11.60 44.83,11.44 48.28,17.32 51.72,21.80 55.17,21.03 58.62,24.43 62.07,17.78 65.52,18.87 68.97,19.48 72.41,14.38 75.86,8.97 79.31,10.98 82.76,10.21 86.21,20.10 89.66,25.21 93.10,26.91 96.55,30.00 100.00,29.38"/></svg></span></td>
+      <td data-d="snap tech">37.2</td>
+      <td data-d="snap tech">45</td>
+      <td data-d="snap pos">718k <span class='num-up'>+12k</span></td>
       <td data-d="snap strat" class="strat-cell">
         <span class="dir-tag tag-watch">W</span><span class="strat-text">观望</span>
-        <span class="strat-sub">conviction 0.8/9 weak · ADX 12.4 无趋势</span>
+        <span class="strat-sub">conviction 1.9/9 weak · ADX 17.2 无趋势</span>
         
       </td>
       <td data-d="snap strat" class="rr-cell">—</td>
       <td data-d="snap strat" class="risk-cell">—</td>
       <td data-d="snap strat risk"><span class="st st-watch"><span class="bk">WATCH</span></span></td>
-      <td data-d="tech">2953</td><td data-d="tech">2908</td>
-      <td data-d="tech">3035</td><td data-d="tech">2781</td>
-      <td data-d="tech">3049</td><td data-d="tech">2756</td>
-      <td data-d="tech">74%</td>
-      <td data-d="pos">872k</td>
-      <td data-d="pos" class="num-dn"><b>0</b></td>
-      <td data-d="pos">—</td><td data-d="pos">—</td>
-      <td data-d="pos" style="text-align:left;font-size:10.5px;color:var(--text-dim)">—</td>
-      <td data-d="term">ma2609</td><td data-d="term"><b>2972</b></td>
-      <td data-d="term">—</td><td data-d="term">—</td>
-      <td data-d="term" class="">—</td>
+      <td data-d="tech">5333</td><td data-d="tech">5389</td>
+      <td data-d="tech">5486</td><td data-d="tech">5293</td>
+      <td data-d="tech">5538</td><td data-d="tech">5301</td>
+      <td data-d="tech">5%</td>
+      <td data-d="pos">258k</td>
+      <td data-d="pos" class="num-dn"><b>-160152</b></td>
+      <td data-d="pos">5301</td><td data-d="pos">13459</td>
+      <td data-d="pos" style="text-align:left;font-size:10.5px;color:var(--text-dim)"><span class='num-up'>中粮期货（代客） 52,536</span> / <span class='num-dn'>高盛期货（代客） 115,961</span></td>
+      <td data-d="term">sr2609</td><td data-d="term"><b>5312</b></td>
+      <td data-d="term">sr2611</td><td data-d="term">5356</td>
+      <td data-d="term" class="num-dn">-44</td>
       <td data-d="term"></td>
-      <td data-d="term" style="text-align:left;color:var(--text-dim);font-size:10.5px">—</td>
+      <td data-d="term" style="text-align:left;color:var(--text-dim);font-size:10.5px">contango</td>
       <td data-d="strat">—</td>
       <td data-d="strat" class="num-dn">—</td>
       <td data-d="strat">—</td>
       <td data-d="risk" style="text-align:left"></td>
-      <td data-d="risk">11%</td><td data-d="risk">96d</td><td data-d="risk">6538</td>
+      <td data-d="risk">5%</td><td data-d="risk">96d</td><td data-d="risk">6376</td>
     </tr>
-    <tr class="row-detail" data-for="ma"><td colspan="40">
+    <tr class="row-detail" data-for="sr"><td colspan="40">
       <div class="detail-wrap">
         <div class="detail-section">
           <h5><span class="hk">D</span>六维分析 <span class="meta">六维 · 四问 · ticket</span></h5>
           <div class="six-dim">
-            <div class="dim"><span class="lbl">基本面 <span class="dim-agg">-2</span></span><span class="dim-sub">S-1 M-1 L-1 · cov 100%</span><span class="dim-rationale">spot cost_pct 1.00 / mid cost_pct 1.00 / long cost_pct 1.00</span><span class="lead">结算价未击穿成本带</span><span class="det">成本 完全成本-高 差额 +156</span></div>
-            <div class="dim"><span class="lbl">宏观</span><span class="lead">eastmoney_7x24: 国内商品期货收盘，主力合约跌多涨少。跌幅方面，沪银跌近9%，沪锡跌超6%，钯跌近6%，铂跌超5%，烧碱跌超4%...</span><span class="det">pmi_manufacturing 50.00index；ppi_yoy 3.90percent；fx_boc_mid_usd 681.50100cny_per_unit；新闻 7 条</span></div>
-            <div class="dim"><span class="lbl">合约结构</span><span class="lead">月差结构暂缺</span><span class="det">ma2609 以主力合约单腿信号为主。</span></div>
-            <div class="dim"><span class="lbl">成交持仓</span><span class="dim-sub">S— M— L— · cov 0% [degraded]</span><span class="dim-rationale">position_rank 数据缺</span><span class="lead">Top20 多空均衡 —</span><span class="det">多变 —；空变 —；量价 价涨/增仓；动量 trend_strengthening</span></div>
-            <div class="dim"><span class="lbl">技术面 <span class="dim-agg">+1</span></span><span class="dim-sub">S+1 M+0.55 L— · cov 100%</span><span class="dim-rationale">ret_21d +2.0% vol 8.2% sig +0.24 / ret_63d +12.7% vol 23.9% sig +0.53 / ret_252d +26.9% vol 30.1% sig +0.89</span><span class="lead">震荡，RSI 55.1，ADX 12.4</span><span class="det">收盘 vs MA5 +19，vs MA20 +64；20日位置 74%，20日收益 +3.9%。</span></div>
-            <div class="dim"><span class="lbl">风险管理</span><span class="lead">未触发硬性风控告警</span><span class="det">到期 96 天；主力校验 OK ma2609；涨跌停 11%，保证金 22.0%</span></div>
+            <div class="dim"><span class="lbl">基本面 <span class="dim-agg">+0</span></span><span class="dim-sub">S+0 M+0 L+0 · cov 100%</span><span class="dim-rationale">spot cost_pct 0.24 / mid cost_pct 0.24 / long cost_pct 0.27</span><span class="lead">结算价低于 现金成本-中/现金成本-高</span><span class="det">成本 完全成本-低 差额 +112；现货 基差 +21；仓单 22,500(-57)</span></div>
+            <div class="dim"><span class="lbl">宏观</span><span class="lead">eastmoney_search:白糖: 农产品 | 库存高位 糖价承压 短期震荡偏弱</span><span class="det">pmi_manufacturing 50.00index；ppi_yoy 3.90percent；fx_boc_mid_usd 681.50100cny_per_unit；CFTC净持仓 -118,732 分位 21%(n=156)；新闻 12 条</span></div>
+            <div class="dim"><span class="lbl">合约结构</span><span class="lead">contango，sr2609-sr2611 -44</span><span class="det">carry flat_to_mild_back，实际 +497.0bp，理论 1,209.7bp。</span></div>
+            <div class="dim"><span class="lbl">成交持仓 <span class="dim-agg">+1</span></span><span class="dim-sub">S-1 M+1 L+1 · cov 100%</span><span class="dim-rationale">今 net -160k mid pct 0.00 n=20 long pct 0.00 n=60</span><span class="lead">Top20 净空 160,152</span><span class="det">多变 +5,301；空变 +13,459；量价 价涨/增仓；动量 no_consensus</span></div>
+            <div class="dim"><span class="lbl">技术面 <span class="dim-agg">+0</span></span><span class="dim-sub">S+1 M-0.56 L— · cov 100%</span><span class="dim-rationale">ret_21d -3.5% vol 2.3% sig -1.00 / ret_63d -2.5% vol 4.5% sig -0.55 / ret_252d -1.3% vol 9.5% sig -0.14</span><span class="lead">震荡，RSI 37.2，ADX 17.2</span><span class="det">收盘 vs MA5 -20，vs MA20 -76；20日位置 5%，20日收益 -3.3%。</span></div>
+            <div class="dim"><span class="lbl">风险管理</span><span class="lead">未触发硬性风控告警</span><span class="det">到期 96 天；主力校验 OK sr2609；涨跌停 5%，保证金 12.0%</span></div>
           </div>
           <div class="ans-grid">
-            <div class="ans"><span class="lbl">主要矛盾</span>eastmoney_7x24: 国内商品期货收盘，主力合约跌多涨少。跌幅方面，沪银跌近9%，沪锡跌超6%，钯跌近6%，铂跌超5%，烧碱跌超4%...；conviction -0.8/9 偏空，仓位信念 weak。</div>
-            <div class="ans"><span class="lbl">是否已反映</span>震荡，距MA20 +2.2%，20日位置 74%；当前策略状态 WATCH，无入场计划。</div>
-            <div class="ans"><span class="lbl">结构/资金/流动性</span>月差结构暂缺；Top20 多空均衡 —，价涨/增仓；成交量 872,107，持仓 788,063。</div>
+            <div class="ans"><span class="lbl">主要矛盾</span>eastmoney_search:白糖: 农产品 | 库存高位 糖价承压 短期震荡偏弱；conviction 1.9/9 偏多，仓位信念 weak。</div>
+            <div class="ans"><span class="lbl">是否已反映</span>震荡，距MA20 -1.4%，20日位置 5%；当前策略状态 WATCH，无入场计划。</div>
+            <div class="ans"><span class="lbl">结构/资金/流动性</span>contango，sr2609-sr2611 -44；Top20 净空 160,152，价涨/增仓；成交量 258,999，持仓 718,958。</div>
             <div class="ans"><span class="lbl">错误最大亏损</span>无入场计划，最大亏损以不交易的机会成本为主；若强行交易，需先定义止损和R:R。</div>
           </div>
         </div>
@@ -1372,20 +1474,20 @@
           <h5><span class="hk">T</span>30d 走势 + Trade Ticket <span class="meta">candle · MA20 amber dashed</span></h5>
           <div class="chart-wrap">
             <div class="head">
-              <span>MA ma2609 · 30D OHLC + MA20</span>
+              <span>SR sr2609 · 30D OHLC + MA20</span>
               <span class="legend"><span><span class="sw" style="background:var(--buy)"></span>K</span><span><span class="sw" style="background:var(--amber);height:2px"></span>MA20</span></span>
-              <span class="last">2972</span>
+              <span class="last">5314</span>
             </div>
-            <div id="chart-ma" class="ct"
-                 data-ohlc="[{&quot;time&quot;: &quot;2026-04-27&quot;, &quot;open&quot;: 2891.0, &quot;high&quot;: 2949.0, &quot;low&quot;: 2883.0, &quot;close&quot;: 2939.0}, {&quot;time&quot;: &quot;2026-04-28&quot;, &quot;open&quot;: 2938.0, &quot;high&quot;: 3036.0, &quot;low&quot;: 2920.0, &quot;close&quot;: 3020.0}, {&quot;time&quot;: &quot;2026-04-29&quot;, &quot;open&quot;: 3028.0, &quot;high&quot;: 3029.0, &quot;low&quot;: 2982.0, &quot;close&quot;: 3007.0}, {&quot;time&quot;: &quot;2026-04-30&quot;, &quot;open&quot;: 3037.0, &quot;high&quot;: 3049.0, &quot;low&quot;: 2992.0, &quot;close&quot;: 3009.0}, {&quot;time&quot;: &quot;2026-05-06&quot;, &quot;open&quot;: 2986.0, &quot;high&quot;: 3063.0, &quot;low&quot;: 2986.0, &quot;close&quot;: 3045.0}, {&quot;time&quot;: &quot;2026-05-07&quot;, &quot;open&quot;: 2995.0, &quot;high&quot;: 2995.0, &quot;low&quot;: 2864.0, &quot;close&quot;: 2870.0}, {&quot;time&quot;: &quot;2026-05-08&quot;, &quot;open&quot;: 2830.0, &quot;high&quot;: 2920.0, &quot;low&quot;: 2827.0, &quot;close&quot;: 2855.0}, {&quot;time&quot;: &quot;2026-05-11&quot;, &quot;open&quot;: 2854.0, &quot;high&quot;: 2931.0, &quot;low&quot;: 2842.0, &quot;close&quot;: 2882.0}, {&quot;time&quot;: &quot;2026-05-12&quot;, &quot;open&quot;: 2875.0, &quot;high&quot;: 2918.0, &quot;low&quot;: 2867.0, &quot;close&quot;: 2915.0}, {&quot;time&quot;: &quot;2026-05-13&quot;, &quot;open&quot;: 2916.0, &quot;high&quot;: 2921.0, &quot;low&quot;: 2874.0, &quot;close&quot;: 2906.0}, {&quot;time&quot;: &quot;2026-05-14&quot;, &quot;open&quot;: 2918.0, &quot;high&quot;: 2927.0, &quot;low&quot;: 2849.0, &quot;close&quot;: 2860.0}, {&quot;time&quot;: &quot;2026-05-15&quot;, &quot;open&quot;: 2850.0, &quot;high&quot;: 2935.0, &quot;low&quot;: 2850.0, &quot;close&quot;: 2907.0}, {&quot;time&quot;: &quot;2026-05-18&quot;, &quot;open&quot;: 2920.0, &quot;high&quot;: 2996.0, &quot;low&quot;: 2894.0, &quot;close&quot;: 2979.0}, {&quot;time&quot;: &quot;2026-05-19&quot;, &quot;open&quot;: 2949.0, &quot;high&quot;: 2974.0, &quot;low&quot;: 2918.0, &quot;close&quot;: 2963.0}, {&quot;time&quot;: &quot;2026-05-20&quot;, &quot;open&quot;: 2966.0, &quot;high&quot;: 2997.0, &quot;low&quot;: 2960.0, &quot;close&quot;: 2968.0}, {&quot;time&quot;: &quot;2026-05-21&quot;, &quot;open&quot;: 2960.0, &quot;high&quot;: 2978.0, &quot;low&quot;: 2935.0, &quot;close&quot;: 2963.0}, {&quot;time&quot;: &quot;2026-05-22&quot;, &quot;open&quot;: 2975.0, &quot;high&quot;: 2992.0, &quot;low&quot;: 2886.0, &quot;close&quot;: 2927.0}, {&quot;time&quot;: &quot;2026-05-25&quot;, &quot;open&quot;: 2910.0, &quot;high&quot;: 2965.0, &quot;low&quot;: 2814.0, &quot;close&quot;: 2844.0}, {&quot;time&quot;: &quot;2026-05-26&quot;, &quot;open&quot;: 2839.0, &quot;high&quot;: 2867.0, &quot;low&quot;: 2822.0, &quot;close&quot;: 2837.0}, {&quot;time&quot;: &quot;2026-05-27&quot;, &quot;open&quot;: 2845.0, &quot;high&quot;: 2869.0, &quot;low&quot;: 2792.0, &quot;close&quot;: 2804.0}, {&quot;time&quot;: &quot;2026-05-28&quot;, &quot;open&quot;: 2765.0, &quot;high&quot;: 2856.0, &quot;low&quot;: 2756.0, &quot;close&quot;: 2825.0}, {&quot;time&quot;: &quot;2026-05-29&quot;, &quot;open&quot;: 2814.0, &quot;high&quot;: 2830.0, &quot;low&quot;: 2770.0, &quot;close&quot;: 2793.0}, {&quot;time&quot;: &quot;2026-06-01&quot;, &quot;open&quot;: 2792.0, &quot;high&quot;: 2872.0, &quot;low&quot;: 2765.0, &quot;close&quot;: 2864.0}, {&quot;time&quot;: &quot;2026-06-02&quot;, &quot;open&quot;: 2858.0, &quot;high&quot;: 2955.0, &quot;low&quot;: 2858.0, &quot;close&quot;: 2890.0}, {&quot;time&quot;: &quot;2026-06-03&quot;, &quot;open&quot;: 2897.0, &quot;high&quot;: 2933.0, &quot;low&quot;: 2881.0, &quot;close&quot;: 2926.0}, {&quot;time&quot;: &quot;2026-06-04&quot;, &quot;open&quot;: 2938.0, &quot;high&quot;: 2938.0, &quot;low&quot;: 2868.0, &quot;close&quot;: 2877.0}, {&quot;time&quot;: &quot;2026-06-05&quot;, &quot;open&quot;: 2855.0, &quot;high&quot;: 2921.0, &quot;low&quot;: 2855.0, &quot;close&quot;: 2906.0}, {&quot;time&quot;: &quot;2026-06-08&quot;, &quot;open&quot;: 2898.0, &quot;high&quot;: 3049.0, &quot;low&quot;: 2888.0, &quot;close&quot;: 3049.0}, {&quot;time&quot;: &quot;2026-06-09&quot;, &quot;open&quot;: 3002.0, &quot;high&quot;: 3008.0, &quot;low&quot;: 2923.0, &quot;close&quot;: 2963.0}, {&quot;time&quot;: &quot;2026-06-10&quot;, &quot;open&quot;: 2957.0, &quot;high&quot;: 2998.0, &quot;low&quot;: 2917.0, &quot;close&quot;: 2972.0}]"
-                 data-ma20="[{&quot;time&quot;: &quot;2026-05-27&quot;, &quot;value&quot;: 2925.0}, {&quot;time&quot;: &quot;2026-05-28&quot;, &quot;value&quot;: 2919.3}, {&quot;time&quot;: &quot;2026-05-29&quot;, &quot;value&quot;: 2907.9}, {&quot;time&quot;: &quot;2026-06-01&quot;, &quot;value&quot;: 2900.8}, {&quot;time&quot;: &quot;2026-06-02&quot;, &quot;value&quot;: 2894.8}, {&quot;time&quot;: &quot;2026-06-03&quot;, &quot;value&quot;: 2888.9}, {&quot;time&quot;: &quot;2026-06-04&quot;, &quot;value&quot;: 2889.2}, {&quot;time&quot;: &quot;2026-06-05&quot;, &quot;value&quot;: 2891.8}, {&quot;time&quot;: &quot;2026-06-08&quot;, &quot;value&quot;: 2900.2}, {&quot;time&quot;: &quot;2026-06-09&quot;, &quot;value&quot;: 2902.6}, {&quot;time&quot;: &quot;2026-06-10&quot;, &quot;value&quot;: 2905.8}]"></div>
+            <div id="chart-sr" class="ct"
+                 data-ohlc="[{&quot;time&quot;: &quot;2026-04-27&quot;, &quot;open&quot;: 5398.0, &quot;high&quot;: 5437.0, &quot;low&quot;: 5362.0, &quot;close&quot;: 5423.0}, {&quot;time&quot;: &quot;2026-04-28&quot;, &quot;open&quot;: 5420.0, &quot;high&quot;: 5425.0, &quot;low&quot;: 5384.0, &quot;close&quot;: 5409.0}, {&quot;time&quot;: &quot;2026-04-29&quot;, &quot;open&quot;: 5420.0, &quot;high&quot;: 5421.0, &quot;low&quot;: 5385.0, &quot;close&quot;: 5406.0}, {&quot;time&quot;: &quot;2026-04-30&quot;, &quot;open&quot;: 5417.0, &quot;high&quot;: 5432.0, &quot;low&quot;: 5396.0, &quot;close&quot;: 5406.0}, {&quot;time&quot;: &quot;2026-05-06&quot;, &quot;open&quot;: 5441.0, &quot;high&quot;: 5472.0, &quot;low&quot;: 5414.0, &quot;close&quot;: 5425.0}, {&quot;time&quot;: &quot;2026-05-07&quot;, &quot;open&quot;: 5389.0, &quot;high&quot;: 5450.0, &quot;low&quot;: 5373.0, &quot;close&quot;: 5447.0}, {&quot;time&quot;: &quot;2026-05-08&quot;, &quot;open&quot;: 5430.0, &quot;high&quot;: 5483.0, &quot;low&quot;: 5426.0, &quot;close&quot;: 5442.0}, {&quot;time&quot;: &quot;2026-05-11&quot;, &quot;open&quot;: 5446.0, &quot;high&quot;: 5483.0, &quot;low&quot;: 5442.0, &quot;close&quot;: 5477.0}, {&quot;time&quot;: &quot;2026-05-12&quot;, &quot;open&quot;: 5484.0, &quot;high&quot;: 5514.0, &quot;low&quot;: 5465.0, &quot;close&quot;: 5504.0}, {&quot;time&quot;: &quot;2026-05-13&quot;, &quot;open&quot;: 5507.0, &quot;high&quot;: 5519.0, &quot;low&quot;: 5451.0, &quot;close&quot;: 5479.0}, {&quot;time&quot;: &quot;2026-05-14&quot;, &quot;open&quot;: 5490.0, &quot;high&quot;: 5538.0, &quot;low&quot;: 5470.0, &quot;close&quot;: 5497.0}, {&quot;time&quot;: &quot;2026-05-15&quot;, &quot;open&quot;: 5469.0, &quot;high&quot;: 5490.0, &quot;low&quot;: 5427.0, &quot;close&quot;: 5437.0}, {&quot;time&quot;: &quot;2026-05-18&quot;, &quot;open&quot;: 5431.0, &quot;high&quot;: 5453.0, &quot;low&quot;: 5424.0, &quot;close&quot;: 5429.0}, {&quot;time&quot;: &quot;2026-05-19&quot;, &quot;open&quot;: 5419.0, &quot;high&quot;: 5441.0, &quot;low&quot;: 5406.0, &quot;close&quot;: 5430.0}, {&quot;time&quot;: &quot;2026-05-20&quot;, &quot;open&quot;: 5437.0, &quot;high&quot;: 5439.0, &quot;low&quot;: 5381.0, &quot;close&quot;: 5392.0}, {&quot;time&quot;: &quot;2026-05-21&quot;, &quot;open&quot;: 5390.0, &quot;high&quot;: 5404.0, &quot;low&quot;: 5359.0, &quot;close&quot;: 5363.0}, {&quot;time&quot;: &quot;2026-05-22&quot;, &quot;open&quot;: 5370.0, &quot;high&quot;: 5388.0, &quot;low&quot;: 5357.0, &quot;close&quot;: 5368.0}, {&quot;time&quot;: &quot;2026-05-25&quot;, &quot;open&quot;: 5357.0, &quot;high&quot;: 5378.0, &quot;low&quot;: 5339.0, &quot;close&quot;: 5346.0}, {&quot;time&quot;: &quot;2026-05-26&quot;, &quot;open&quot;: 5350.0, &quot;high&quot;: 5394.0, &quot;low&quot;: 5339.0, &quot;close&quot;: 5389.0}, {&quot;time&quot;: &quot;2026-05-27&quot;, &quot;open&quot;: 5387.0, &quot;high&quot;: 5408.0, &quot;low&quot;: 5375.0, &quot;close&quot;: 5382.0}, {&quot;time&quot;: &quot;2026-05-28&quot;, &quot;open&quot;: 5370.0, &quot;high&quot;: 5385.0, &quot;low&quot;: 5351.0, &quot;close&quot;: 5378.0}, {&quot;time&quot;: &quot;2026-05-29&quot;, &quot;open&quot;: 5369.0, &quot;high&quot;: 5420.0, &quot;low&quot;: 5362.0, &quot;close&quot;: 5411.0}, {&quot;time&quot;: &quot;2026-06-01&quot;, &quot;open&quot;: 5419.0, &quot;high&quot;: 5454.0, &quot;low&quot;: 5410.0, &quot;close&quot;: 5446.0}, {&quot;time&quot;: &quot;2026-06-02&quot;, &quot;open&quot;: 5450.0, &quot;high&quot;: 5451.0, &quot;low&quot;: 5416.0, &quot;close&quot;: 5433.0}, {&quot;time&quot;: &quot;2026-06-03&quot;, &quot;open&quot;: 5433.0, &quot;high&quot;: 5455.0, &quot;low&quot;: 5427.0, &quot;close&quot;: 5438.0}, {&quot;time&quot;: &quot;2026-06-04&quot;, &quot;open&quot;: 5439.0, &quot;high&quot;: 5446.0, &quot;low&quot;: 5368.0, &quot;close&quot;: 5374.0}, {&quot;time&quot;: &quot;2026-06-05&quot;, &quot;open&quot;: 5375.0, &quot;high&quot;: 5390.0, &quot;low&quot;: 5316.0, &quot;close&quot;: 5341.0}, {&quot;time&quot;: &quot;2026-06-08&quot;, &quot;open&quot;: 5340.0, &quot;high&quot;: 5341.0, &quot;low&quot;: 5312.0, &quot;close&quot;: 5330.0}, {&quot;time&quot;: &quot;2026-06-09&quot;, &quot;open&quot;: 5330.0, &quot;high&quot;: 5348.0, &quot;low&quot;: 5307.0, &quot;close&quot;: 5310.0}, {&quot;time&quot;: &quot;2026-06-10&quot;, &quot;open&quot;: 5309.0, &quot;high&quot;: 5323.0, &quot;low&quot;: 5301.0, &quot;close&quot;: 5314.0}]"
+                 data-ma20="[{&quot;time&quot;: &quot;2026-05-27&quot;, &quot;value&quot;: 5422.6}, {&quot;time&quot;: &quot;2026-05-28&quot;, &quot;value&quot;: 5420.3}, {&quot;time&quot;: &quot;2026-05-29&quot;, &quot;value&quot;: 5420.4}, {&quot;time&quot;: &quot;2026-06-01&quot;, &quot;value&quot;: 5422.4}, {&quot;time&quot;: &quot;2026-06-02&quot;, &quot;value&quot;: 5423.8}, {&quot;time&quot;: &quot;2026-06-03&quot;, &quot;value&quot;: 5424.4}, {&quot;time&quot;: &quot;2026-06-04&quot;, &quot;value&quot;: 5420.8}, {&quot;time&quot;: &quot;2026-06-05&quot;, &quot;value&quot;: 5415.7}, {&quot;time&quot;: &quot;2026-06-08&quot;, &quot;value&quot;: 5408.4}, {&quot;time&quot;: &quot;2026-06-09&quot;, &quot;value&quot;: 5398.6}, {&quot;time&quot;: &quot;2026-06-10&quot;, &quot;value&quot;: 5390.4}]"></div>
           </div>
           <div class="gauge-row">
-            <div class="g"><div class="k">20DH / 20DL</div><div class="v">3049 / 2756</div></div>
-            <div class="g"><div class="k">BUP / BLO</div><div class="v">3035 / 2781</div></div>
-            <div class="g"><div class="k">RNG POS</div><div class="v">74%</div></div>
+            <div class="g"><div class="k">20DH / 20DL</div><div class="v">5538 / 5301</div></div>
+            <div class="g"><div class="k">BUP / BLO</div><div class="v">5486 / 5293</div></div>
+            <div class="g"><div class="k">RNG POS</div><div class="v">5%</div></div>
           </div>
-          <div class="top3-line"><span class="k">TOP3</span>—</div>
+          <div class="top3-line"><span class="k">TOP3</span>L1 中粮期货（代客） 52,536 (+1,726) · S1 高盛期货（代客） 115,961 (+7,189)</div>
           <div class="ticket-mini">
             <span class="k">ENTRY</span><span class="v"><b>—</b><span class="note"></span></span>
             <span class="k">STOP</span><span class="v"><b>—</b><span class="note"></span></span>
@@ -1393,102 +1495,9 @@
             
             <span class="k">R:R</span><span class="v"><span class="rr-pair"><span class="lab">TP1</span><b>—</b></span> <span class="rr-pair"><span class="lab">TP2</span><b>—</b></span></span>
             <span class="k">RISK · LOT</span><span class="v"><b>≈ —</b> 元 / 手</span>
-            <span class="k">MARGIN · LOT</span><span class="v"><b>≈ 6538</b> 元</span>
+            <span class="k">MARGIN · LOT</span><span class="v"><b>≈ 6376</b> 元</span>
             <span class="k">EXIT</span><span class="v"></span>
-            <span class="k">SPEC</span><span class="v"><b>乘数 10</b> · 每跳 1 = <b>10</b> 元 · 涨跌停板 <b>11%</b></span>
-          </div>
-          
-        </div>
-      </div>
-    </td></tr>
-    
-    <tr class="row dir-watch" data-code="rb" data-dir="watch" data-status="watch" data-crit="0" data-near="0" id="v-rb" tabindex="0">
-      <td data-d="snap tech pos term strat risk">
-        <div class="sym-cell">
-          <span class="sym">RB</span>
-          <span class="nm">螺纹钢</span>
-          <span class="ct">rb2610</span>
-        </div>
-      </td>
-      <td data-d="snap strat" style="line-height:1.2"><b>3180</b><span class="live-overlay">盘中 10:02 <b>3174.0</b> <span class="num-dn">-6</span> <span class="num-dn">-0.19%</span></span></td>
-      <td data-d="snap tech"><span class="spark-mini"><svg viewBox="0 0 100 30" preserveAspectRatio="none"><polyline points="0.00,20.28 3.45,23.24 6.90,19.23 10.34,15.21 13.79,4.65 17.24,2.75 20.69,4.86 24.14,0.00 27.59,6.55 31.03,6.13 34.48,6.55 37.93,11.41 41.38,16.90 44.83,17.32 48.28,20.49 51.72,23.45 55.17,24.93 58.62,14.37 62.07,29.58 65.52,30.00 68.97,29.79 72.41,27.04 75.86,23.03 79.31,22.39 82.76,24.72 86.21,27.25 89.66,25.56 93.10,27.25 96.55,27.46 100.00,22.39"/></svg></span></td>
-      <td data-d="snap tech">50.4</td>
-      <td data-d="snap tech">29</td>
-      <td data-d="snap pos">1.67M <span class='num-dn'>52k</span></td>
-      <td data-d="snap strat" class="strat-cell">
-        <span class="dir-tag tag-watch">W</span><span class="strat-text">观望</span>
-        <span class="strat-sub">conviction 0.3/9 weak</span>
-        
-      </td>
-      <td data-d="snap strat" class="rr-cell">—</td>
-      <td data-d="snap strat" class="risk-cell">—</td>
-      <td data-d="snap strat risk"><span class="st st-watch"><span class="bk">WATCH</span></span></td>
-      <td data-d="tech">3163</td><td data-d="tech">3179</td>
-      <td data-d="tech">3237</td><td data-d="tech">3120</td>
-      <td data-d="tech">3272</td><td data-d="tech">3138</td>
-      <td data-d="tech">31%</td>
-      <td data-d="pos">844k</td>
-      <td data-d="pos" class="num-dn"><b>0</b></td>
-      <td data-d="pos">—</td><td data-d="pos">—</td>
-      <td data-d="pos" style="text-align:left;font-size:10.5px;color:var(--text-dim)">—</td>
-      <td data-d="term">rb2610</td><td data-d="term"><b>3180</b></td>
-      <td data-d="term">—</td><td data-d="term">—</td>
-      <td data-d="term" class="">—</td>
-      <td data-d="term"></td>
-      <td data-d="term" style="text-align:left;color:var(--text-dim);font-size:10.5px">—</td>
-      <td data-d="strat">—</td>
-      <td data-d="strat" class="num-dn">—</td>
-      <td data-d="strat">—</td>
-      <td data-d="risk" style="text-align:left"></td>
-      <td data-d="risk">7%</td><td data-d="risk">127d</td><td data-d="risk">4770</td>
-    </tr>
-    <tr class="row-detail" data-for="rb"><td colspan="40">
-      <div class="detail-wrap">
-        <div class="detail-section">
-          <h5><span class="hk">D</span>六维分析 <span class="meta">六维 · 四问 · ticket</span></h5>
-          <div class="six-dim">
-            <div class="dim"><span class="lbl">基本面 <span class="dim-agg">+0</span></span><span class="dim-sub">S+0 M+0 L+0 · cov 100%</span><span class="dim-rationale">spot cost_pct 0.21 / mid cost_pct 0.20 / long cost_pct 0.21</span><span class="lead">结算价低于 现金成本-中/现金成本-高</span><span class="det">成本 现金成本-中 差额 -34；现货 基差 -69；blast_furnace_capacity_utilization 90.0%；coke_spot_price 1,750.0元/吨</span></div>
-            <div class="dim"><span class="lbl">宏观</span><span class="lead">eastmoney_7x24: 【64家钢厂进口烧结粉总库存1379.67万吨】6月11日Mysteel统计新口径114家钢厂进口烧结粉总库存...</span><span class="det">pmi_manufacturing 50.00index；ppi_yoy 3.90percent；fx_boc_mid_usd 681.50100cny_per_unit；新闻 6 条</span></div>
-            <div class="dim"><span class="lbl">合约结构</span><span class="lead">月差结构暂缺</span><span class="det">rb2610 以主力合约单腿信号为主。</span></div>
-            <div class="dim"><span class="lbl">成交持仓</span><span class="dim-sub">S— M— L— · cov 0% [degraded]</span><span class="dim-rationale">position_rank 数据缺</span><span class="lead">Top20 多空均衡 —</span><span class="det">多变 —；空变 —；量价 价涨/减仓；动量 building</span></div>
-            <div class="dim"><span class="lbl">技术面 <span class="dim-agg">+0</span></span><span class="dim-sub">S+0 M-0.17 L— · cov 100%</span><span class="dim-rationale">ret_21d -2.3% vol 3.2% sig -0.71 / ret_63d +1.0% vol 4.7% sig +0.22 / ret_252d -0.4% vol 12.6% sig -0.03</span><span class="lead">弱上行，RSI 50.4，ADX 21.1</span><span class="det">收盘 vs MA5 +17，vs MA20 +1；20日位置 31%，20日收益 -2.3%。</span></div>
-            <div class="dim"><span class="lbl">风险管理</span><span class="lead">未触发硬性风控告警</span><span class="det">到期 127 天；主力校验 OK rb2610；涨跌停 7%，保证金 15.0%</span></div>
-          </div>
-          <div class="ans-grid">
-            <div class="ans"><span class="lbl">主要矛盾</span>eastmoney_7x24: 【64家钢厂进口烧结粉总库存1379.67万吨】6月11日Mysteel统计新口径114家钢厂进口烧结粉总库存...；conviction -0.3/9 偏空，仓位信念 weak。</div>
-            <div class="ans"><span class="lbl">是否已反映</span>弱上行，距MA20 +0.0%，20日位置 31%；当前策略状态 WATCH，无入场计划。</div>
-            <div class="ans"><span class="lbl">结构/资金/流动性</span>月差结构暂缺；Top20 多空均衡 —，价涨/减仓；成交量 844,602，持仓 1,672,989。</div>
-            <div class="ans"><span class="lbl">错误最大亏损</span>无入场计划，最大亏损以不交易的机会成本为主；若强行交易，需先定义止损和R:R。</div>
-          </div>
-        </div>
-        <div class="detail-section">
-          <h5><span class="hk">T</span>30d 走势 + Trade Ticket <span class="meta">candle · MA20 amber dashed</span></h5>
-          <div class="chart-wrap">
-            <div class="head">
-              <span>RB rb2610 · 30D OHLC + MA20</span>
-              <span class="legend"><span><span class="sw" style="background:var(--buy)"></span>K</span><span><span class="sw" style="background:var(--amber);height:2px"></span>MA20</span></span>
-              <span class="last">3180</span>
-            </div>
-            <div id="chart-rb" class="ct"
-                 data-ohlc="[{&quot;time&quot;: &quot;2026-04-27&quot;, &quot;open&quot;: 3191.0, &quot;high&quot;: 3214.0, &quot;low&quot;: 3185.0, &quot;close&quot;: 3190.0}, {&quot;time&quot;: &quot;2026-04-28&quot;, &quot;open&quot;: 3191.0, &quot;high&quot;: 3195.0, &quot;low&quot;: 3162.0, &quot;close&quot;: 3176.0}, {&quot;time&quot;: &quot;2026-04-29&quot;, &quot;open&quot;: 3176.0, &quot;high&quot;: 3198.0, &quot;low&quot;: 3166.0, &quot;close&quot;: 3195.0}, {&quot;time&quot;: &quot;2026-04-30&quot;, &quot;open&quot;: 3195.0, &quot;high&quot;: 3220.0, &quot;low&quot;: 3191.0, &quot;close&quot;: 3214.0}, {&quot;time&quot;: &quot;2026-05-06&quot;, &quot;open&quot;: 3227.0, &quot;high&quot;: 3268.0, &quot;low&quot;: 3219.0, &quot;close&quot;: 3264.0}, {&quot;time&quot;: &quot;2026-05-07&quot;, &quot;open&quot;: 3260.0, &quot;high&quot;: 3278.0, &quot;low&quot;: 3253.0, &quot;close&quot;: 3273.0}, {&quot;time&quot;: &quot;2026-05-08&quot;, &quot;open&quot;: 3272.0, &quot;high&quot;: 3285.0, &quot;low&quot;: 3261.0, &quot;close&quot;: 3263.0}, {&quot;time&quot;: &quot;2026-05-11&quot;, &quot;open&quot;: 3262.0, &quot;high&quot;: 3298.0, &quot;low&quot;: 3260.0, &quot;close&quot;: 3286.0}, {&quot;time&quot;: &quot;2026-05-12&quot;, &quot;open&quot;: 3285.0, &quot;high&quot;: 3292.0, &quot;low&quot;: 3246.0, &quot;close&quot;: 3255.0}, {&quot;time&quot;: &quot;2026-05-13&quot;, &quot;open&quot;: 3251.0, &quot;high&quot;: 3267.0, &quot;low&quot;: 3236.0, &quot;close&quot;: 3257.0}, {&quot;time&quot;: &quot;2026-05-14&quot;, &quot;open&quot;: 3249.0, &quot;high&quot;: 3260.0, &quot;low&quot;: 3233.0, &quot;close&quot;: 3255.0}, {&quot;time&quot;: &quot;2026-05-15&quot;, &quot;open&quot;: 3255.0, &quot;high&quot;: 3272.0, &quot;low&quot;: 3226.0, &quot;close&quot;: 3232.0}, {&quot;time&quot;: &quot;2026-05-18&quot;, &quot;open&quot;: 3232.0, &quot;high&quot;: 3237.0, &quot;low&quot;: 3204.0, &quot;close&quot;: 3206.0}, {&quot;time&quot;: &quot;2026-05-19&quot;, &quot;open&quot;: 3210.0, &quot;high&quot;: 3213.0, &quot;low&quot;: 3187.0, &quot;close&quot;: 3204.0}, {&quot;time&quot;: &quot;2026-05-20&quot;, &quot;open&quot;: 3205.0, &quot;high&quot;: 3206.0, &quot;low&quot;: 3177.0, &quot;close&quot;: 3189.0}, {&quot;time&quot;: &quot;2026-05-21&quot;, &quot;open&quot;: 3191.0, &quot;high&quot;: 3198.0, &quot;low&quot;: 3172.0, &quot;close&quot;: 3175.0}, {&quot;time&quot;: &quot;2026-05-22&quot;, &quot;open&quot;: 3175.0, &quot;high&quot;: 3179.0, &quot;low&quot;: 3163.0, &quot;close&quot;: 3168.0}, {&quot;time&quot;: &quot;2026-05-25&quot;, &quot;open&quot;: 3168.0, &quot;high&quot;: 3238.0, &quot;low&quot;: 3165.0, &quot;close&quot;: 3218.0}, {&quot;time&quot;: &quot;2026-05-26&quot;, &quot;open&quot;: 3218.0, &quot;high&quot;: 3218.0, &quot;low&quot;: 3138.0, &quot;close&quot;: 3146.0}, {&quot;time&quot;: &quot;2026-05-27&quot;, &quot;open&quot;: 3146.0, &quot;high&quot;: 3152.0, &quot;low&quot;: 3136.0, &quot;close&quot;: 3144.0}, {&quot;time&quot;: &quot;2026-05-28&quot;, &quot;open&quot;: 3145.0, &quot;high&quot;: 3162.0, &quot;low&quot;: 3144.0, &quot;close&quot;: 3145.0}, {&quot;time&quot;: &quot;2026-05-29&quot;, &quot;open&quot;: 3150.0, &quot;high&quot;: 3170.0, &quot;low&quot;: 3146.0, &quot;close&quot;: 3158.0}, {&quot;time&quot;: &quot;2026-06-01&quot;, &quot;open&quot;: 3156.0, &quot;high&quot;: 3189.0, &quot;low&quot;: 3156.0, &quot;close&quot;: 3177.0}, {&quot;time&quot;: &quot;2026-06-02&quot;, &quot;open&quot;: 3180.0, &quot;high&quot;: 3184.0, &quot;low&quot;: 3169.0, &quot;close&quot;: 3180.0}, {&quot;time&quot;: &quot;2026-06-03&quot;, &quot;open&quot;: 3180.0, &quot;high&quot;: 3187.0, &quot;low&quot;: 3165.0, &quot;close&quot;: 3169.0}, {&quot;time&quot;: &quot;2026-06-04&quot;, &quot;open&quot;: 3166.0, &quot;high&quot;: 3180.0, &quot;low&quot;: 3154.0, &quot;close&quot;: 3157.0}, {&quot;time&quot;: &quot;2026-06-05&quot;, &quot;open&quot;: 3157.0, &quot;high&quot;: 3175.0, &quot;low&quot;: 3149.0, &quot;close&quot;: 3165.0}, {&quot;time&quot;: &quot;2026-06-08&quot;, &quot;open&quot;: 3165.0, &quot;high&quot;: 3175.0, &quot;low&quot;: 3151.0, &quot;close&quot;: 3157.0}, {&quot;time&quot;: &quot;2026-06-09&quot;, &quot;open&quot;: 3157.0, &quot;high&quot;: 3160.0, &quot;low&quot;: 3142.0, &quot;close&quot;: 3156.0}, {&quot;time&quot;: &quot;2026-06-10&quot;, &quot;open&quot;: 3156.0, &quot;high&quot;: 3194.0, &quot;low&quot;: 3147.0, &quot;close&quot;: 3180.0}]"
-                 data-ma20="[{&quot;time&quot;: &quot;2026-05-27&quot;, &quot;value&quot;: 3215.5}, {&quot;time&quot;: &quot;2026-05-28&quot;, &quot;value&quot;: 3213.2}, {&quot;time&quot;: &quot;2026-05-29&quot;, &quot;value&quot;: 3212.3}, {&quot;time&quot;: &quot;2026-06-01&quot;, &quot;value&quot;: 3211.4}, {&quot;time&quot;: &quot;2026-06-02&quot;, &quot;value&quot;: 3209.8}, {&quot;time&quot;: &quot;2026-06-03&quot;, &quot;value&quot;: 3205.0}, {&quot;time&quot;: &quot;2026-06-04&quot;, &quot;value&quot;: 3199.2}, {&quot;time&quot;: &quot;2026-06-05&quot;, &quot;value&quot;: 3194.3}, {&quot;time&quot;: &quot;2026-06-08&quot;, &quot;value&quot;: 3187.8}, {&quot;time&quot;: &quot;2026-06-09&quot;, &quot;value&quot;: 3182.9}, {&quot;time&quot;: &quot;2026-06-10&quot;, &quot;value&quot;: 3179.1}]"></div>
-          </div>
-          <div class="gauge-row">
-            <div class="g"><div class="k">20DH / 20DL</div><div class="v">3272 / 3138</div></div>
-            <div class="g"><div class="k">BUP / BLO</div><div class="v">3237 / 3120</div></div>
-            <div class="g"><div class="k">RNG POS</div><div class="v">31%</div></div>
-          </div>
-          <div class="top3-line"><span class="k">TOP3</span>—</div>
-          <div class="ticket-mini">
-            <span class="k">ENTRY</span><span class="v"><b>—</b><span class="note"></span></span>
-            <span class="k">STOP</span><span class="v"><b>—</b><span class="note"></span></span>
-            <span class="k">TP1 · TP2</span><span class="v"><b>—</b> <span class="note"></span> &nbsp;|&nbsp; <b>—</b> <span class="note"></span></span>
-            
-            <span class="k">R:R</span><span class="v"><span class="rr-pair"><span class="lab">TP1</span><b>—</b></span> <span class="rr-pair"><span class="lab">TP2</span><b>—</b></span></span>
-            <span class="k">RISK · LOT</span><span class="v"><b>≈ —</b> 元 / 手</span>
-            <span class="k">MARGIN · LOT</span><span class="v"><b>≈ 4770</b> 元</span>
-            <span class="k">EXIT</span><span class="v"></span>
-            <span class="k">SPEC</span><span class="v"><b>乘数 10</b> · 每跳 1 = <b>10</b> 元 · 涨跌停板 <b>7%</b></span>
+            <span class="k">SPEC</span><span class="v"><b>乘数 10</b> · 每跳 1 = <b>10</b> 元 · 涨跌停板 <b>5%</b></span>
           </div>
           
         </div>
@@ -1503,14 +1512,14 @@
           <span class="ct">v2609</span>
         </div>
       </td>
-      <td data-d="snap strat" style="line-height:1.2"><b>4706</b><span class="live-overlay">盘中 10:02 <b>4700.0</b> <span class="num-dn">-6</span> <span class="num-dn">-0.13%</span></span></td>
+      <td data-d="snap strat" style="line-height:1.2"><b>4706</b><span class="live-overlay">盘中 11:54 <b>4718.0</b> <span class="num-up">+12</span> <span class="num-up">+0.25%</span></span></td>
       <td data-d="snap tech"><span class="spark-mini"><svg viewBox="0 0 100 30" preserveAspectRatio="none"><polyline points="0.00,5.98 3.45,0.00 6.90,2.90 10.34,3.96 13.79,1.79 17.24,8.97 20.69,9.80 24.14,10.35 27.59,11.64 31.03,5.94 34.48,13.90 37.93,15.23 41.38,11.46 44.83,14.17 48.28,18.91 51.72,22.68 55.17,23.56 58.62,20.43 62.07,23.19 65.52,22.32 68.97,19.28 72.41,19.97 75.86,16.79 79.31,18.77 82.76,19.10 86.21,24.80 89.66,27.19 93.10,26.69 96.55,29.49 100.00,30.00"/></svg></span></td>
       <td data-d="snap tech">32.2</td>
       <td data-d="snap tech">104</td>
       <td data-d="snap pos">1.16M <span class='num-up'>+9k</span></td>
       <td data-d="snap strat" class="strat-cell">
         <span class="dir-tag tag-watch">W</span><span class="strat-text">观望</span>
-        <span class="strat-sub">alert: cash_cost_floor_breach · conviction 0.4/9 weak · ADX 13.1 无趋势</span>
+        <span class="strat-sub">alert: cash_cost_floor_breach · conviction 1.8/9 weak · ADX 13.1 无趋势</span>
         
       </td>
       <td data-d="snap strat" class="rr-cell">—</td>
@@ -1521,9 +1530,9 @@
       <td data-d="tech">5257</td><td data-d="tech">4652</td>
       <td data-d="tech">9%</td>
       <td data-d="pos">935k</td>
-      <td data-d="pos" class="num-dn"><b>0</b></td>
-      <td data-d="pos">—</td><td data-d="pos">—</td>
-      <td data-d="pos" style="text-align:left;font-size:10.5px;color:var(--text-dim)">—</td>
+      <td data-d="pos" class="num-dn"><b>-126678</b></td>
+      <td data-d="pos">7923</td><td data-d="pos">12986</td>
+      <td data-d="pos" style="text-align:left;font-size:10.5px;color:var(--text-dim)"><span class='num-up'>中财期货(代客) 113,212</span> / <span class='num-dn'>国泰君安(代客) 139,086</span></td>
       <td data-d="term">v2609</td><td data-d="term"><b>4706</b></td>
       <td data-d="term">—</td><td data-d="term">—</td>
       <td data-d="term" class="">—</td>
@@ -1540,17 +1549,17 @@
         <div class="detail-section">
           <h5><span class="hk">D</span>六维分析 <span class="meta">六维 · 四问 · ticket</span></h5>
           <div class="six-dim">
-            <div class="dim"><span class="lbl">基本面 <span class="dim-agg">+2</span></span><span class="dim-sub">S+1 M+1 L+1 · cov 100%</span><span class="dim-rationale">spot cost_pct 0.00 / mid cost_pct 0.00 / long cost_pct 0.07</span><span class="lead">结算价低于 现金成本-低/现金成本-中</span><span class="det">成本 现金成本-低 差额 -310</span></div>
-            <div class="dim"><span class="lbl">宏观</span><span class="lead">eastmoney_news: 能化 | 近期国内尿素部分装置停车带动整体产量下降</span><span class="det">pmi_manufacturing 50.00index；ppi_yoy 3.90percent；fx_boc_mid_usd 681.50100cny_per_unit；新闻 1 条</span></div>
+            <div class="dim"><span class="lbl">基本面 <span class="dim-agg">+2</span></span><span class="dim-sub">S+1 M+1 L+1 · cov 100%</span><span class="dim-rationale">spot cost_pct 0.00 / mid cost_pct 0.00 / long cost_pct 0.07</span><span class="lead">结算价低于 现金成本-低/现金成本-中</span><span class="det">成本 现金成本-低 差额 -310；现货 基差 -161；仓单 107,076(+3,570)</span></div>
+            <div class="dim"><span class="lbl">宏观</span><span class="lead">eastmoney_search:PVC: 内蒙古乌海市 陆海联动开放助企扬帆</span><span class="det">pmi_manufacturing 50.00index；ppi_yoy 3.90percent；fx_boc_mid_usd 681.50100cny_per_unit；新闻 12 条</span></div>
             <div class="dim"><span class="lbl">合约结构</span><span class="lead">月差结构暂缺</span><span class="det">v2609 以主力合约单腿信号为主。</span></div>
-            <div class="dim"><span class="lbl">成交持仓</span><span class="dim-sub">S— M— L— · cov 0% [degraded]</span><span class="dim-rationale">position_rank 数据缺</span><span class="lead">Top20 多空均衡 —</span><span class="det">多变 —；空变 —；量价 价跌/增仓；动量 no_consensus</span></div>
+            <div class="dim"><span class="lbl">成交持仓 <span class="dim-agg">+1</span></span><span class="dim-sub">S-1 M+1 L+1 · cov 100%</span><span class="dim-rationale">今 net -127k mid pct 0.00 n=20 long pct 0.00 n=39</span><span class="lead">Top20 净空 126,678</span><span class="det">多变 +7,923；空变 +12,986；量价 价跌/增仓；动量 no_consensus</span></div>
             <div class="dim"><span class="lbl">技术面 <span class="dim-agg">-2</span></span><span class="dim-sub">S-1 M-0.76 L— · cov 100%</span><span class="dim-rationale">ret_21d -7.8% vol 6.5% sig -1.00 / ret_63d -15.9% vol 17.6% sig -0.90 / ret_252d -8.8% vol 23.5% sig -0.37</span><span class="lead">震荡，RSI 32.2，ADX 13.1</span><span class="det">收盘 vs MA5 -51，vs MA20 -197；20日位置 9%，20日收益 -6.9%。</span></div>
             <div class="dim"><span class="lbl">风险管理</span><span class="lead">critical: cash_cost_floor_breach</span><span class="det">settle 4690.00 &lt; 现金成本-低 5000.00（margin...；到期 96 天；主力校验 OK v2609；涨跌停 4%，保证金 19.0%</span></div>
           </div>
           <div class="ans-grid">
-            <div class="ans"><span class="lbl">主要矛盾</span>eastmoney_news: 能化 | 近期国内尿素部分装置停车带动整体产量下降；conviction 0.4/9 偏多，仓位信念 weak。</div>
+            <div class="ans"><span class="lbl">主要矛盾</span>eastmoney_search:PVC: 内蒙古乌海市 陆海联动开放助企扬帆；conviction -1.8/9 偏空，仓位信念 weak。</div>
             <div class="ans"><span class="lbl">是否已反映</span>震荡，距MA20 -4.0%，20日位置 9%；当前策略状态 WATCH，无入场计划。</div>
-            <div class="ans"><span class="lbl">结构/资金/流动性</span>月差结构暂缺；Top20 多空均衡 —，价跌/增仓；成交量 935,654，持仓 1,164,961。</div>
+            <div class="ans"><span class="lbl">结构/资金/流动性</span>月差结构暂缺；Top20 净空 126,678，价跌/增仓；成交量 935,654，持仓 1,164,961。</div>
             <div class="ans"><span class="lbl">错误最大亏损</span>无入场计划，最大亏损以不交易的机会成本为主；若强行交易，需先定义止损和R:R。</div>
           </div>
         </div>
@@ -1571,7 +1580,7 @@
             <div class="g"><div class="k">BUP / BLO</div><div class="v">5122 / 4683</div></div>
             <div class="g"><div class="k">RNG POS</div><div class="v">9%</div></div>
           </div>
-          <div class="top3-line"><span class="k">TOP3</span>—</div>
+          <div class="top3-line"><span class="k">TOP3</span>L1 中财期货(代客) 113,212 (-437) · S1 国泰君安(代客) 139,086 (-8,001)</div>
           <div class="ticket-mini">
             <span class="k">ENTRY</span><span class="v"><b>—</b><span class="note"></span></span>
             <span class="k">STOP</span><span class="v"><b>—</b><span class="note"></span></span>
@@ -1639,136 +1648,136 @@
     </div>
     <ul class="news-list" data-tab-body="news">
       
+      <li class="news-item is-major is-policy" data-var="ao" data-source="shmet" data-score="10">
+        <div class="nh">
+          <span class="score tier-major">s10</span>
+          <span class="tag policy">政策</span>
+          <span class="var">AO</span>
+          <span>06-10 08:48</span>
+        </div>
+        <div class="nt">6月9日市场热点回顾</div>
+        <div class="nm">【6月9日市场热点回顾】前5个月我国货物贸易进出口增长15.3%AI需求强劲，中国5月出口全面超预期，增速19.4%中央安全生产考核巡查二、三季度明查暗访即将开展美国能源部发出重磅警告：全球石油库存正加速滑向数十年历史低谷欧盟拟推出对俄第21轮制裁，首次纳入渔业并扩大能源金融限制美国4月贸易逆差收窄，并下修3月贸易赤字美军报复性打击伊朗 伊朗南部多地传出爆炸声加拿大4月份贸易顺差扩大，因原油推动出口创下历史新高住友商事为Ambatovy镍矿买家提供融资 彻底退出长期亏损项目安托法加斯塔斥资9亿美元延长智利Zaldívar铜矿寿命至2051年印度拟增加俄镍进口以支持电动化战略5月中国未锻轧铜及铜材进口量为44.57万吨5月中国铜矿砂及其精矿进口量为236.07万吨由于伊朗战争导致供应紧张，中国5月份铝出口激增印度政府官员：未来无进一步计划限制黄金进口LME金属收盘下跌为主，伦铝伦镍跌超2%</div>
+      </li>
+      
+      <li class="news-item is-major is-policy" data-var="cf" data-source="em" data-score="9">
+        <div class="nh">
+          <span class="score tier-major">s9</span>
+          <span class="tag policy">政策</span>
+          <span class="var">CF</span>
+          <span>06-11 11:30</span>
+        </div>
+        <div class="nt">午盘播报 6月11日 周四</div>
+        <div class="nm">（隆众资讯） 棉花：6月10日，配额内（关税1%）中等质量进口棉完税成本14131元/吨，比国产棉低3242元/吨，较上周扩大469元/吨；滑准税（关税5%~40%）进口棉成本14714元/吨，比国产棉低2659元/吨，较上周扩大180元/吨。外棉下跌快于国内，内外价差扩大。</div>
+      </li>
+      
       <li class="news-item is-major" data-var="通用" data-source="em" data-score="9">
         <div class="nh">
           <span class="score tier-major">s9</span>
           <span class="tag quant">量化</span>
           <span class="var">通用</span>
-          <span>06-11 09:57</span>
+          <span>06-11 11:30</span>
         </div>
         <div class="nt">截至2026年06月11日，隆众资讯统计全国20万吨及以上固定液碱样本企业厂库库存49.47万吨（湿吨），环比下调2.04%，同比上调29.46%。本周全国液碱样本企业库容比29.72%，环比下调0.61%；本周西北、东北、西南库容比环比呈现上涨趋势，华北、华中、华东、华南库容比呈现下行趋势。</div>
         
       </li>
       
-      <li class="news-item is-major" data-var="rb" data-source="em" data-score="8">
+      <li class="news-item is-major" data-var="ao" data-source="shmet" data-score="8">
         <div class="nh">
           <span class="score tier-major">s8</span>
           <span class="tag quant">量化</span>
-          <span class="var">RB</span>
-          <span>06-11 09:57</span>
+          <span class="var">AO</span>
+          <span>06-11 11:09</span>
         </div>
-        <div class="nt">【64家钢厂进口烧结粉总库存1379.67万吨】6月11日Mysteel统计新口径114家钢厂进口烧结粉总库存2940.26万吨，环比上期增32.79万吨。进口烧结粉总日耗120.01万吨，环比上期减0.15万吨。库存消费比24.5，环比上期增0.30。</div>
+        <div class="nt">电解铝铜锂面临三重产能围堵</div>
+        <div class="nm">【电解铝铜锂面临三重产能围堵】SHMET6月11日讯，日前，在大湾区科创高峰论坛上，中国有色金属工业协会会长葛红林作《增创新质生产力 制胜未来供给竞争》报告。他指出，我国电解铝产量已超过全球55%，铜消费量占据世界“半壁江山”，锂、钴、镍等关键金属材料加工能力全球领先，实现了“产能逆序流动”——从被动承接者变为全球供给中心。然而，这引发原有秩序既得利益者的强烈反噬，形成三重“被逆序流动”围堵：一是高端回流，欧美通过立法补贴推动高端产业回流，封锁我国高端材料升级通道；二是中低端分流，借助地缘经济引导中低端加工产业向东南亚转移，瓦解产业集群协同根基；三是规则封锁，将碳排放和产能议题政治化，建立排他性贸易壁垒。葛红林警告，我国制造业发达地区将面临高端产能被强制回流欧美、中低端被分流东南亚的双重挤压挑战。（中国有色金属报）</div>
+      </li>
+      
+      <li class="news-item " data-var="m" data-source="em" data-score="6">
+        <div class="nh">
+          <span class="score tier-mid">s6</span>
+          <span class="tag quant">量化</span>
+          <span class="var">M</span>
+          <span>06-10 14:09</span>
+        </div>
+        <div class="nt">【本周国内豆油现货价格下跌】昨日国内豆油期价收盘下跌。国际原油、CBOT大豆期价下跌拖累油脂市场情绪，叠加国内豆油基本面供需宽松、库存持续增加，昨日国内豆油期价下跌。6月9日，大商所豆油主力2609合约收盘报价8318元/吨，较前一交易日下跌58元/吨或0.69%，较上周同期下跌240元/吨或2.80%，创近三个月新低。</div>
         
       </li>
       
-      <li class="news-item is-major" data-var="通用" data-source="em" data-score="8">
+      <li class="news-item is-policy" data-var="通用" data-source="em" data-score="5">
         <div class="nh">
-          <span class="score tier-major">s8</span>
-          <span class="tag quant">量化</span>
+          <span class="score tier-mid">s5</span>
+          <span class="tag policy">政策</span>
           <span class="var">通用</span>
-          <span>06-11 09:57</span>
+          <span>06-11 11:30</span>
         </div>
-        <div class="nt">本周，Mysteel统计523家炼焦煤矿山样本核定产能利用率为69.6%，环比减1.9%。原煤日均产量156.4万吨，环比减3.5万吨，原煤库存471.1万吨，环比减13.8万吨 ，精煤日均产量67.4万吨，环比减1.8万吨，精煤库存175.0万吨，环比减23.2万吨。</div>
+        <div class="nt">6月10日，配额内（关税1%）中等质量进口棉完税成本14131元/吨，比国产棉低3242元/吨，较上周扩大469元/吨；滑准税（关税5%~40%）进口棉成本14714元/吨，比国产棉低2659元/吨，较上周扩大180元/吨。外棉下跌快于国内，内外价差扩大。</div>
         
       </li>
       
       <li class="news-item " data-var="通用" data-source="em" data-score="5">
         <div class="nh">
           <span class="score tier-mid">s5</span>
-          <span class="tag industry">产业</span>
-          <span class="var">通用</span>
-          <span>06-11 09:57</span>
-        </div>
-        <div class="nt">【美债交易员最担心的一张图：5%关口从“买点”变为了“卖点”？】尽管隔夜公布的美国5月核心通胀数据涨幅低于预期，减轻了美联储主席凯文·沃什提前加息的压力，但随着中东战火重燃，债券交易员似乎依然没有能得到任何喘息之机，市场人士仍大致维持了美联储将在年底前加息的预期。</div>
-        
-      </li>
-      
-      <li class="news-item " data-var="ao" data-source="em" data-score="1">
-        <div class="nh">
-          <span class="score tier-low">s1</span>
           <span class="tag quant">量化</span>
-          <span class="var">AO</span>
-          <span>06-05 08:41</span>
+          <span class="var">通用</span>
+          <span>06-10 14:09</span>
         </div>
-        <div class="nt">有色/贵金属 | 短期锡供应扰动仍存 预计锡价震荡偏强运行为主</div>
-        <div class="nm">AO2609合约参考运行区间：2700-2850元/吨，需重点关注国内仓单变化、供应收缩政策、几内亚矿石政策、美伊冲突。 锡 【行情资讯】 6月4日，沪锡主力合约收报430040元/吨，较前日下跌3.67%。</div>
-      </li>
-      
-      <li class="news-item " data-var="m" data-source="em" data-score="1">
-        <div class="nh">
-          <span class="score tier-low">s1</span>
-          <span class="tag industry">产业</span>
-          <span class="var">M</span>
-          <span>06-10 11:30</span>
-        </div>
-        <div class="nt">午盘播报 6月10日 周三</div>
-        <div class="nm">6月9日，沿海地区43%蛋白豆粕现货报价2730~2970元/吨，较上周同期下跌40~90元/吨；现货基差报价M2609-170~-40元/吨，上涨20~40元/吨。（国家粮油信息中心） 昨日国内豆油期价收盘下跌。</div>
-      </li>
-      
-      <li class="news-item " data-var="ao" data-source="em" data-score="0">
-        <div class="nh">
-          <span class="score tier-low">s0</span>
-          <span class="tag industry">产业</span>
-          <span class="var">AO</span>
-          <span>06-08 15:20</span>
-        </div>
-        <div class="nt">周末氧化铝对液碱采购价上调，周末周初山东多数品牌报价适度上移，幅度10元/吨集中，但实际成交依据客户及订单涨幅并不统一，山东市场部分量大老客户价格依旧略低。</div>
+        <div class="nt">【5月马棕库存小增 相比预期稍偏空】今日中午，MPOB公布了马棕5月供需数据。数据显示，5月马来毛棕产量151.6万吨，环比减少7%，此前机构预估产量154-156万吨，实际产量略低预期。5月马棕出口110.6万吨，环比减少14.45%，机构预估出口为122-124万吨，实际出口低于预期12-14万吨。5月马棕表需33.5万吨，环比减7.8%，但在正常月度需求范围内。5月库存242.8万吨，机构预估库存236万吨左右，实际库存稍高于预期。整体来看，5月马棕供需数据相比预期小利空。虽然5月库存高于彭博、路透等机构预估，但在正常预估偏差范围内。短期国内商品市场氛围偏空，国内外棕榈油供需预期近弱远强。5月马棕库存继续回升、出口转差，会令做多资金对产地中期季节性增产、增库担忧加剧。若B50、厄尔尼诺导致的干旱中短期仍没有明确或出现，盘面预计弱势持续。</div>
         
       </li>
       
-      <li class="news-item " data-var="m" data-source="em" data-score="0">
+      <li class="news-item " data-var="cf" data-source="em" data-score="4">
         <div class="nh">
-          <span class="score tier-low">s0</span>
+          <span class="score tier-mid">s4</span>
           <span class="tag industry">产业</span>
-          <span class="var">M</span>
-          <span>06-04 08:59</span>
+          <span class="var">CF</span>
+          <span>06-11 11:30</span>
         </div>
-        <div class="nt">农产品 | 白糖：厄尔尼诺导致减产预期增强 短期盘面相对偏强</div>
-        <div class="nm">豆粕M2609：2940至3000区间震荡 菜粕： 1.基本面：菜粕探底回升，豆粕走势带动和技术性震荡整理，中国取消加拿大农产品出口限制，进口油菜籽到港增多和油厂开机增多。</div>
-      </li>
-      
-      <li class="news-item " data-var="ma" data-source="em" data-score="0">
-        <div class="nh">
-          <span class="score tier-low">s0</span>
-          <span class="tag industry">产业</span>
-          <span class="var">MA</span>
-          <span>06-08 15:20</span>
-        </div>
-        <div class="nt">国内商品期货收盘，主力合约跌多涨少。跌幅方面，沪银跌近9%，沪锡跌超6%，钯跌近6%，铂跌超5%，烧碱跌超4%，沪金跌超3%，苹果跌超2%，橡胶、国际铜跌近2%，20号胶、红枣、沪铜、鸡蛋、焦炭等跌超1%；涨幅方面，欧线集运涨超9%，LPG涨超6%，甲醇涨超5%，瓶片、沥青涨近5%，低硫燃油、燃油涨超4%，尿素涨近4%，乙二醇、丙烯、PTA、聚丙烯、短纤等涨超3%，原油涨近3%，纯苯、苯乙烯涨超2%，花生、淀粉涨超1%。</div>
+        <div class="nt">6月10日，全国标准级棉花（3128B级）加权平均价17373元/吨，周环比下跌451元/吨，月环比下跌572元/吨，同比上涨2630元/吨。美联储加息预期升温，叠加中东局势反复，大宗商品市场普遍下跌。</div>
         
       </li>
       
-      <li class="news-item " data-var="ma" data-source="em" data-score="0">
+      <li class="news-item " data-var="m" data-source="em" data-score="4">
         <div class="nh">
-          <span class="score tier-low">s0</span>
+          <span class="score tier-mid">s4</span>
           <span class="tag industry">产业</span>
-          <span class="var">MA</span>
-          <span>06-08 09:49</span>
+          <span class="var">M</span>
+          <span>06-10 12:57</span>
         </div>
-        <div class="nt">能化 | 现货价格平稳 甲醇高位震荡</div>
-        <div class="nm">甲醇 现货价格平稳，甲醇高位震荡 夜盘甲醇期货主力MA2609合约收盘2904元/吨，较上一交易日涨幅0.35%，持仓73.6万手。上周沿海甲醇市场价格平稳为主，内地甲醇市场整体上行。太仓地区周均价3159元/吨，环比上涨0.03%。</div>
+        <div class="nt">淡季不淡 蛋鸡养殖利润同比增超三倍 “火箭蛋”行情能持续多久？</div>
+        <div class="nm">根据Mysteel数据，近期豆粕、玉米价格稳定，蛋鸡养殖饲料成本在3.50元/斤左右，养殖利润维持1.60元/斤左右，环比上周上涨0.50元/斤，环比增幅 45.05%，同比去年增幅 368.33%。</div>
       </li>
       
-      <li class="news-item " data-var="rb" data-source="em" data-score="0">
+      <li class="news-item " data-var="rb" data-source="em" data-score="4">
         <div class="nh">
-          <span class="score tier-low">s0</span>
-          <span class="tag industry">产业</span>
+          <span class="score tier-mid">s4</span>
+          <span class="tag quant">量化</span>
           <span class="var">RB</span>
-          <span>06-04 09:04</span>
+          <span>06-11 10:54</span>
         </div>
-        <div class="nt">黑色系 | 钢厂焦炭库存连续3周回升 受焦煤成本支撑影响 焦炭走势偏强</div>
-        <div class="nm">技术上，RB2610合约1小时MACD指标显示DIFF与DEA运行于0轴上方。观点参考，短线交易，注意风险控制。 热卷 夜盘HC2610合约震荡偏强。</div>
+        <div class="nt">黑色系 | 保供情绪降温 双焦盘面震荡整理</div>
+        <div class="nm">螺纹钢 供需双弱，低位震荡 周三夜间，螺纹钢2610高位开盘，震荡运行，报收3172，上涨6，涨幅0.19%。供应端钢厂检修小幅增加，螺纹产量环比回落，但整体供给仍处偏高区间，厂库延续累库，社会库存去库速率持续放缓，供需宽松格局未改。</div>
       </li>
       
-      <li class="news-item " data-var="ta" data-source="em" data-score="0">
+      <li class="news-item " data-var="ta" data-source="em" data-score="4">
         <div class="nh">
-          <span class="score tier-low">s0</span>
-          <span class="tag industry">产业</span>
+          <span class="score tier-mid">s4</span>
+          <span class="tag quant">量化</span>
           <span class="var">TA</span>
-          <span>06-05 08:53</span>
+          <span>06-11 11:30</span>
         </div>
-        <div class="nt">能化 | 近期纯碱基本面驱动偏弱 预计纯碱期货价格延续区间宽幅震荡趋势</div>
-        <div class="nm">PX/PTA/MEG： （邸艺琳，从业资格号：F03107645；交易咨询资格号：Z0021445） TA609昨日收盘在6184元/吨，收跌2.4%；现货报盘升水09合约186元/吨。</div>
+        <div class="nt">能化 | 近期国内外新胶开割推进 胶水产量持续释放</div>
+        <div class="nm">【PTA】 PTA：夜盘主力合约涨0.09%。现货价格震荡，市场商谈氛围一般，现货基差区间波动，6月主港在09+215附近商谈。据CCF，截止6月4日，PTA负荷66.7%，环比+5.7个百分点。</div>
+      </li>
+      
+      <li class="news-item " data-var="ta" data-source="em" data-score="4">
+        <div class="nh">
+          <span class="score tier-mid">s4</span>
+          <span class="tag quant">量化</span>
+          <span class="var">TA</span>
+          <span>06-11 07:21</span>
+        </div>
+        <div class="nt">需求承压 PTA反弹驱动不足</div>
+        <div class="nm">截至6月10日，国内PTA产能利用率为64.99%，较5月底低点回升8.04个百分点，但较去年同期回落18.01个百分点。整体来看，当前PTA行业负荷仍处于历史偏低水平，供应压力并不显著；叠加2026年国内无新增PTA产能投放，行业长期将维持存量紧平衡格局。</div>
       </li>
       
     </ul>
@@ -1804,21 +1813,21 @@
     <div class="pi-list" id="palette-list">
       <div class="pi-section" data-section>JUMP TO VARIETY</div>
       
-      <div class="pi-item is-active" data-action="jump" data-arg="ta"><span class="pi-code">TA</span><span class="pi-desc">PTA · ta2609 · LONG · SHIFT</span><span class="pi-meta">R:R 1:4.0</span></div>
+      <div class="pi-item is-active" data-action="jump" data-arg="ao"><span class="pi-code">AO</span><span class="pi-desc">氧化铝 · ao2609 · LONG · SHIFT</span><span class="pi-meta">R:R 1:4.0</span></div>
+      
+      <div class="pi-item" data-action="jump" data-arg="ma"><span class="pi-code">MA</span><span class="pi-desc">甲醇 · ma2609 · LONG · SHIFT</span><span class="pi-meta">R:R 1:4.0</span></div>
+      
+      <div class="pi-item" data-action="jump" data-arg="ta"><span class="pi-code">TA</span><span class="pi-desc">PTA · ta2609 · LONG · SHIFT</span><span class="pi-meta">R:R 1:4.0</span></div>
+      
+      <div class="pi-item" data-action="jump" data-arg="rb"><span class="pi-code">RB</span><span class="pi-desc">螺纹钢 · rb2610 · SHORT · SHIFT</span><span class="pi-meta">R:R 1:4.0</span></div>
       
       <div class="pi-item" data-action="jump" data-arg="sp"><span class="pi-code">SP</span><span class="pi-desc">纸浆 · sp2609 · SHORT · TRIG</span><span class="pi-meta">R:R 1:4.0</span></div>
-      
-      <div class="pi-item" data-action="jump" data-arg="sr"><span class="pi-code">SR</span><span class="pi-desc">白糖 · sr2609 · SHORT · SHIFT</span><span class="pi-meta">R:R 1:4.0</span></div>
-      
-      <div class="pi-item" data-action="jump" data-arg="ao"><span class="pi-code">AO</span><span class="pi-desc">氧化铝 · ao2609 · WATCH · WATCH</span><span class="pi-meta">观望</span></div>
       
       <div class="pi-item" data-action="jump" data-arg="cf"><span class="pi-code">CF</span><span class="pi-desc">棉花 · cf2609 · WATCH · WATCH</span><span class="pi-meta">观望</span></div>
       
       <div class="pi-item" data-action="jump" data-arg="m"><span class="pi-code">M</span><span class="pi-desc">豆粕 · m2609 · WATCH · WATCH</span><span class="pi-meta">观望</span></div>
       
-      <div class="pi-item" data-action="jump" data-arg="ma"><span class="pi-code">MA</span><span class="pi-desc">甲醇 · ma2609 · WATCH · WATCH</span><span class="pi-meta">观望</span></div>
-      
-      <div class="pi-item" data-action="jump" data-arg="rb"><span class="pi-code">RB</span><span class="pi-desc">螺纹钢 · rb2610 · WATCH · WATCH</span><span class="pi-meta">观望</span></div>
+      <div class="pi-item" data-action="jump" data-arg="sr"><span class="pi-code">SR</span><span class="pi-desc">白糖 · sr2609 · WATCH · WATCH</span><span class="pi-meta">观望</span></div>
       
       <div class="pi-item" data-action="jump" data-arg="v"><span class="pi-code">V</span><span class="pi-desc">PVC · v2609 · WATCH · WATCH</span><span class="pi-meta">观望</span></div>
       
